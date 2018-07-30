@@ -19,4 +19,4 @@ module BrakeLeverPadding(height, inner, padding, split=5)
   }
 }
 
-BrakeLeverPadding(30, 19.5, 3.5);
+BrakeLeverPadding(30, 19.5, 3);
