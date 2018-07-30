@@ -4,7 +4,7 @@ layer_spacing = 4;
 mount_thickness = 6;
 
 pot_shaft_diameter = 6;
-pot_mount_diameter = 8;
+pot_mount_diameter = 7;
 
 mount_screw_diameter = 3.5;
 mount_screw_cutout_diameter = 5;
