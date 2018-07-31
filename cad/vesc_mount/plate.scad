@@ -1,3 +1,4 @@
+use <common.scad>
 include <config.scad>;
 
 module RoundedRect(dimensions, radius=10)
@@ -11,34 +12,23 @@ module RoundedRect(dimensions, radius=10)
   }
 }
 
-module PlaceMountingHoles(centres, diameter)
-{
-  lx = centres[0] / 2;
-  ly = centres[1] / 2;
-
-  for (x = [-lx, lx])
-  {
-    for (y = [-ly, ly])
-    {
-      translate([x, y])
-      {
-        circle(d=diameter);
-      }
-    }
-  }
-}
-
 module Plate()
 {
   difference()
   {
     RoundedRect(plate_dimensions);
 
-    PlaceMountingHoles(plate_mounting_hole_centres, plate_mounting_hole_diameter);
+    PlaceAtCentres(plate_mounting_hole_centres)
+    {
+      circle(d=plate_mounting_hole_diameter);
+    }
 
     translate(vesc_offset)
     {
-      PlaceMountingHoles(vesc_mounting_hole_centres, vesc_mounting_hole_diameter);
+      PlaceAtCentres(vesc_mounting_hole_centres)
+      {
+        circle(d=vesc_mounting_hole_diameter);
+      }
     }
   }
 }
