@@ -1,5 +1,5 @@
-use <lever.scad>;
-include <config.scad>;
+use <lever.scad>
+include <config.scad>
 
 module Lever3D()
 {

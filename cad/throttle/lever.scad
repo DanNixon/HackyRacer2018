@@ -1,4 +1,4 @@
-include <config.scad>;
+include <config.scad>
 
 module HullPart(pa, pb, da, db)
 {

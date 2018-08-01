@@ -1,5 +1,6 @@
 use <common.scad>
-include <config.scad>;
+use <vesc.scad>
+include <config.scad>
 
 module RoundedRect(dimensions, radius=10)
 {
@@ -25,7 +26,7 @@ module Plate()
 
     translate(vesc_offset)
     {
-      PlaceAtCentres(vesc_mounting_hole_centres)
+      PlaceAtCentres(VescMountingHoleCentres())
       {
         circle(d=vesc_mounting_hole_diameter);
       }

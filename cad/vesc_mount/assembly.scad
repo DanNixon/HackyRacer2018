@@ -1,7 +1,8 @@
-use <clamp.scad>;
-use <common.scad>;
-use <plate_3d.scad>;
-include <config.scad>;
+use <clamp.scad>
+use <common.scad>
+use <plate_3d.scad>
+use <vesc.scad>
+include <config.scad>
 
 color("silver")
 {
@@ -14,4 +15,9 @@ color("red")
   {
     Clamp();
   }
+}
+
+color("black")
+{
+  VESC();
 }

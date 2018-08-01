@@ -1,5 +1,5 @@
-use <plate.scad>;
-include <config.scad>;
+use <plate.scad>
+include <config.scad>
 
 module Plate3D()
 {
