@@ -16,7 +16,7 @@ sprocket_mount_screw_centres = 25;
 sprocket_mount_screw_diameter = 5;
 
 shaft_grub_screw_diameter = 6;
-shaft_grub_screw_position = 20;
+shaft_grub_screw_positions = [15, 25];
 
 magic_number_1 = 20;
 
@@ -48,11 +48,14 @@ rotate([-90, 0, 0])
       }
     }
 
-    translate([0, 0, shaft_grub_screw_position])
+    for (x = shaft_grub_screw_positions)
     {
-      rotate([90, 0, 0])
+      translate([0, 0, x])
       {
-        cylinder(h=magic_number_1, d=shaft_grub_screw_diameter);
+        rotate([90, 0, 0])
+        {
+          cylinder(h=magic_number_1, d=shaft_grub_screw_diameter);
+        }
       }
     }
   }
