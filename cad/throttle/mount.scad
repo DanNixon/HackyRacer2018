@@ -2,31 +2,46 @@ include <config.scad>
 
 module Mount()
 {
-  dim = 15;
+  mount_length = 20;
+  mount_width = 15;
+
+  magic_1 = 10;
+  magic_2 = 30;
 
   difference()
   {
-    linear_extrude(lever_thickness + layer_spacing + mount_thickness, center=true)
+    translate([0, 0, (lever_thickness / 2) - 0.1])
     {
-      hull()
+      rotate([0, 180, 0])
       {
-        circle(d=dim);
-
-        translate([0, -10])
+        linear_extrude(mount_thickness + lever_thickness + layer_spacing)
         {
-          square([dim, 18], center=true);
+          difference()
+          {
+            hull()
+            {
+              circle(d=mount_width);
+
+              translate([0, -(mount_length - 1)])
+              {
+                square([mount_width, 1], center=true);
+              }
+            }
+
+            circle(d=pot_mount_diameter, $fn=32);
+          }
         }
       }
     }
 
-    cube([16, 20, lever_thickness + layer_spacing], center=true);
-
-    cylinder(h=50, d=pot_mount_diameter, center=true, $fn=32);
-
-    rotate([90, 0, 0])
+    translate([0, 0, (lever_thickness - magic_1) / 2])
     {
-      cylinder(h=50, d=mount_screw_diameter, $fn=16);
-      cylinder(h=12, d=mount_screw_cutout_diameter, $fn=16);
+      cube([mount_width + 1, magic_2, magic_1], center=true);
+
+      rotate([90, 0, 0])
+      {
+        cylinder(h=50, d=mount_screw_diameter, $fn=16);
+      }
     }
   }
 }
