@@ -20,14 +20,14 @@ difference()
         diameter_inner = 65,
         depth = 19,
         depth_mid = 5,
-        axle_bore = 13
+        axle_bore = 12.8
         );
   }
 
   translate([0, 0, 9])
   {
     KeyScrewHole(
-        key_screw_diameter = 8.1,
+        key_screw_diameter = 8,
         key_screw_thread_length = 20,
         key_screw_head_diameter = 18
         );
