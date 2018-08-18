@@ -6,9 +6,9 @@ RacerSprocket(
   teeth = 5,
   sprocket_round_dim = 22,
   key_screw_diameter = key_screw_diameter,
-  key_screw_offset = 33,
+  key_screw_offset = 30,
   bore_diameter = bore_diameter,
-  shaft_height = 38,
+  shaft_height = 35,
   shaft_height_outer = shaft_height_outer,
   shaft_diameter_inner = 8,
   shaft_diameter_outer = shaft_diameter_outer
