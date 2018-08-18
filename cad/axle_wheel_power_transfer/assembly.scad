@@ -27,7 +27,7 @@ difference()
   translate([0, 0, 9])
   {
     KeyScrewHole(
-        key_screw_diameter = 8,
+        key_screw_diameter = 7.75,
         key_screw_thread_length = 16,
         key_screw_head_diameter = 16
       );
