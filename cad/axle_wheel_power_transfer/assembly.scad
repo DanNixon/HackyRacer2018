@@ -13,23 +13,23 @@ difference()
         depth_upper = 11,
         fin_thickness = 4,
         fin_offset = 4
-        );
+      );
 
     AxleMount(
         diameter_outer = 85,
-        diameter_inner = 65,
-        depth = 19,
+        diameter_inner = 60,
+        depth = 20,
         depth_mid = 5,
-        axle_bore = 12.8
-        );
+        axle_bore = 12.5
+      );
   }
 
   translate([0, 0, 9])
   {
     KeyScrewHole(
         key_screw_diameter = 8,
-        key_screw_thread_length = 20,
-        key_screw_head_diameter = 18
-        );
+        key_screw_thread_length = 16,
+        key_screw_head_diameter = 16
+      );
   }
 }
