@@ -1,21 +1,28 @@
 $fn=64;
 
-mounting_hole_centres = 315;
+mounting_hole_centres = [318, 320, 322];
 mounting_hole_diamter = 5.5;
 
-bar_dimensions = [330, 10];
+bar_width = 10;
 
-
-difference()
+for(i=[0:2])
 {
-  square(bar_dimensions, center=true);
+  centre = mounting_hole_centres[i];
 
-  dx = mounting_hole_centres / 2;
-  for(x=[-dx, dx])
+  translate([0, i*15])
   {
-    translate([x, 0])
+    difference()
     {
-      circle(d=mounting_hole_diamter);
+      square([centre + 15, bar_width], center=true);
+
+      dx = centre / 2;
+      for(x=[-dx, dx])
+      {
+        translate([x, 0])
+        {
+          circle(d=mounting_hole_diamter);
+        }
+      }
     }
   }
 }
