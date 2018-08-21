@@ -30,7 +30,7 @@ module AngledMount(base, length, angle)
   {
     MountTriangle(base, length, angle);
 
-    translate([5, 4, 0])
+    translate([6, 3, 0])
     {
       MountTriangle(base - 5, length, angle);
     }
@@ -77,7 +77,7 @@ difference()
     }
   }
 
-  translate([0, -35, -5])
+  translate([0, -36, -5])
   {
     linear_extrude(10)
     {
