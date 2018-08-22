@@ -1,14 +1,18 @@
-use <screen_cutaway.scad>
+use <case_lower.scad>
+use <case_upper.scad>
+use <case_display.scad>
 
-difference()
+CaseLower(show_parts=false);
+
+translate([0, 0, 30])
 {
-  linear_extrude(6)
-  {
-    square([80, 120], center=true);
-  }
+  CaseUpper();
 
-  translate([0, 0, -1])
+  translate([0, -14, 30])
   {
-    ScreenCutaway(board_size=[60, 100]);
+    rotate([160, 0, 0])
+    {
+      CaseDisplayMount();
+    }
   }
 }
