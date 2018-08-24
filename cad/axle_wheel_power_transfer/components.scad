@@ -55,6 +55,11 @@ module KeyScrewHole(
     key_screw_head_diameter
     )
 {
+  nut_outer_diameter = 15.5;
+  nut_thickness = 6.5;
+  washer_diameter = 17.5;
+  washer_thickness = 2;
+
   rotate([90, 0, 360/16])
   {
     cylinder(d=key_screw_diameter, h=100);
@@ -62,6 +67,36 @@ module KeyScrewHole(
     translate([0, 0, key_screw_thread_length])
     {
       cylinder(d=key_screw_head_diameter, h=100);
+    }
+
+    /* M8 hex nut */
+    hull()
+    {
+      for(x=[0, -10])
+      {
+        translate([0, x, 6])
+        {
+          rotate([0, 0, 30])
+          {
+            cylinder(d=nut_outer_diameter, h=nut_thickness, $fn=6);
+          }
+        }
+      }
+    }
+
+    /* M8 washer */
+    hull()
+    {
+      for(x=[0, -10])
+      {
+        translate([0, x, 6+nut_thickness-0.1])
+        {
+          rotate([0, 0, 30])
+          {
+            cylinder(d=washer_diameter, h=washer_thickness, $fn=32);
+          }
+        }
+      }
     }
   }
 }
