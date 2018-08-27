@@ -1,6 +1,6 @@
 # Rear Axle Power Transfer
 
-Printed on my crappy eBay printer in PLA using the "Normal" profile.
+Printed on my crappy eBay printer in PLA using a modified "Slower" profile.
 
 - Infill: 40%
 - Perimeters: 5
