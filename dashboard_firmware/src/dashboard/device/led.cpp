@@ -9,7 +9,8 @@ namespace dashboard
 {
 namespace device
 {
-  const value::EnumValue::NamesType ledEffectNames{"Off", "White", "Red", "Green", "Blue", "Disco"};
+  const value::EnumValue::NamesType ledEffectNames{
+      "Off", "White", "Red", "Green", "Blue", "Cyan", "Magenta", "Yellow", "Disco", "Disco Fast"};
 
   CRGB leds[ledCount];
   value::EnumValue ledRearMode("Rear", LED_RED, ledEffectNames);
@@ -80,6 +81,15 @@ namespace device
     case LED_BLUE:
       ledSetRange(CRGB::Blue, range);
       break;
+    case LED_CYAN:
+      ledSetRange(CRGB::Cyan, range);
+      break;
+    case LED_MAGENTA:
+      ledSetRange(CRGB::Magenta, range);
+      break;
+    case LED_YELLOW:
+      ledSetRange(CRGB::Yellow, range);
+      break;
     default:
       break;
     }
@@ -90,10 +100,12 @@ namespace device
     switch (effect)
     {
     case LED_DISCO:
+    case LED_DISCO_FAST:
     {
       static uint32_t lastOperateTime(0);
       static unsigned int stage(0);
-      if (now - lastOperateTime > 500)
+      const auto timeout(effect == LED_DISCO_FAST ? 200 : 400);
+      if (now - lastOperateTime > timeout)
       {
         switch (stage)
         {
@@ -106,10 +118,22 @@ namespace device
         case 2:
           ledSetRange(CRGB::Blue, range);
           break;
+        case 3:
+          ledSetRange(CRGB::Cyan, range);
+          break;
+        case 4:
+          ledSetRange(CRGB::Magenta, range);
+          break;
+        case 5:
+          ledSetRange(CRGB::Yellow, range);
+          break;
+        case 6:
+          ledSetRange(CRGB::White, range);
+          break;
         default:
           break;
         }
-        stage = (stage + 1) % 3;
+        stage = (stage + 1) % 7;
         ledShow();
         lastOperateTime = now;
       }

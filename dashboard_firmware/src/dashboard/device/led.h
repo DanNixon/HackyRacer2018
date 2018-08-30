@@ -44,7 +44,11 @@ namespace device
     LED_RED,
     LED_GREEN,
     LED_BLUE,
-    LED_DISCO
+    LED_CYAN,
+    LED_MAGENTA,
+    LED_YELLOW,
+    LED_DISCO,
+    LED_DISCO_FAST,
   };
 
   void ledInit();
