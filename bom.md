@@ -13,9 +13,9 @@ Total spend: £493.92
 |TFT display|[eBay](https://www.ebay.co.uk/itm/2-8-TFT-LCD-Display-Touch-Panel-SPI-Serial-240-320-ILI9341-5V-3-3V-STM32-SX/223072647460)||£6.73|
 |CAN transceiver|[Amazon](https://www.amazon.co.uk/dp/B076PZQ4Y4)||£6.99|
 |Audio amplifier|[Amazon](https://www.amazon.co.uk/dp/B00SLYAK1G)||£11.84|
-|5v/12v dual BEC|[HobbyKIng](https://hobbyking.com/en_us/turnigy-multistar-twin-output-5-10-amp-6-50v-sbec-for-lipoly.html)||£18.90|
+|5v/12v dual BEC|[HobbyKing](https://hobbyking.com/en_us/turnigy-multistar-twin-output-5-10-amp-6-50v-sbec-for-lipoly.html)||£18.90|
 |Speakers|[Amazon](https://www.amazon.co.uk/dp/B07DTFX76C)||£7.98|
-|NeoPixel matrix|||£5|
-|NeoPixel strip|||£1|
+|NeoPixel matrix||Mounted under body|£5|
+|NeoPixel strip||Mounted at rear|£1|
 |Main fuse holder|||£5|
-|Dashboard fuse holder|[HobbyKng](https://hobbyking.com/en_us/boom-stopper.html)||£3.44|
+|Dashboard fuse holder|[HobbyKng](https://hobbyking.com/en_us/boom-stopper.html)|Protects dashboard electronics|£3.44|
