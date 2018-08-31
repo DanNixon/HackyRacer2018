@@ -1,6 +1,6 @@
 # Bill of Materials
 
-Total spend: £
+Total spend: £430.77
 
 |Part|Link|Description|Price|Budget|
 |----|----|-----------|-----|------|
