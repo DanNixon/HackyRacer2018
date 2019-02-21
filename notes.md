@@ -1,10 +1,5 @@
 # Notes
 
-## Rear axle
-
-- Nut on non driven wheel can be tightened sufficiently to give some power
-  transfer
-
 ## Steering column
 
 - Adapted to make vertical (to avoid legs getting in the way)
@@ -14,9 +9,7 @@
     can cause front tyres to get caught in front bumper, so maybe don't use it)
 - Back of steering wheel is roughly 20mm across
 
-## Wiring
-
-### Power supplies
+## Power supplies
 
 - CAN transceiver: 5v
 - Audio amplifier: 5v
