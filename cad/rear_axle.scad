@@ -1,6 +1,6 @@
 use <wheel.scad>;
 
-main_width = 500;
+main_width = 600;
 
 rotate([0, 90, 0])
 {
@@ -13,6 +13,20 @@ rotate([0, 90, 0])
   {
     $fn = 64;
     cylinder(d=16, h=main_width+150, center=true);
+  }
+
+  dz = (main_width / 2) - 50;
+  for (z = [-dz, dz])
+  {
+    x = 50;
+
+    rotate([0, 0, 150])
+    {
+      translate([-x/2, -x/2, z])
+      {
+        cube([x, 250, 5]);
+      }
+    }
   }
 }
 
