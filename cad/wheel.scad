@@ -1,5 +1,7 @@
 module Wheel()
 {
+  $fn = 128;
+
   big = 250;
   thickness = 100;
 
