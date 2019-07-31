@@ -8,8 +8,9 @@ ExternalProject_Add(googletest
   GIT_TAG           master
   SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/googletest-src"
   BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/googletest-build"
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND     ""
-  INSTALL_COMMAND   ""
+  INSTALL_COMMAND   mkdir -p ${CMAKE_BINARY_DIR}/googletest/include
+            COMMAND mkdir -p ${CMAKE_BINARY_DIR}/googletest/lib
+            COMMAND cp -a ${CMAKE_BINARY_DIR}/googletest-src/googletest/include/gtest ${CMAKE_BINARY_DIR}/googletest/include
+            COMMAND cp -a ${CMAKE_BINARY_DIR}/googletest-build/lib/libgtest_main.a ${CMAKE_BINARY_DIR}/googletest-build/lib/libgtest.a ${CMAKE_BINARY_DIR}/googletest/lib/
   TEST_COMMAND      ""
 )
