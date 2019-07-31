@@ -1,6 +1,5 @@
 #!/bin/sh
 
 mkdir -p build && cd build
-conan install -s compiler.libcxx=libstdc++11 ..
-cmake ..
-make -j4
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make -j

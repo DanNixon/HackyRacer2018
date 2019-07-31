@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 
 project(dashboard_lib_tests)
 
@@ -6,16 +6,30 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(NO_OUTPUT_DIRS)
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+   file(DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.14/conan.cmake"
+                 "${CMAKE_BINARY_DIR}/conan.cmake")
+endif()
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+conan_cmake_run(
+  BASIC_SETUP
+  CMAKE_TARGETS
+  NO_OUTPUT_DIRS
+  BUILD missing
+  REQUIRES
+    gtest/1.8.1@bincrafters/stable
+)
 
 enable_testing()
 
-function(UnitTest TEST_NAME)
+function(add_unit_test TEST_NAME)
   add_executable(
     ${TEST_NAME}
     tests/${TEST_NAME}.cpp
   )
+
   add_test(${TEST_NAME} ${TEST_NAME})
 
   target_include_directories(
@@ -26,9 +40,9 @@ function(UnitTest TEST_NAME)
 
   target_link_libraries(
     ${TEST_NAME}
-    ${CONAN_LIBS_GTEST}
+    CONAN_PKG::gtest
   )
 endfunction()
 
-UnitTest(numeric_value_test)
-UnitTest(value_test)
+add_unit_test(numeric_value_test)
+add_unit_test(value_test)
