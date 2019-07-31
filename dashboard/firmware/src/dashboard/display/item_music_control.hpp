@@ -1,5 +1,7 @@
 #pragma once
 
+#include <font_AwesomeF000.h>
+
 #include "dashboard/device/audio.h"
 #include "dashboard/device/tft.h"
 #include "item.hpp"
@@ -13,7 +15,7 @@ namespace display
   private:
     static constexpr int position_previous = 2;
     static constexpr int position_play = 95;
-    static constexpr int position_next = 200;
+    static constexpr int position_next = 210;
 
   public:
     MusicControlItem()
@@ -26,26 +28,32 @@ namespace display
 
       if (full)
       {
+        device::tft.setFont(AwesomeF000_18);
+
         device::tft.setTextColor(ILI9341_BLUE, ILI9341_BLACK);
         device::tft.setCursor(position_previous, yOffset + 4);
-        device::tft.print("<<");
+        device::tft.drawFontChar(73);
 
         device::tft.setTextColor(ILI9341_BLUE, ILI9341_BLACK);
         device::tft.setCursor(position_next, yOffset + 4);
-        device::tft.print(">>");
+        device::tft.drawFontChar(80);
+
+        device::tft.setFontAdafruit();
       }
 
+      device::tft.setFont(AwesomeF000_18);
       device::tft.setCursor(position_play, yOffset + 4);
       if (device::audioMusicPlaying())
       {
         device::tft.setTextColor(ILI9341_RED, ILI9341_BLACK);
-        device::tft.print("[]");
+        device::tft.drawFontChar(77);
       }
       else
       {
         device::tft.setTextColor(ILI9341_GREEN, ILI9341_BLACK);
-        device::tft.print("|>");
+        device::tft.drawFontChar(75);
       }
+      device::tft.setFontAdafruit();
     }
 
     virtual void handleTouch(int x, int y) const
@@ -73,5 +81,5 @@ namespace display
       }
     };
   };
-}
-}
+} // namespace display
+} // namespace dashboard

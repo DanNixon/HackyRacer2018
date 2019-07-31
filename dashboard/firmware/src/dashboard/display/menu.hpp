@@ -2,6 +2,9 @@
 
 #include <vector>
 
+#include <font_AwesomeF000.h>
+#include <font_AwesomeF100.h>
+
 #include "dashboard/device/tft.h"
 #include "dashboard/device/touchscreen.h"
 #include "screen.hpp"
@@ -115,8 +118,10 @@ namespace display
           device::tft.setTextSize(3);
           device::tft.setCursor(2, yOffset + 4);
           device::tft.print(screen->title());
-          device::tft.setCursor(220, yOffset + 4);
-          device::tft.print(">");
+          device::tft.setCursor(210, yOffset + 4);
+          device::tft.setFont(AwesomeF000_18);
+          device::tft.drawFontChar(100);
+          device::tft.setFontAdafruit();
           yOffset += row_height;
         }
       }
@@ -128,7 +133,9 @@ namespace display
           device::tft.setTextSize(3);
           device::tft.setCursor(2, row_height * 9);
           device::tft.setTextColor(ILI9341_BLUE, ILI9341_BLACK);
-          device::tft.print("<<");
+          device::tft.setFont(AwesomeF100_18);
+          device::tft.drawFontChar(18);
+          device::tft.setFontAdafruit();
         }
 
         m_screens[m_currentScreenIdx]->render(full);
@@ -140,5 +147,5 @@ namespace display
     int m_currentScreenIdx;
     uint32_t m_lastScreenRender;
   };
-}
-}
+} // namespace display
+} // namespace dashboard

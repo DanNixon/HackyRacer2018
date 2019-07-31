@@ -10,3 +10,6 @@
 [submodule "dashboard/firmware/lib/FlexCAN_Library"]
 	path = dashboard/firmware/lib/FlexCAN_Library
 	url = https://github.com/pawelsky/FlexCAN_Library
+[submodule "dashboard/firmware/lib/ILI9341_fonts"]
+	path = dashboard/firmware/lib/ILI9341_fonts
+	url = https://github.com/PaulStoffregen/ILI9341_fonts.git

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <font_AwesomeF000.h>
+
 #include "dashboard/device/tft.h"
 #include "dashboard/value/numeric_units.hpp"
 #include "item.hpp"
@@ -49,13 +51,17 @@ namespace display
 
       if (full)
       {
+        device::tft.setFont(AwesomeF000_18);
+
         device::tft.setTextColor(ILI9341_RED, ILI9341_BLACK);
         device::tft.setCursor(position_minus, yOffset + 4);
-        device::tft.print("-");
+        device::tft.drawFontChar(39);
 
         device::tft.setTextColor(ILI9341_GREEN, ILI9341_BLACK);
         device::tft.setCursor(position_plus, yOffset + 4);
-        device::tft.print("+");
+        device::tft.drawFontChar(40);
+
+        device::tft.setFontAdafruit();
       }
     }
 
@@ -74,5 +80,5 @@ namespace display
   private:
     value::VolumeValue *m_value;
   };
-}
-}
+} // namespace display
+} // namespace dashboard

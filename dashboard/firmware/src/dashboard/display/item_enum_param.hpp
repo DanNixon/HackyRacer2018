@@ -1,5 +1,7 @@
 #pragma once
 
+#include <font_AwesomeF000.h>
+
 #include "dashboard/device/tft.h"
 #include "dashboard/value/enum.hpp"
 #include "item.hpp"
@@ -11,7 +13,7 @@ namespace display
   class EnumParameterItem : public Item<1>
   {
   private:
-    static constexpr int position_button = 205;
+    static constexpr int position_button = 210;
 
   public:
     EnumParameterItem(value::EnumValue *value)
@@ -50,7 +52,9 @@ namespace display
       {
         device::tft.setTextColor(ILI9341_BLUE, ILI9341_BLACK);
         device::tft.setCursor(position_button, yOffset + 4);
-        device::tft.print("<>");
+        device::tft.setFont(AwesomeF000_18);
+        device::tft.drawFontChar(33);
+        device::tft.setFontAdafruit();
       }
     }
 
@@ -65,5 +69,5 @@ namespace display
   private:
     value::EnumValue *m_value;
   };
-}
-}
+} // namespace display
+} // namespace dashboard
