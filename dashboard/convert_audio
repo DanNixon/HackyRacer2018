@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Converts an audio file for the Teensy Audio library
-# Stereo Wave at 44.1k
-
-INPUT_FILENAME="$1"
-OUTPUT_FILENAME="$2"
-
-ffmpeg -i "$INPUT_FILENAME" -ac 2 -ar 44100 "$OUTPUT_FILENAME"
