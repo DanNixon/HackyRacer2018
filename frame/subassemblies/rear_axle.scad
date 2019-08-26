@@ -18,13 +18,13 @@ module RearAxle(axle_diameter, wheel_centre_distance, sprocket_pos, brake_disc_p
     /* Drive sprocket */
     translate([0, 0, sprocket_pos])
     {
-      DriveSprocket();
+      DriveSprocketAssembly();
     }
 
     /* Brake disc */
     translate([0, 0, brake_disc_pos])
     {
-      BrakeDisc();
+      BrakeDiscAssembly();
     }
   }
 

@@ -1,8 +1,9 @@
-module BrakeDisc()
+use <../parts/brake_disc.scad>
+use <../parts/brake_disc_axle_mount.scad>
+
+module BrakeDiscAssembly()
 {
-  /* TODO */
-  $fn = 64;
-  cylinder(d=160, h=5, center=true);
+  BrakeDisc();
 }
 
-BrakeDisc();
+BrakeDiscAssembly();

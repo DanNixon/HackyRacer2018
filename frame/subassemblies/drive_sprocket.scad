@@ -1,8 +1,9 @@
-module DriveSprocket()
+use <../parts/drive_sprocket.scad>;
+use <../parts/drive_sprocket_axle_mount.scad>;
+
+module DriveSprocketAssembly()
 {
-  /* TODO */
-  $fn = 64;
-  cylinder(d=180, h=5, center=true);
+  DriveSprocket();
 }
 
-DriveSprocket();
+DriveSprocketAssembly();

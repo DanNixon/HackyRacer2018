@@ -1,3 +1,4 @@
+use <parts/motor.scad>
 use <subassemblies/rear_axle.scad>;
 
 module BoxSection(length)
@@ -28,4 +29,9 @@ rotate([0, 0, 90])
   {
     BoxSection(500);
   }
+}
+
+translate([-130, 120, 80])
+{
+  Motor();
 }
