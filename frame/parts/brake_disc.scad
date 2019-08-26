@@ -2,7 +2,7 @@ module BrakeDisc()
 {
   $fn = 64;
 
-  color("green")
+  color("magenta")
   {
     /* TODO */
     difference()
