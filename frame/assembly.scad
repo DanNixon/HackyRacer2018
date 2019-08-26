@@ -1,37 +1,43 @@
+use <parts/box_section.scad>;
 use <parts/motor.scad>
 use <subassemblies/rear_axle.scad>;
-
-module BoxSection(length)
-{
-  cube([25, length, 25], center=true);
-}
 
 translate([0, 0, 25])
 {
   RearAxle(16, 600, -180, 180);
 }
 
-translate([-210, 0, 0])
-  BoxSection(500);
-
-translate([-120, 0, 0])
-  BoxSection(500);
-
-translate([120, 0, 0])
-  BoxSection(500);
-
-translate([210, 0, 0])
-  BoxSection(500);
-
-rotate([0, 0, 90])
-{
-  translate([-250, 0, 0])
-  {
-    BoxSection(500);
-  }
-}
-
-translate([-130, 120, 80])
+translate([-130, 120, 75])
 {
   Motor();
+}
+
+translate([0, -180, 0])
+{
+  outer = 210;
+  inner = 120;
+
+  for (x = [-outer, outer])
+  {
+    translate([x, 0, 0])
+    {
+      BoxSection(500, false);
+    }
+  }
+
+  for (x = [-inner, inner])
+  {
+    translate([x, 0, 0])
+    {
+      BoxSection(500, false);
+    }
+  }
+
+  translate([0, -12.5, 0])
+  {
+    rotate([0, 0, 90])
+    {
+      BoxSection(outer * 2 + 25, true);
+    }
+  }
 }
