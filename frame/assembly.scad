@@ -19,11 +19,11 @@ translate([0, 900, 0])
   Wheel();
 }
 
+outer = 210;
+inner = 120;
+
 translate([0, -180, 0])
 {
-  outer = 210;
-  inner = 120;
-
   outer_length = 500;
   inner_length = 800;
 
@@ -64,6 +64,31 @@ translate([0, -180, 0])
     rotate([0, 0, 90])
     {
       BoxSection(outer * 2 + 25, true, col="darkgreen");
+    }
+  }
+}
+
+/* Seat mount */
+translate([0, 0, 150])
+{
+  depth = 250;
+
+  for (y = [-depth/2, depth/2])
+  {
+    translate([0, y, 0])
+    {
+      rotate([0, 0, 90])
+      {
+        BoxSection(outer * 2 + 25, true, col="darkgreen");
+      }
+    }
+  }
+
+  for (x = [-outer, outer])
+  {
+    translate([x, 0, 0])
+    {
+      BoxSection(depth-25.0, true);
     }
   }
 }
