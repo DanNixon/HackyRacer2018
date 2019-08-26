@@ -11,7 +11,7 @@ module RearAxle(axle_diameter, wheel_centre_distance, sprocket_pos, brake_disc_p
     color("red")
     {
       $fn = 64;
-      axle_length = wheel_centre_distance + 50;
+      axle_length = wheel_centre_distance + 120;
       cylinder(d=axle_diameter, h=axle_length, center=true);
     }
 
@@ -33,12 +33,10 @@ module RearAxle(axle_diameter, wheel_centre_distance, sprocket_pos, brake_disc_p
   {
     rotate([0, 0, a])
     {
-      translate([-wheel_centre_distance / 2, 0, 0])
+      translate([wheel_centre_distance / 2, 0, 0])
       {
         Wheel();
       }
     }
   }
 }
-
-RearAxle();

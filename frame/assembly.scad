@@ -2,6 +2,7 @@ use <parts/box_section.scad>;
 use <parts/motor.scad>
 use <parts/wheel.scad>;
 use <subassemblies/rear_axle.scad>;
+use <subassemblies/seat_mount.scad>;
 
 translate([0, 0, 25])
 {
@@ -55,7 +56,18 @@ translate([0, -180, 0])
   {
     rotate([0, 0, 90])
     {
-      BoxSection(outer * 2 + 25, true, col="darkgreen");
+      BoxSection(inner * 2 - 25, true, col="darkgreen");
+
+      for (a = [0, 180])
+      {
+        rotate([0, 0, a])
+        {
+          translate([0, -outer - 12.5, 0])
+          {
+            BoxSection(outer - inner, false, col="lime");
+          }
+        }
+      }
     }
   }
 
@@ -68,27 +80,7 @@ translate([0, -180, 0])
   }
 }
 
-/* Seat mount */
 translate([0, 0, 150])
 {
-  depth = 250;
-
-  for (y = [-depth/2, depth/2])
-  {
-    translate([0, y, 0])
-    {
-      rotate([0, 0, 90])
-      {
-        BoxSection(outer * 2 + 25, true, col="darkgreen");
-      }
-    }
-  }
-
-  for (x = [-outer, outer])
-  {
-    translate([x, 0, 0])
-    {
-      BoxSection(depth-25.0, true);
-    }
-  }
+  SeatMount(outer*2, 280);
 }
