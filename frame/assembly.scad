@@ -80,7 +80,25 @@ translate([0, -180, 0])
   }
 }
 
+/* Floor panel */
+translate([0, 220, -(25 + 3) / 2])
+{
+  color("grey")
+  {
+    cube([inner * 2 + 25, 820 + 25, 3], center=true);
+  }
+}
+
 translate([0, 0, 150])
 {
   SeatMount(outer*2, 280);
+
+  /* Seat mount panel */
+  translate([0, 0, (25 + 3) / 2])
+  {
+    color("grey")
+    {
+      cube([outer * 2 + 25, 280 + 25, 3], center=true);
+    }
+  }
 }
