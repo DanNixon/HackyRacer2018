@@ -4,6 +4,8 @@ use <parts/wheel.scad>;
 use <subassemblies/rear_axle.scad>;
 use <subassemblies/seat_mount.scad>;
 
+include <global_dimensions.scad>
+
 translate([0, 0, 25])
 {
   RearAxle(16, 600, -180, 180);
@@ -44,25 +46,25 @@ translate([0, -180, 0])
     }
   }
 
-  translate([0, inner_length + 12.5, 0])
+  translate([0, inner_length + box_section_outer / 2, 0])
   {
     rotate([0, 0, 90])
     {
-      BoxSection(inner * 2 + 25, true, col="darkgreen");
+      BoxSection(inner * 2 + box_section_outer, true, col="darkgreen");
     }
   }
 
-  translate([0, outer_length + 12.5, 0])
+  translate([0, outer_length + box_section_outer / 2, 0])
   {
     rotate([0, 0, 90])
     {
-      BoxSection(inner * 2 - 25, true, col="darkgreen");
+      BoxSection(inner * 2 - box_section_outer, true, col="darkgreen");
 
       for (a = [0, 180])
       {
         rotate([0, 0, a])
         {
-          translate([0, -outer - 12.5, 0])
+          translate([0, -outer - box_section_outer / 2, 0])
           {
             BoxSection(outer - inner, false, col="lime");
           }
@@ -71,21 +73,21 @@ translate([0, -180, 0])
     }
   }
 
-  translate([0, -12.5, 0])
+  translate([0, -box_section_outer / 2, 0])
   {
     rotate([0, 0, 90])
     {
-      BoxSection(outer * 2 + 25, true, col="darkgreen");
+      BoxSection(outer * 2 + box_section_outer, true, col="darkgreen");
     }
   }
 }
 
 /* Floor panel */
-translate([0, 220, -(25 + 3) / 2])
+translate([0, 220, -(box_section_outer + plate_thickness) / 2])
 {
   color("grey")
   {
-    cube([inner * 2 + 25, 820 + 25, 3], center=true);
+    cube([inner * 2 + box_section_outer, 820 + box_section_outer, plate_thickness], center=true);
   }
 }
 
@@ -94,11 +96,11 @@ translate([0, 0, 150])
   SeatMount(outer*2, 280);
 
   /* Seat mount panel */
-  translate([0, 0, (25 + 3) / 2])
+  translate([0, 0, (box_section_outer + plate_thickness) / 2])
   {
     color("grey")
     {
-      cube([outer * 2 + 25, 280 + 25, 3], center=true);
+      cube([outer * 2 + box_section_outer, 280 + box_section_outer, plate_thickness], center=true);
     }
   }
 }
