@@ -22,9 +22,6 @@ translate([0, 900, 0])
   Wheel();
 }
 
-outer = 210;
-inner = 120;
-
 translate([0, -180, 0])
 {
   outer_length = 500;
@@ -91,16 +88,7 @@ translate([0, 220, -(box_section_outer + plate_thickness) / 2])
   }
 }
 
-translate([0, 0, 150])
+translate([0, 0, 160])
 {
   SeatMount(outer*2, 280);
-
-  /* Seat mount panel */
-  translate([0, 0, (box_section_outer + plate_thickness) / 2])
-  {
-    color("grey")
-    {
-      cube([outer * 2 + box_section_outer, 280 + box_section_outer, plate_thickness], center=true);
-    }
-  }
 }
