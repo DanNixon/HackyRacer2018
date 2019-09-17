@@ -9,7 +9,7 @@ include <dimensions.scad>
 
 translate([0, 0, 25])
 {
-  RearAxleAssembly(16, 600, -180, 180);
+  RearAxleAssembly();
 }
 
 translate([-130, 120, 75])
@@ -91,5 +91,5 @@ translate([0, 220, -(box_section_outer + plate_thickness) / 2])
 
 translate([0, 0, 160])
 {
-  SeatMountAssembly(outer*2, 280);
+  SeatMountAssembly();
 }

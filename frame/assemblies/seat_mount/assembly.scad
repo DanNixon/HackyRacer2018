@@ -1,22 +1,23 @@
 use <../../parts/box_section.scad>;
 
+include <dimensions.scad>;
 include <../../dimensions.scad>;
 
-module SeatMountAssembly(width, depth)
+module SeatMountAssembly()
 {
   difference()
   {
-    seat_mount_centres = [300, 200];
+    width = outer * 2;
 
     union()
     {
-      for (y = [-depth/2, depth/2])
+      for (y = [-seat_depth/2, seat_depth/2])
       {
         translate([0, y, 0])
         {
           rotate([0, 0, 90])
           {
-            BoxSection(width + 25, true, col="darkgreen");
+            BoxSection(width + box_section_outer, true, col="darkgreen");
           }
         }
       }
@@ -25,7 +26,7 @@ module SeatMountAssembly(width, depth)
       {
         translate([x, 0, 0])
         {
-          BoxSection(depth-25.0, true);
+          BoxSection(seat_depth-25.0, true);
         }
       }
 
@@ -44,9 +45,11 @@ module SeatMountAssembly(width, depth)
       {
         translate([x, y])
         {
-          cylinder(h=100, d=8, center=true);
+          cylinder(h=100, d=seat_mount_hole_diameter, center=true);
         }
       }
     }
   }
 }
+
+SeatMountAssembly();
