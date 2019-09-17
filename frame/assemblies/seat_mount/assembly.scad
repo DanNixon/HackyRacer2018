@@ -1,8 +1,8 @@
-use <../parts/box_section.scad>;
+use <../../parts/box_section.scad>;
 
-include <../global_dimensions.scad>;
+include <../../dimensions.scad>;
 
-module SeatMount(width, depth)
+module SeatMountAssembly(width, depth)
 {
   difference()
   {

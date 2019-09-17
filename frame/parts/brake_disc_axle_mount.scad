@@ -1,6 +1,0 @@
-module BrakeDiscAxleMount()
-{
-  /* TODO */
-}
-
-BrakeDiscAxleMount();

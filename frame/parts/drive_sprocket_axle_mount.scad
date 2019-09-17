@@ -1,6 +1,0 @@
-module DriveSprocketAxleMount()
-{
-  /* TODO */
-}
-
-DriveSprocketAxleMount();

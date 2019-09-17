@@ -1,9 +1,9 @@
-use <../parts/wheel.scad>;
+use <../../parts/wheel.scad>;
 
-use <brake_disc.scad>;
-use <drive_sprocket.scad>;
+use <assemblies/brake_disc/assembly.scad>;
+use <assemblies/drive_sprocket/assembly.scad>;
 
-module RearAxle(axle_diameter, wheel_centre_distance, sprocket_pos, brake_disc_pos)
+module RearAxleAssembly(axle_diameter, wheel_centre_distance, sprocket_pos, brake_disc_pos)
 {
   rotate([0, 90, 0])
   {

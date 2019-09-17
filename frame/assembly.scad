@@ -1,14 +1,15 @@
 use <parts/box_section.scad>;
 use <parts/motor.scad>
 use <parts/wheel.scad>;
-use <subassemblies/rear_axle.scad>;
-use <subassemblies/seat_mount.scad>;
 
-include <global_dimensions.scad>
+use <assemblies/rear_axle/assembly.scad>;
+use <assemblies/seat_mount/assembly.scad>;
+
+include <dimensions.scad>
 
 translate([0, 0, 25])
 {
-  RearAxle(16, 600, -180, 180);
+  RearAxleAssembly(16, 600, -180, 180);
 }
 
 translate([-130, 120, 75])
@@ -90,5 +91,5 @@ translate([0, 220, -(box_section_outer + plate_thickness) / 2])
 
 translate([0, 0, 160])
 {
-  SeatMount(outer*2, 280);
+  SeatMountAssembly(outer*2, 280);
 }
