@@ -1,30 +1,21 @@
-use <../../parts/box_section.scad>;
 use <../../parts/wheel.scad>;
 
-include <../../dimensions.scad>;
+use <assemblies/fork/assembly.scad>;
 
-include <dimensions.scad>;
+include <../../dimensions.scad>;
 
 module FrontWheelAssembly()
 {
   Wheel();
 
-  for (x = [-fork_spacing/2, fork_spacing/2])
-  {
-    translate([x, 0, -bottom_offset])
-    {
-      rotate([90, 0, 0])
-      {
-        BoxSection(box_section_outer, fork_length);
-      }
-    }
-  }
+  FrontWheelForkAssembly();
 
-  translate([0, 0, fork_length - bottom_offset + box_section_outer[0]/2])
+  /* Axle */
+  color("red")
   {
-    rotate([0, 90, 90])
+    rotate([0, 90, 0])
     {
-      BoxSection(box_section_outer, fork_spacing+box_section_outer[0], center=true, col="darkgreen");
+      cylinder(d=axle_diameter, h=200, center=true);
     }
   }
 }

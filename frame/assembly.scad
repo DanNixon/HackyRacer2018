@@ -7,9 +7,14 @@ use <assemblies/seat_mount/assembly.scad>;
 
 include <dimensions.scad>
 
-translate([0, 900, 0])
+front_wheel_angle = 0; // [-90:0.5:90]
+
+translate([0, 810, 0])
 {
-  FrontWheelAssembly();
+  rotate([0, 0, front_wheel_angle])
+  {
+    FrontWheelAssembly();
+  }
 }
 
 translate([0, -180, 0])
