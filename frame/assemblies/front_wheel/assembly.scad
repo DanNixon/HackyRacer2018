@@ -24,7 +24,7 @@ module FrontWheelAssembly()
   {
     rotate([0, 90, 90])
     {
-      BoxSection(fork_spacing+box_section_outer[0], outer=box_section_outer, center=true, col="red");
+      BoxSection(fork_spacing+box_section_outer[0], outer=box_section_outer, center=true, col="darkgreen");
     }
   }
 }
