@@ -22,6 +22,26 @@ module LowerFrameAssembly()
     }
   }
 
+  /* Front bumper */
+  translate([0, inner_length + box_section_outer[0] / 2, 0])
+  {
+    for (x = [-inner, inner])
+    {
+      translate([x, box_section_outer[0]/2, 0])
+      {
+        BoxSection(box_section_outer, front_bumper_depth - box_section_outer[0], center=false);
+      }
+    }
+
+    translate([0, front_bumper_depth, 0])
+    {
+      rotate([0, 0, 90])
+      {
+        BoxSection(box_section_outer, inner * 2 + box_section_outer[0], center=true, col="darkgreen");
+      }
+    }
+  }
+
   translate([0, inner_length + box_section_outer[0] / 2, 0])
   {
     rotate([0, 0, 90])
