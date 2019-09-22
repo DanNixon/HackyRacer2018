@@ -1,3 +1,5 @@
+plate_thickness = 1;
+
 seat_depth = 280;
 
 seat_mount_centres = [300, 200];
