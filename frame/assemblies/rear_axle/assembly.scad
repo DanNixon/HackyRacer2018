@@ -3,6 +3,8 @@ use <../../parts/wheel.scad>;
 use <assemblies/brake_disc/assembly.scad>;
 use <assemblies/drive_sprocket/assembly.scad>;
 
+include <../../dimensions.scad>;
+
 include <dimensions.scad>;
 
 module RearAxleAssembly()

@@ -26,7 +26,7 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(box_section_outer, inner * 2 + box_section_outer[0], center=true, col="darkgreen");
+      BoxSection(box_section_outer, outer * 2 + box_section_outer[0], center=true, col="darkgreen");
     }
   }
 
