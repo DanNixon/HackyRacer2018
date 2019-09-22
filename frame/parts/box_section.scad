@@ -1,10 +1,10 @@
-module BoxSection(length, center, width=25, height=25, col="yellow")
+module BoxSection(length, center, outer=[25, 25], col="yellow")
 {
-  translate(center ? [0, 0, 0] : -[width/2, 0, height/2])
+  translate(center ? [0, 0, 0] : -[outer[0]/2, 0, outer[1]/2])
   {
     color(col)
     {
-      cube([width, length, height], center=center);
+      cube([outer[0], length, outer[1]], center=center);
     }
   }
 }

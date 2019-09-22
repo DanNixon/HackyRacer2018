@@ -1,7 +1,8 @@
 use <../../parts/box_section.scad>;
 
-include <dimensions.scad>;
 include <../../dimensions.scad>;
+
+include <dimensions.scad>;
 
 module LowerFrameAssembly()
 {

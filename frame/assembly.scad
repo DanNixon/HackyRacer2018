@@ -1,6 +1,6 @@
 use <parts/motor.scad>;
-use <parts/wheel.scad>;
 
+use <assemblies/front_wheel/assembly.scad>;
 use <assemblies/lower_frame/assembly.scad>;
 use <assemblies/rear_axle/assembly.scad>;
 use <assemblies/seat_mount/assembly.scad>;
@@ -9,7 +9,7 @@ include <dimensions.scad>
 
 translate([0, 900, 0])
 {
-  Wheel();
+  FrontWheelAssembly();
 }
 
 translate([0, -180, 0])
