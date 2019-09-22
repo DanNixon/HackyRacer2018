@@ -15,7 +15,7 @@ module FrontWheelAssembly()
     {
       rotate([90, 0, 0])
       {
-        BoxSection(fork_length, outer=box_section_outer);
+        BoxSection(box_section_outer, fork_length);
       }
     }
   }
@@ -24,7 +24,7 @@ module FrontWheelAssembly()
   {
     rotate([0, 90, 90])
     {
-      BoxSection(fork_spacing+box_section_outer[0], outer=box_section_outer, center=true, col="darkgreen");
+      BoxSection(box_section_outer, fork_spacing+box_section_outer[0], center=true, col="darkgreen");
     }
   }
 }

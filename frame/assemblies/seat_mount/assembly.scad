@@ -18,7 +18,7 @@ module SeatMountAssembly()
         {
           rotate([0, 0, 90])
           {
-            BoxSection(width + box_section_outer[0], outer=box_section_outer, center=true, col="darkgreen");
+            BoxSection(box_section_outer, width + box_section_outer[0], center=true, col="darkgreen");
           }
         }
       }
@@ -27,7 +27,7 @@ module SeatMountAssembly()
       {
         translate([x, 0, 0])
         {
-          BoxSection(seat_depth-25.0, outer=box_section_outer, center=true);
+          BoxSection(box_section_outer, seat_depth-25.0, center=true);
         }
       }
 

@@ -10,7 +10,7 @@ module LowerFrameAssembly()
   {
     translate([x, 0, 0])
     {
-      BoxSection(outer_length, outer=box_section_outer, center=false);
+      BoxSection(box_section_outer, outer_length, center=false);
     }
   }
 
@@ -18,7 +18,7 @@ module LowerFrameAssembly()
   {
     translate([x, 0, 0])
     {
-      BoxSection(inner_length, outer=box_section_outer, center=false);
+      BoxSection(box_section_outer, inner_length, center=false);
     }
   }
 
@@ -26,7 +26,7 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(inner * 2 + box_section_outer[0], outer=box_section_outer, center=true, col="darkgreen");
+      BoxSection(box_section_outer, inner * 2 + box_section_outer[0], center=true, col="darkgreen");
     }
   }
 
@@ -34,7 +34,7 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(inner * 2 - box_section_outer[0], outer=box_section_outer, center=true, col="darkgreen");
+      BoxSection(box_section_outer, inner * 2 - box_section_outer[0], center=true, col="darkgreen");
 
       for (a = [0, 180])
       {
@@ -42,7 +42,7 @@ module LowerFrameAssembly()
         {
           translate([0, -outer - box_section_outer[0] / 2, 0])
           {
-            BoxSection(outer - inner, outer=box_section_outer, center=false, col="lime");
+            BoxSection(box_section_outer, outer - inner, center=false, col="lime");
           }
         }
       }
@@ -53,7 +53,7 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(outer * 2 + box_section_outer[0], outer=box_section_outer, center=true, col="darkgreen");
+      BoxSection(box_section_outer, outer * 2 + box_section_outer[0], center=true, col="darkgreen");
     }
   }
 
