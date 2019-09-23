@@ -8,8 +8,6 @@ module SeatMountAssembly()
 {
   difference()
   {
-    width = outer * 2;
-
     union()
     {
       for (y = [-seat_depth/2, seat_depth/2])
@@ -18,16 +16,26 @@ module SeatMountAssembly()
         {
           rotate([0, 0, 90])
           {
-            BoxSection(box_section_outer, width + box_section_outer[0], center=true, col="darkgreen");
+            BoxSection(
+                name="section_a",
+                col="darkgreen",
+                outer=box_section_outer,
+                length=outer * 2 + box_section_outer[0],
+                center=true);
           }
         }
       }
 
-      for (x = [-width/2, width/2, -seat_mount_centres[0]/2, seat_mount_centres[0]/2])
+      for (x = [-outer, outer, -seat_mount_centres[0]/2, seat_mount_centres[0]/2])
       {
         translate([x, 0, 0])
         {
-          BoxSection(box_section_outer, seat_depth-25.0, center=true);
+          BoxSection(
+              name="section_b",
+              col="blue",
+              outer=box_section_outer,
+              length=seat_depth - box_section_outer[0],
+              center=true);
         }
       }
 
