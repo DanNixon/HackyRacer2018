@@ -1,4 +1,5 @@
 use <../../parts/box_section.scad>;
+use <../../parts/plate.scad>;
 
 include <../../dimensions.scad>;
 
@@ -17,7 +18,7 @@ module SeatMountAssembly()
           rotate([0, 0, 90])
           {
             BoxSection(
-                name="seat_mount/section_a",
+                name="seat_mount/box_section_a",
                 col="red",
                 outer=box_section_outer,
                 length=outer * 2 + box_section_outer[0],
@@ -31,7 +32,7 @@ module SeatMountAssembly()
         translate([x, 0, 0])
         {
           BoxSection(
-              name="seat_mount/section_b",
+              name="seat_mount/box_section_b",
               col="green",
               outer=box_section_outer,
               length=seat_depth - box_section_outer[0],
@@ -41,10 +42,11 @@ module SeatMountAssembly()
 
       translate([0, 0, (box_section_outer[1] + plate_thickness) / 2])
       {
-        color("blue")
-        {
-          cube([outer * 2 + box_section_outer[0], 280 + box_section_outer[0], plate_thickness], center=true);
-        }
+        Plate(
+            name="seat_mount/plate_a",
+            col="blue",
+            size=[outer * 2 + box_section_outer[0], 280 + box_section_outer[0], plate_thickness],
+            center=true);
       }
     }
 

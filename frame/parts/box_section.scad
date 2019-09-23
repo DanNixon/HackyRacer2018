@@ -1,6 +1,6 @@
 module BoxSection(name, col, outer, length, center)
 {
-  echo(name, col, "outer=", outer, "length=", length);
+  echo("box_section", name, col, "outer=", outer, "length=", length);
 
   translate(center ? [0, 0, 0] : -[outer[0]/2, 0, outer[1]/2])
   {

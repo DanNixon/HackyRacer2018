@@ -1,4 +1,5 @@
 use <../../parts/box_section.scad>;
+use <../../parts/plate.scad>;
 
 include <../../dimensions.scad>;
 
@@ -11,7 +12,7 @@ module LowerFrameAssembly()
     translate([x, 0, 0])
     {
       BoxSection(
-          name="lower_frame/section_a",
+          name="lower_frame/box_section_a",
           col="red",
           outer=box_section_outer,
           length=outer_length,
@@ -24,7 +25,7 @@ module LowerFrameAssembly()
     translate([x, 0, 0])
     {
       BoxSection(
-          name="lower_frame/section_b",
+          name="lower_frame/box_section_b",
           col="green",
           outer=box_section_outer,
           length=inner_length,
@@ -40,7 +41,7 @@ module LowerFrameAssembly()
       translate([x, box_section_outer[0]/2, 0])
       {
         BoxSection(
-            name="lower_frame/section_c",
+            name="lower_frame/box_section_c",
             col="blue",
             outer=box_section_outer,
             length=front_bumper_depth - box_section_outer[0],
@@ -53,7 +54,7 @@ module LowerFrameAssembly()
       rotate([0, 0, 90])
       {
         BoxSection(
-            name="lower_frame/section_d",
+            name="lower_frame/box_section_d",
             col="orange",
             outer=box_section_outer,
             length=inner * 2 + box_section_outer[0],
@@ -67,7 +68,7 @@ module LowerFrameAssembly()
     rotate([0, 0, 90])
     {
       BoxSection(
-          name="lower_frame/section_e",
+          name="lower_frame/box_section_e",
           col="purple",
           outer=box_section_outer,
           length=outer * 2 + box_section_outer[0],
@@ -80,7 +81,7 @@ module LowerFrameAssembly()
     rotate([0, 0, 90])
     {
       BoxSection(
-          name="lower_frame/section_f",
+          name="lower_frame/box_section_f",
           col="cyan",
           outer=box_section_outer,
           length=inner * 2 - box_section_outer[0],
@@ -93,7 +94,7 @@ module LowerFrameAssembly()
           translate([0, -outer - box_section_outer[0] / 2, 0])
           {
             BoxSection(
-                name="lower_frame/section_g",
+                name="lower_frame/box_section_g",
                 col="yellow",
                 outer=box_section_outer,
                 length=outer - inner,
@@ -109,7 +110,7 @@ module LowerFrameAssembly()
     rotate([0, 0, 90])
     {
       BoxSection(
-          name="lower_frame/section_h",
+          name="lower_frame/box_section_h",
           col="magenta",
           outer=box_section_outer,
           length=outer * 2 + box_section_outer[0],
@@ -120,10 +121,11 @@ module LowerFrameAssembly()
   /* Floor panel */
   translate([-inner-box_section_outer[0]/2, -box_section_outer[0], -(box_section_outer[1] + plate_thickness) / 2])
   {
-    color("grey")
-    {
-      cube([inner * 2 + box_section_outer[0], inner_length + 2*box_section_outer[0], plate_thickness]);
-    }
+    Plate(
+        name="lower_frame/floor_panel",
+        col="gray",
+        size=[inner * 2 + box_section_outer[0], inner_length + 2*box_section_outer[0], plate_thickness],
+        center=false);
   }
 }
 
