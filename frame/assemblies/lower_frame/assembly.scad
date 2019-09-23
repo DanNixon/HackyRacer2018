@@ -10,7 +10,12 @@ module LowerFrameAssembly()
   {
     translate([x, 0, 0])
     {
-      BoxSection(box_section_outer, outer_length, center=false);
+      BoxSection(
+          name="lower_frame/section_a",
+          col="red",
+          outer=box_section_outer,
+          length=outer_length,
+          center=false);
     }
   }
 
@@ -18,7 +23,12 @@ module LowerFrameAssembly()
   {
     translate([x, 0, 0])
     {
-      BoxSection(box_section_outer, inner_length, center=false);
+      BoxSection(
+          name="lower_frame/section_b",
+          col="green",
+          outer=box_section_outer,
+          length=inner_length,
+          center=false);
     }
   }
 
@@ -29,7 +39,12 @@ module LowerFrameAssembly()
     {
       translate([x, box_section_outer[0]/2, 0])
       {
-        BoxSection(box_section_outer, front_bumper_depth - box_section_outer[0], center=false);
+        BoxSection(
+            name="lower_frame/section_c",
+            col="blue",
+            outer=box_section_outer,
+            length=front_bumper_depth - box_section_outer[0],
+            center=false);
       }
     }
 
@@ -37,7 +52,12 @@ module LowerFrameAssembly()
     {
       rotate([0, 0, 90])
       {
-        BoxSection(box_section_outer, inner * 2 + box_section_outer[0], center=true, col="darkgreen");
+        BoxSection(
+            name="lower_frame/section_d",
+            col="orange",
+            outer=box_section_outer,
+            length=inner * 2 + box_section_outer[0],
+            center=true);
       }
     }
   }
@@ -46,7 +66,12 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(box_section_outer, outer * 2 + box_section_outer[0], center=true, col="darkgreen");
+      BoxSection(
+          name="lower_frame/section_e",
+          col="purple",
+          outer=box_section_outer,
+          length=outer * 2 + box_section_outer[0],
+          center=true);
     }
   }
 
@@ -54,7 +79,12 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(box_section_outer, inner * 2 - box_section_outer[0], center=true, col="darkgreen");
+      BoxSection(
+          name="lower_frame/section_f",
+          col="cyan",
+          outer=box_section_outer,
+          length=inner * 2 - box_section_outer[0],
+          center=true);
 
       for (a = [0, 180])
       {
@@ -62,7 +92,12 @@ module LowerFrameAssembly()
         {
           translate([0, -outer - box_section_outer[0] / 2, 0])
           {
-            BoxSection(box_section_outer, outer - inner, center=false, col="lime");
+            BoxSection(
+                name="lower_frame/section_g",
+                col="yellow",
+                outer=box_section_outer,
+                length=outer - inner,
+                center=false);
           }
         }
       }
@@ -73,7 +108,12 @@ module LowerFrameAssembly()
   {
     rotate([0, 0, 90])
     {
-      BoxSection(box_section_outer, outer * 2 + box_section_outer[0], center=true, col="darkgreen");
+      BoxSection(
+          name="lower_frame/section_h",
+          col="magenta",
+          outer=box_section_outer,
+          length=outer * 2 + box_section_outer[0],
+          center=true);
     }
   }
 

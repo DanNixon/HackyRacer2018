@@ -17,8 +17,8 @@ module SeatMountAssembly()
           rotate([0, 0, 90])
           {
             BoxSection(
-                name="section_a",
-                col="darkgreen",
+                name="seat_mount/section_a",
+                col="red",
                 outer=box_section_outer,
                 length=outer * 2 + box_section_outer[0],
                 center=true);
@@ -31,8 +31,8 @@ module SeatMountAssembly()
         translate([x, 0, 0])
         {
           BoxSection(
-              name="section_b",
-              col="blue",
+              name="seat_mount/section_b",
+              col="green",
               outer=box_section_outer,
               length=seat_depth - box_section_outer[0],
               center=true);
@@ -41,7 +41,7 @@ module SeatMountAssembly()
 
       translate([0, 0, (box_section_outer[1] + plate_thickness) / 2])
       {
-        color("grey")
+        color("blue")
         {
           cube([outer * 2 + box_section_outer[0], 280 + box_section_outer[0], plate_thickness], center=true);
         }

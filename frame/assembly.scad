@@ -7,7 +7,34 @@ use <assemblies/seat_mount/assembly.scad>;
 
 include <dimensions.scad>
 
-LowerFrameAssembly();
+color("red")
+{
+  LowerFrameAssembly();
+}
+
+translate([0, 180, 160])
+{
+  color("green")
+  {
+    SeatMountAssembly();
+  }
+}
+
+translate([0, 180, 25])
+{
+  color("blue")
+  {
+    RearAxleAssembly();
+  }
+}
+
+translate([-130, 300, 75])
+{
+  color("cyan")
+  {
+    Motor();
+  }
+}
 
 translate([0, inner_length + box_section_outer[0]/2, 0])
 {
@@ -21,19 +48,4 @@ translate([0, inner_length + box_section_outer[0]/2, 0])
       }
     }
   }
-}
-
-translate([0, 180, 160])
-{
-  SeatMountAssembly();
-}
-
-translate([0, 180, 25])
-{
-  RearAxleAssembly();
-}
-
-translate([-130, 300, 75])
-{
-  Motor();
 }
