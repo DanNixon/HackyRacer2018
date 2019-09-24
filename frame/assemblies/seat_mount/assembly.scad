@@ -1,5 +1,6 @@
-use <../../parts/box_section.scad>;
-use <../../parts/plate.scad>;
+use <../../primitives/assembly_instruction.scad>;
+use <../../primitives/box_section.scad>;
+use <../../primitives/plate.scad>;
 
 include <../../dimensions.scad>;
 
@@ -42,8 +43,16 @@ module SeatMountAssembly()
 
       translate([0, 0, (box_section_outer[1] + plate_thickness) / 2])
       {
+        AssemblyInstruction(
+            "seat_mount/guard_plate",
+            "Clearence holes drilled into plate");
+
+        AssemblyInstruction(
+            "seat_mount/guard_plate",
+            "Tap threads into seat mount box section");
+
         Plate(
-            name="seat_mount/plate_a",
+            name="seat_mount/guard_plate",
             col="blue",
             size=[outer * 2 + box_section_outer[0], 280 + box_section_outer[0], plate_thickness],
             center=true);

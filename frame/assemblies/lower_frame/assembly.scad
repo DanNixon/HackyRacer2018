@@ -1,5 +1,6 @@
-use <../../parts/box_section.scad>;
-use <../../parts/plate.scad>;
+use <../../primitives/assembly_instruction.scad>;
+use <../../primitives/box_section.scad>;
+use <../../primitives/plate.scad>;
 
 include <../../dimensions.scad>;
 
@@ -121,6 +122,14 @@ module LowerFrameAssembly()
   /* Floor panel */
   translate([-inner-box_section_outer[0]/2, -box_section_outer[0], -(box_section_outer[1] + plate_thickness) / 2])
   {
+    AssemblyInstruction(
+        "lower_frame/floor_panel",
+        "Clearence holes drilled into lower floor plate");
+
+    AssemblyInstruction(
+        "lower_frame/floor_panel",
+        "Tap threads into lower frame box section");
+
     Plate(
         name="lower_frame/floor_panel",
         col="gray",
