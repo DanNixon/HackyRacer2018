@@ -13,7 +13,7 @@ module LowerFrameAssembly()
     translate([x, 0, 0])
     {
       BoxSection(
-          name="lower_frame/box_section_a",
+          name="lower_frame/short_y_bar",
           col="red",
           outer=box_section_outer,
           length=outer_length,
@@ -26,7 +26,7 @@ module LowerFrameAssembly()
     translate([x, 0, 0])
     {
       BoxSection(
-          name="lower_frame/box_section_b",
+          name="lower_frame/long_y_bar",
           col="green",
           outer=box_section_outer,
           length=inner_length,
@@ -42,7 +42,7 @@ module LowerFrameAssembly()
       translate([x, box_section_outer[0]/2, 0])
       {
         BoxSection(
-            name="lower_frame/box_section_c",
+            name="lower_frame/front_bumper_y_bar",
             col="blue",
             outer=box_section_outer,
             length=front_bumper_depth - box_section_outer[0],
@@ -55,7 +55,7 @@ module LowerFrameAssembly()
       rotate([0, 0, 90])
       {
         BoxSection(
-            name="lower_frame/box_section_d",
+            name="lower_frame/front_bumper_x_bar",
             col="orange",
             outer=box_section_outer,
             length=inner * 2 + box_section_outer[0],
@@ -69,7 +69,7 @@ module LowerFrameAssembly()
     rotate([0, 0, 90])
     {
       BoxSection(
-          name="lower_frame/box_section_e",
+          name="lower_frame/front_wheel_x_bar",
           col="purple",
           outer=box_section_outer,
           length=outer * 2 + box_section_outer[0],
@@ -82,7 +82,7 @@ module LowerFrameAssembly()
     rotate([0, 0, 90])
     {
       BoxSection(
-          name="lower_frame/box_section_f",
+          name="lower_frame/inner_mid_x_bar",
           col="cyan",
           outer=box_section_outer,
           length=inner * 2 - box_section_outer[0],
@@ -95,7 +95,7 @@ module LowerFrameAssembly()
           translate([0, -outer - box_section_outer[0] / 2, 0])
           {
             BoxSection(
-                name="lower_frame/box_section_g",
+                name="lower_frame/outer_mid_x_bar",
                 col="yellow",
                 outer=box_section_outer,
                 length=outer - inner,
@@ -111,7 +111,7 @@ module LowerFrameAssembly()
     rotate([0, 0, 90])
     {
       BoxSection(
-          name="lower_frame/box_section_h",
+          name="lower_frame/rear_x_bar",
           col="magenta",
           outer=box_section_outer,
           length=outer * 2 + box_section_outer[0],

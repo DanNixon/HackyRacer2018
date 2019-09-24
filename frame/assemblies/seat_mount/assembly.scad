@@ -19,7 +19,7 @@ module SeatMountAssembly()
           rotate([0, 0, 90])
           {
             BoxSection(
-                name="seat_mount/box_section_a",
+                name="seat_mount/x_bar",
                 col="red",
                 outer=box_section_outer,
                 length=outer * 2 + box_section_outer[0],
@@ -33,7 +33,7 @@ module SeatMountAssembly()
         translate([x, 0, 0])
         {
           BoxSection(
-              name="seat_mount/box_section_b",
+              name="seat_mount/y_bar",
               col="green",
               outer=box_section_outer,
               length=seat_depth - box_section_outer[0],
