@@ -1,5 +1,6 @@
 use <../../primitives/assembly_instruction.scad>;
 use <../../primitives/box_section.scad>;
+use <../../primitives/displace_from_centre.scad>;
 use <../../primitives/drilled_hole.scad>;
 use <../../primitives/plate.scad>;
 
@@ -29,17 +30,16 @@ module SeatMountAssembly()
         }
       }
 
-      for (x = [-outer, outer, -seat_mount_centres[0]/2, seat_mount_centres[0]/2])
+      DisplaceFromCentre(
+          name="seat_mount/y_bar",
+          x_positions = [-outer, outer, -seat_mount_centres[0]/2, seat_mount_centres[0]/2])
       {
-        translate([x, 0, 0])
-        {
-          BoxSection(
-              name="seat_mount/y_bar",
-              col="green",
-              outer=box_section_outer,
-              length=seat_depth - box_section_outer[0],
-              center=true);
-        }
+        BoxSection(
+            name="seat_mount/y_bar",
+            col="green",
+            outer=box_section_outer,
+            length=seat_depth - box_section_outer[0],
+            center=true);
       }
 
       translate([0, 0, (box_section_outer[1] + plate_thickness) / 2])
@@ -60,17 +60,14 @@ module SeatMountAssembly()
       }
     }
 
-    for (x = [-seat_mount_centres[0]/2, seat_mount_centres[0]/2])
+    DisplaceFromCentre(
+        name="seat_mount/seat_mount_holes",
+        x_positions = [-seat_mount_centres[0]/2, seat_mount_centres[0]/2],
+        y_positions = [-seat_mount_centres[1]/2, seat_mount_centres[1]/2])
     {
-      for (y = [-seat_mount_centres[1]/2, seat_mount_centres[1]/2])
-      {
-        translate([x, y])
-        {
-          DrilledHole(
-              name="seat_mount/seat_mount_holes",
-              d=seat_mount_hole_diameter);
-        }
-      }
+      DrilledHole(
+          name="seat_mount/seat_mount_holes",
+          d=seat_mount_hole_diameter);
     }
   }
 }
