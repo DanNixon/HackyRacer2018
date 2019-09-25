@@ -1,5 +1,6 @@
 use <../../primitives/assembly_instruction.scad>;
 use <../../primitives/box_section.scad>;
+use <../../primitives/drilled_hole.scad>;
 use <../../primitives/plate.scad>;
 
 include <../../dimensions.scad>;
@@ -65,7 +66,9 @@ module SeatMountAssembly()
       {
         translate([x, y])
         {
-          cylinder(h=100, d=seat_mount_hole_diameter, center=true);
+          DrilledHole(
+              name="seat_mount/seat_mount_holes",
+              d=seat_mount_hole_diameter);
         }
       }
     }

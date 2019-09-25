@@ -7,6 +7,8 @@ use <assemblies/seat_mount/assembly.scad>;
 
 include <dimensions.scad>
 
+echo("All dimensions in millimetre.");
+
 color("red")
 {
   LowerFrameAssembly();
