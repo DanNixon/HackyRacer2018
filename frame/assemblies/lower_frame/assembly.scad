@@ -1,6 +1,7 @@
 use <../../primitives/assembly_instruction.scad>;
 use <../../primitives/box_section.scad>;
 use <../../primitives/plate.scad>;
+use <assemblies/front_wheel_bar/assembly.scad>;
 
 include <../../dimensions.scad>;
 
@@ -66,14 +67,9 @@ module LowerFrameAssembly()
 
   translate([0, inner_length + box_section_outer[0] / 2, 0])
   {
-    rotate([0, 0, 90])
+    color("purple")
     {
-      BoxSection(
-          name="lower_frame/front_wheel_x_bar",
-          col="purple",
-          outer=box_section_outer,
-          length=outer * 2 + box_section_outer[0],
-          center=true);
+      FrontWheelBarAssembly();
     }
   }
 
