@@ -1,3 +1,5 @@
+axle_diameter = 16;
+
 box_section_outer = [25, 25];
 
 outer = 210;

@@ -1,5 +1,9 @@
 use <../../parts/wheel.scad>;
 
+include <../../dimensions.scad>;
+
+include <dimensions.scad>;
+
 module FrontWheelAssembly()
 {
   translate([100, 0, 0])
@@ -10,20 +14,17 @@ module FrontWheelAssembly()
     }
   }
 
-  magic_1 = 30;
-  magic_2 = 25;
-  magic_3 = 20;
-  magic_4 = 40;
-
   color("green")
   {
     hull()
     {
-      cylinder(h=magic_1, r=magic_2, center=true, $fn=64);
+      $fn = 64;
+
+      cylinder(h=magic_1, r=magic_2, center=true);
 
       translate([magic_4, 0, 0])
       {
-        cylinder(h=magic_1, r=magic_3, center=true, $fn=64);
+        cylinder(h=magic_1, r=magic_3, center=true);
       }
     }
   }
@@ -32,7 +33,7 @@ module FrontWheelAssembly()
   {
     rotate([0, 90, 0])
     {
-      cylinder(d=17, h=160);
+      cylinder(d=axle_diameter, h=160);
     }
   }
 }
