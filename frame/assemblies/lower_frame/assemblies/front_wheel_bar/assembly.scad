@@ -6,15 +6,13 @@ include <dimensions.scad>;
 
 module FrontWheelBarAssembly()
 {
-  length = outer * 2 + box_section_outer[0];
-
   rotate([0, 0, 90])
   {
     BoxSection(
         name="lower_frame/front_wheel_x_bar",
         col="red",
         outer=box_section_outer,
-        length=length,
+        length=bar_length,
         center=true);
   }
 
@@ -24,7 +22,7 @@ module FrontWheelBarAssembly()
     {
       rotate([0, 0, a])
       {
-        translate([(length + bar_thickness) / 2, 0, 0])
+        translate([(bar_length + bar_thickness) / 2, 0, 0])
         {
           cube([bar_thickness, box_section_outer[0], inner_height + (2 * bar_thickness)], center=true);
 

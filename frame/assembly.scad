@@ -1,6 +1,6 @@
-use <parts/wheel.scad>;
 use <parts/motor.scad>;
 
+use <assemblies/front_wheel/assembly.scad>;
 use <assemblies/lower_frame/assembly.scad>;
 use <assemblies/rear_axle/assembly.scad>;
 use <assemblies/seat_mount/assembly.scad>;
@@ -30,24 +30,27 @@ translate([0, 180, 25])
   }
 }
 
-translate([-130, 300, 75])
-{
-  color("cyan")
-  {
-    Motor();
-  }
-}
-
 translate([0, inner_length + box_section_outer[0]/2, 0])
 {
   for(a = [0, 180])
   {
     rotate([0, 0, a])
     {
-      translate([wheel_centre_distance/2, 0, 0])
+      translate([wheel_centre_distance/2-100, 0, 0])
       {
-        Wheel();
+        color("cyan")
+        {
+          FrontWheelAssembly();
+        }
       }
     }
+  }
+}
+
+translate([-130, 300, 75])
+{
+  color("magenta")
+  {
+    Motor();
   }
 }
