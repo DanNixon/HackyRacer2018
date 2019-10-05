@@ -20,15 +20,21 @@ module RearAxleAssembly()
     }
 
     /* Drive sprocket */
-    translate([0, 0, sprocket_pos])
+    color("green")
     {
-      DriveSprocketAssembly();
+      translate([0, 0, sprocket_pos])
+      {
+        DriveSprocketAssembly();
+      }
     }
 
     /* Brake disc */
-    translate([0, 0, brake_disc_pos])
+    color("blue")
     {
-      BrakeDiscAssembly();
+      translate([0, 0, brake_disc_pos])
+      {
+        BrakeDiscAssembly();
+      }
     }
   }
 

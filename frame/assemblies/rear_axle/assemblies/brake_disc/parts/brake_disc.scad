@@ -2,13 +2,23 @@ module BrakeDisc()
 {
   $fn = 64;
 
-  color("magenta")
+  thickness = 2;
+
+  difference()
   {
-    /* TODO */
-    difference()
+    cylinder(d=140, h=thickness, center=true);
+
+    cylinder(d=38, h=thickness+1, center=true);
+
+    for (a = [0 : 360 / 6: 359])
     {
-      cylinder(d=160, h=5, center=true);
-      cylinder(d=80, h=6, center=true);
+      rotate([0, 0, a])
+      {
+        translate([24, 0, 0])
+        {
+          cylinder(d=6, h=thickness+1, center=true);
+        }
+      }
     }
   }
 }

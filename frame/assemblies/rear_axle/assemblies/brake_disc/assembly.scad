@@ -3,9 +3,18 @@ use <parts/brake_disc.scad>
 
 module BrakeDiscAssembly()
 {
-  /* TODO */
-  AxleMount();
-  BrakeDisc();
+  color("red")
+  {
+    BrakeDisc();
+  }
+
+  color("green")
+  {
+    translate([0, 0, 1])
+    {
+      AxleMount();
+    }
+  }
 }
 
 BrakeDiscAssembly();
