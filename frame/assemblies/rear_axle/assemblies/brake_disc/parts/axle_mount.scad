@@ -1,19 +1,36 @@
 include <../../../../../dimensions.scad>;
 
+use <../../../../../primitives/assembly_instruction.scad>;
+
+disc_lip_width = 3;
+disc_lip_diameter = 38;
+
+disc_face_width = 10;
+disc_face_diameter = 60;
+
+axle_clamp_width = 40;
+axle_clamp_diameter = 30;
+
 module AxleMount()
 {
   difference()
   {
     union()
     {
-      translate([0, 0, 5])
+      translate([0, 0, -disc_lip_width])
       {
-        cylinder(d=38, h=5, center=true);
+        cylinder(d=disc_lip_diameter, h=disc_lip_width);
       }
 
-      cylinder(d=60, h=10);
+      AssemblyInstruction(
+          "disc_face_plate",
+          "drill and tap holes for brake disc mounting as appropriate");
+      cylinder(d=disc_face_diameter, h=disc_face_width);
 
-      cylinder(d=30, h=40);
+      AssemblyInstruction(
+          "axle_clamp",
+          "drill and tap holes for axle key screws as appropriate");
+      cylinder(d=axle_clamp_diameter, h=axle_clamp_width);
     }
 
     /* Axle hole */
