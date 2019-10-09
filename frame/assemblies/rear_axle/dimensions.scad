@@ -1,2 +1,2 @@
-sprocket_pos = -180;
-brake_disc_pos = 180;
+sprocket_pos = -145;
+brake_disc_pos = 150;

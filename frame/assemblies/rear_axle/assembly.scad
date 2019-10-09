@@ -24,7 +24,10 @@ module RearAxleAssembly()
     {
       translate([0, 0, sprocket_pos])
       {
-        DriveSprocketAssembly();
+        rotate([0, 180, 0])
+        {
+          DriveSprocketAssembly();
+        }
       }
     }
 

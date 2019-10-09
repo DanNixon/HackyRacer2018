@@ -2,13 +2,23 @@ module DriveSprocket()
 {
   $fn = 64;
 
-  color("cyan")
+  thickness = 3;
+
+  difference()
   {
-    /* TODO */
-    difference()
+    cylinder(d=140, h=thickness, center=true);
+
+    cylinder(d=26, h=thickness+1, center=true);
+
+    for (a = [0 : 360 / 3: 359])
     {
-      cylinder(d=180, h=5, center=true);
-      cylinder(d=50, h=6, center=true);
+      rotate([0, 0, a])
+      {
+        translate([20, 0, 0])
+        {
+          cylinder(d=6, h=thickness+1, center=true);
+        }
+      }
     }
   }
 }

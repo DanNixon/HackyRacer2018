@@ -3,9 +3,18 @@ use <parts/drive_sprocket.scad>;
 
 module DriveSprocketAssembly()
 {
-  /* TODO */
-  AxleMount();
-  DriveSprocket();
+  color("red")
+  {
+    DriveSprocket();
+  }
+
+  color("green")
+  {
+    translate([0, 0, 2])
+    {
+      AxleMount();
+    }
+  }
 }
 
 DriveSprocketAssembly();
