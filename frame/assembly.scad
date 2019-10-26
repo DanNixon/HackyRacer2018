@@ -47,10 +47,13 @@ translate([0, inner_length + box_section_outer[0]/2, 0])
   }
 }
 
-translate([-130, 300, 75])
+translate([130, 300, 75])
 {
-  color("magenta")
+  rotate([0, 90, 0])
   {
-    Motor();
+    color("magenta")
+    {
+      Motor();
+    }
   }
 }

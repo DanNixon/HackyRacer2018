@@ -24,10 +24,7 @@ module RearAxleAssembly()
     {
       translate([0, 0, sprocket_pos])
       {
-        rotate([0, 180, 0])
-        {
-          DriveSprocketAssembly();
-        }
+        DriveSprocketAssembly();
       }
     }
 
@@ -36,7 +33,10 @@ module RearAxleAssembly()
     {
       translate([0, 0, brake_disc_pos])
       {
-        BrakeDiscAssembly();
+        rotate([0, 180, 0])
+        {
+          BrakeDiscAssembly();
+        }
       }
     }
   }
