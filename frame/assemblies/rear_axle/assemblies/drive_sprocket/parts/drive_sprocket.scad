@@ -1,3 +1,5 @@
+include <../dimensions.scad>;
+
 module DriveSprocket()
 {
   $fn = 64;
@@ -6,7 +8,7 @@ module DriveSprocket()
 
   difference()
   {
-    cylinder(d=140, h=thickness, center=true);
+    cylinder(d=sprocket_diameter, h=thickness, center=true);
 
     cylinder(d=26, h=thickness+1, center=true);
 
