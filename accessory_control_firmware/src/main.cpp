@@ -8,13 +8,14 @@
 
 relay brake_lights(11);
 relay reverse_lights(10);
-relay rear_lights(9);
-relay headlights(8);
-relay full_beam(7);
+relay headlights(9);
+relay full_beam(8);
+relay horn(7);
 
 three_pos_switch direction_sw(A1, A0);
 three_pos_switch lights_sw(A2, A3);
 button brake_sw(A5);
+button horn_sw(0); // TODO
 
 void setup() {
   Serial.begin(9600);
@@ -24,13 +25,14 @@ void setup() {
 
   brake_lights.init();
   reverse_lights.init();
-  rear_lights.init();
   headlights.init();
   full_beam.init();
+  horn.init();
 
   direction_sw.init();
   lights_sw.init();
   brake_sw.init();
+  horn_sw.init();
 }
 
 void loop() {
@@ -65,19 +67,16 @@ void loop() {
     switch (lights_sw.pos()) {
     case position::A:
       Serial.println("Lights: off");
-      rear_lights.off();
       headlights.off();
       full_beam.off();
       break;
     case position::B:
       Serial.println("Lights: headlights");
-      rear_lights.on();
       headlights.on();
       full_beam.off();
       break;
     case position::C:
       Serial.println("Light: full beam");
-      rear_lights.on();
       headlights.on();
       full_beam.on();
       break;
@@ -95,6 +94,21 @@ void loop() {
     case action::Released:
       Serial.println("Brake: off");
       brake_lights.off();
+      break;
+    default:
+      break;
+    }
+  }
+
+  if (horn_sw.update()) {
+    switch (horn_sw.state()) {
+    case action::Pressed:
+      Serial.println("Horn: on");
+      horn.on();
+      break;
+    case action::Released:
+      Serial.println("Horn: off");
+      horn.off();
       break;
     default:
       break;
