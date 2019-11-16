@@ -8,7 +8,7 @@ def projection(diameter, wall_thickness):
     return outer - inner
 
 
-def tube(
+def volume(
         length, diameter=25, wall_thickness=2, center=False,
         material='mild_steel'
 ):
@@ -17,4 +17,4 @@ def tube(
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(tube(100)))
+    print(sp.scad_render(volume(100)))

@@ -11,7 +11,7 @@ def projection(size, wall_thickness, center):
     return outer
 
 
-def box_section(
+def volume(
         length,
         size=[25, 25],
         wall_thickness=2,
@@ -25,4 +25,4 @@ def box_section(
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(box_section(100, size=[10, 20])))
+    print(sp.scad_render(volume(100, size=[10, 20])))
