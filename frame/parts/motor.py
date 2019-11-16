@@ -1,7 +1,7 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.utils import place_at_centres
+from frame.utils import place_at_centres, place_n_at_x_around
 
 body_diameter = 108
 body_length = 140
@@ -24,7 +24,7 @@ vent_holes_diameter = 10
 def motor():
     mounting_holes = spu.down(1)(
         place_at_centres(
-            [0, mounting_hole_centres],
+            [mounting_hole_centres, 0],
             sp.cylinder(d=mounting_hole_diameter, h=body_length + 2)
         )
     )
@@ -55,18 +55,14 @@ def mountable_face():
     shaft_cutout = sp.circle(d=shaft_surround_diam)
 
     mounting_holes = place_at_centres(
-        [0, mounting_hole_centres], sp.circle(d=mounting_hole_diameter)
+        [mounting_hole_centres, 0], sp.circle(d=mounting_hole_diameter)
     )
 
-    _vent_hole = spu.forward(vent_holes_centres / 2.
-                             )(sp.circle(d=vent_holes_diameter))
-    vent_holes = [
-        sp.rotate([0, 0, a * 360. / 8.])(_vent_hole) for a in range(8)
-    ]
+    vent_holes = place_n_at_x_around(8, vent_holes_centres / 2., sp.circle(d=vent_holes_diameter))
 
     return outer - shaft_cutout - mounting_holes - vent_holes
 
 
 if __name__ == '__main__':
-    # print(sp.scad_render(motor()))
-    print(sp.scad_render(mountable_face()))
+    print(sp.scad_render(motor()))
+    # print(sp.scad_render(mountable_face()))
