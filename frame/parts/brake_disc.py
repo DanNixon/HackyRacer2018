@@ -11,7 +11,7 @@ def projection():
 
 
 def brake_disc():
-    return sp.linear_extrude(2, center=True)(projection())
+    return sp.linear_extrude(2)(projection())
 
 
 if __name__ == '__main__':

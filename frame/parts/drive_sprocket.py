@@ -16,7 +16,7 @@ def projection():
 
 
 def drive_sprocket():
-    return sp.linear_extrude(3, center=True)(projection())
+    return sp.linear_extrude(3)(projection())
 
 
 if __name__ == '__main__':
