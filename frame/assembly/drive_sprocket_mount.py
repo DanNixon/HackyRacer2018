@@ -1,7 +1,6 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.utils import place_n_at_x_around
 from frame.assembly import axle_diameter
 from frame.parts.drive_sprocket import drive_sprocket
 
