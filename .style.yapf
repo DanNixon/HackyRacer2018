@@ -1,3 +1,2 @@
 [style]
-DEDENT_CLOSING_BRACKETS = True
-SPLIT_BEFORE_FIRST_ARGUMENT = True
+based_on_style = facebook

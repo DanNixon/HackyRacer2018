@@ -38,8 +38,9 @@ def motor():
     shaft = sp.color('black')(sp.cylinder(d=shaft_diameter, h=shaft_length), )
 
     sprocket = sp.color('cyan')(
-        spu.up(sprocket_pos)
-        (sp.cylinder(d=sprocket_diameter, h=5, center=True), )
+        spu.up(sprocket_pos)(
+            sp.cylinder(d=sprocket_diameter, h=5, center=True),
+        )
     )
 
     return sp.union()(
@@ -58,7 +59,9 @@ def mountable_face():
         [mounting_hole_centres, 0], sp.circle(d=mounting_hole_diameter)
     )
 
-    vent_holes = place_n_at_x_around(8, vent_holes_centres / 2., sp.circle(d=vent_holes_diameter))
+    vent_holes = place_n_at_x_around(
+        8, vent_holes_centres / 2., sp.circle(d=vent_holes_diameter)
+    )
 
     return outer - shaft_cutout - mounting_holes - vent_holes
 

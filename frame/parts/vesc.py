@@ -15,7 +15,7 @@ def vesc():
     )
 
     return spu.up(body_dimensions[2] / 2
-                  )(sp.cube(body_dimensions, center=True)) - holes
+                 )(sp.cube(body_dimensions, center=True)) - holes
 
 
 if __name__ == '__main__':

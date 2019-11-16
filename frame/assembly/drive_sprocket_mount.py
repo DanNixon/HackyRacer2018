@@ -15,7 +15,9 @@ axle_clamp_diameter = 30
 
 
 def drive_sprocket_mount():
-    a = spu.down(disc_lip_width)(sp.cylinder(d=disc_lip_diameter, h=disc_lip_width))
+    a = spu.down(disc_lip_width)(
+        sp.cylinder(d=disc_lip_diameter, h=disc_lip_width)
+    )
 
     # Drill and tap holes for brake disc mounting as appropriate
     b = sp.cylinder(d=disc_face_diameter, h=disc_face_width)

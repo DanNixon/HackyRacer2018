@@ -9,7 +9,7 @@ from frame.parts.wheel import wheel
 sprocket_pos = 145
 brake_disc_pos = 150
 
-axle_length = wheel_centre_distance + 120;
+axle_length = wheel_centre_distance + 120
 
 
 def assembly():
@@ -17,8 +17,14 @@ def assembly():
         sp.cylinder(d=axle_diameter, h=axle_length, center=True)
     )
 
-    drive_sprocket = spu.down(sprocket_pos)(sp.color(spu.Green)(sp.rotate([180, 0, 0])(drive_sprocket_mount.assembly())))
-    brake_disc = spu.up(brake_disc_pos)(sp.color(spu.Blue)(brake_disc_mount.assembly()))
+    drive_sprocket = spu.down(sprocket_pos)(
+        sp.color(spu.Green)(
+            sp.rotate([180, 0, 0])(drive_sprocket_mount.assembly())
+        )
+    )
+    brake_disc = spu.up(brake_disc_pos)(
+        sp.color(spu.Blue)(brake_disc_mount.assembly())
+    )
 
     _wheel = spu.right(wheel_centre_distance / 2.)(wheel())
     wheels = [sp.rotate([0, a, 0])(_wheel) for a in [0, 180]]

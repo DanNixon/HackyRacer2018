@@ -12,11 +12,10 @@ def projection(size, wall_thickness, center):
 
 
 def volume(
-        length,
-        size=[25, 25],
-        wall_thickness=2,
-        center=False,
-        material='mild_steel'
+    length,
+    size=[25, 25],
+    wall_thickness=2,
+    center=False,
 ):
     material = sp.linear_extrude(length)(
         projection(size, wall_thickness, center)

@@ -3,10 +3,11 @@ import solid as sp
 from frame.utils import place_n_at_x_around
 
 # XX tooth
-outer_diameter = 140;
+outer_diameter = 140
 
 # 74 tooth
 # outer_diameter = 190;
+
 
 def projection():
     outer = sp.circle(d=outer_diameter)
