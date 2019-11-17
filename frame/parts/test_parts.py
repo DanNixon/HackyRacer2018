@@ -28,6 +28,12 @@ def test_motor_volume():
     print(sp.scad_render(motor.volume()))
 
 
+def test_rear_axle_bearing_volume():
+    import frame.parts.rear_axle_bearing as rear_axle_bearing
+    thing = rear_axle_bearing.volume()
+    print(sp.scad_render(thing))
+
+
 def test_motor_mountable_face():
     import frame.parts.motor as motor
     print(sp.scad_render(motor.mountable_face()))
