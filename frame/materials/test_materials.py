@@ -3,29 +3,41 @@ import solid as sp
 
 def test_box_section_projection():
     import frame.materials.box_section as box_section
-    print(sp.scad_render(box_section.projection()))
+    thing = box_section.projection()
+    print(sp.scad_render(thing))
+    assert len(thing._repr_png_()) > 1000
 
 
 def test_box_section_volume():
     import frame.materials.box_section as box_section
-    print(sp.scad_render(box_section.volume(100)))
+    thing = box_section.volume(100)
+    print(sp.scad_render(thing))
+    assert len(thing._repr_png_()) > 1000
 
 
 def test_plate_projection():
     import frame.materials.plate as plate
-    print(sp.scad_render(plate.projection([100, 50])))
+    thing = plate.projection([100, 50])
+    print(sp.scad_render(thing))
+    assert len(thing._repr_png_()) > 1000
 
 
 def test_plate_volume():
     import frame.materials.plate as plate
-    print(sp.scad_render(plate.volume([100, 50], 3)))
+    thing = plate.volume([100, 50], 3)
+    print(sp.scad_render(thing))
+    assert len(thing._repr_png_()) > 1000
 
 
 def test_tube_projection():
     import frame.materials.tube as tube
-    print(sp.scad_render(tube.projection(25)))
+    thing = tube.projection(25)
+    print(sp.scad_render(thing))
+    assert len(thing._repr_png_()) > 1000
 
 
 def test_tube_volume():
     import frame.materials.tube as tube
-    print(sp.scad_render(tube.volume(25, 100)))
+    thing = tube.volume(25, 100)
+    print(sp.scad_render(thing))
+    assert len(thing._repr_png_()) > 1000
