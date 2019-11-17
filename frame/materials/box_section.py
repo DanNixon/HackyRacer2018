@@ -2,6 +2,9 @@ import solid as sp
 import solid.utils as spu
 
 
+default_size = [25, 25]
+
+
 def projection(size, wall_thickness, center):
     outer = sp.square(size, center=center)
     inner = sp.square([a - 2 * wall_thickness for a in size], center=center)
@@ -13,10 +16,12 @@ def projection(size, wall_thickness, center):
 
 def volume(
     length,
-    size=[25, 25],
+    size=None,
     wall_thickness=2,
     center=False,
 ):
+    size = default_size if size is None else size
+
     material = sp.linear_extrude(length)(
         projection(size, wall_thickness, center)
     )
