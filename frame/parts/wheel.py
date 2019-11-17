@@ -1,7 +1,7 @@
 import solid as sp
 
 
-def wheel():
+def volume():
     big = 250
     thickness = 100
 
@@ -34,4 +34,4 @@ def wheel():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(wheel()))
+    print(sp.scad_render(volume()))

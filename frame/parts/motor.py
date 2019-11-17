@@ -21,7 +21,7 @@ vent_holes_centres = 65
 vent_holes_diameter = 10
 
 
-def motor():
+def volume():
     mounting_holes = spu.down(1)(
         place_at_centres(
             [mounting_hole_centres, 0],
@@ -67,5 +67,5 @@ def mountable_face():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(motor()))
+    print(sp.scad_render(volume()))
     # print(sp.scad_render(mountable_face()))

@@ -16,9 +16,9 @@ def projection():
     return outer - inner - mounting_holes
 
 
-def drive_sprocket():
+def volume():
     return sp.linear_extrude(3)(projection())
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(drive_sprocket()))
+    print(sp.scad_render(volume()))

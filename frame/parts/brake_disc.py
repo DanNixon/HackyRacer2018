@@ -10,9 +10,9 @@ def projection():
     return outer - inner - mounting_holes
 
 
-def brake_disc():
+def volume():
     return sp.linear_extrude(2)(projection())
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(brake_disc()))
+    print(sp.scad_render(volume()))

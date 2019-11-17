@@ -7,7 +7,7 @@ body_dimensions = [45, 85, 23]
 mounting_hole_centres = [39, 79]
 
 
-def vesc():
+def volume():
     holes = spu.down(-1)(
         place_at_centres(
             mounting_hole_centres, sp.cylinder(d=4, h=body_dimensions[2] + 2)
@@ -19,4 +19,4 @@ def vesc():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(vesc()))
+    print(sp.scad_render(volume()))
