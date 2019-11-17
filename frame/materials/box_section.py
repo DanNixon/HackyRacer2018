@@ -1,7 +1,6 @@
 import solid as sp
 import solid.utils as spu
 
-
 default_size = [25, 25]
 
 
