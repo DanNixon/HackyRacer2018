@@ -29,6 +29,13 @@ def test_front_wheel_bar():
     # assert len(thing._repr_png_()) > 1000
 
 
+def test_grand():
+    import frame.assembly.grand as grand
+    thing = grand.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
 def test_lower_frame():
     import frame.assembly.lower_frame as lower_frame
     thing = lower_frame.assembly()
