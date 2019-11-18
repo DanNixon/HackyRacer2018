@@ -1,6 +1,8 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.assembly import wheel_centre_distance
+
 bar_thickness = 5
 
 bar_length = wheel_centre_distance - (100 * 2) - 70

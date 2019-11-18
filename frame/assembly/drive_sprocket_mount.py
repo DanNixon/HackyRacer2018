@@ -2,7 +2,7 @@ import solid as sp
 import solid.utils as spu
 
 from frame.assembly import axle_diameter
-from frame.parts.drive_sprocket import drive_sprocket
+import frame.parts.drive_sprocket as drive_sprocket
 
 disc_lip_width = 5
 disc_lip_diameter = 25
@@ -33,7 +33,7 @@ def drive_sprocket_mount():
 def assembly():
     return sp.union()(
         sp.color(spu.Red)(drive_sprocket_mount()),
-        sp.color(spu.Green)(sp.rotate([180, 0, 0])(drive_sprocket())),
+        sp.color(spu.Green)(sp.rotate([180, 0, 0])(drive_sprocket.volume())),
     )
 
 

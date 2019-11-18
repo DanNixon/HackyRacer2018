@@ -2,7 +2,7 @@ import solid as sp
 import solid.utils as spu
 
 from frame.assembly import axle_diameter
-from frame.parts.brake_disc import brake_disc
+import frame.parts.brake_disc as brake_disc
 
 disc_lip_width = 3
 disc_lip_diameter = 38
@@ -33,7 +33,7 @@ def brake_disc_mount():
 def assembly():
     return sp.union()(
         sp.color(spu.Red)(brake_disc_mount()),
-        sp.color(spu.Green)(sp.rotate([180, 0, 0])(brake_disc())),
+        sp.color(spu.Green)(sp.rotate([180, 0, 0])(brake_disc.volume())),
     )
 
 

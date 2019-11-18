@@ -1,3 +1,43 @@
 import solid as sp
 
-# TODO
+
+def test_brake_disc_mount():
+    import frame.assembly.brake_disc_mount as brake_disc_mount
+    thing = brake_disc_mount.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
+def test_drive_sprocket_mount():
+    import frame.assembly.drive_sprocket_mount as drive_sprocket_mount
+    thing = drive_sprocket_mount.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
+def test_front_wheel():
+    import frame.assembly.front_wheel as front_wheel
+    thing = front_wheel.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
+def test_front_wheel_bar():
+    import frame.assembly.front_wheel_bar as front_wheel_bar
+    thing = front_wheel_bar.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
+def test_rear_axle():
+    import frame.assembly.rear_axle as rear_axle
+    thing = rear_axle.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
+def test_seat_mount():
+    import frame.assembly.seat_mount as seat_mount
+    thing = seat_mount.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
