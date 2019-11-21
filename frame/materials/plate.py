@@ -16,4 +16,4 @@ def volume(size, thickness, radius=3., center=True):
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(volume(size=[100, 50], thickness=3)))
+    print(sp.scad_render(volume(size=(100, 50), thickness=3)))
