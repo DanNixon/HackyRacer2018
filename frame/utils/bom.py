@@ -35,3 +35,13 @@ def part():
 
 def bill_of_materials():
     return g_parts_dict
+
+
+def pretty_print():
+    print('Bill of Materials')
+    for item, count in g_parts_dict.items():
+        print('- {}x {}'.format(count, item['name']))
+        for k, v in item.items():
+            if k == 'name':
+                continue
+            print('  {} = {}'.format(k, v))

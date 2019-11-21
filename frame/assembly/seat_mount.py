@@ -5,7 +5,7 @@ from frame.utils import split_centers, place_at_centres
 from frame.primitives.drilled_hole import volume as drilled_hole
 from frame.materials import box_section, plate
 from frame.assembly import outer
-from frame.utils import bom
+from frame.utils import bom, entrypoint
 
 plate_thickness = 1
 
@@ -65,5 +65,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(assembly()))
-    print(bom.bill_of_materials())
+    entrypoint.main(assembly())
