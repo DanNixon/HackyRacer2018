@@ -5,9 +5,10 @@ import frame.assembly.lower_frame as lower_frame
 import frame.assembly.seat_mount as seat_mount
 import frame.assembly.rear_axle as rear_axle
 import frame.assembly.front_wheel as front_wheel
-import frame.parts.motor as motor
+from frame.parts import motor
+from frame.parts import rear_axle_bearing
 from frame.materials import box_section
-from frame.assembly import inner_length, wheel_centre_distance
+from frame.assembly import inner_length, wheel_centre_distance, rear_axle_position
 from frame.utils import entrypoint
 
 
@@ -15,7 +16,14 @@ def assembly():
     return sp.union()(
         sp.color('red')(lower_frame.assembly()),
         sp.color('green')(sp.translate([0, 180, 160])(seat_mount.assembly())),
-        sp.color('blue')(sp.translate([0, 180, 25])(rear_axle.assembly())),
+        sp.color('blue')(
+            sp.translate(
+                [
+                    0, rear_axle_position, -(box_section.default_size[0] / 2.) -
+                    rear_axle_bearing.shaft_height
+                ]
+            )(rear_axle.assembly())
+        ),
         sp.color('cyan')(
             sp.translate(
                 [0, inner_length + box_section.default_size[0] / 2., 0]

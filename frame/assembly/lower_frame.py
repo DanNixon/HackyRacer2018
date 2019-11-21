@@ -1,8 +1,9 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import outer, outer_length, inner, inner_length, front_wheel_bar
+from frame.assembly import outer, outer_length, inner, inner_length, front_wheel_bar, rear_axle_position
 from frame.materials import box_section, plate
+from frame.parts import rear_axle_bearing
 from frame.utils import entrypoint
 
 plate_thickness = 3
@@ -86,6 +87,14 @@ def assembly():
         )
     )
 
+    bearings = spu.forward(rear_axle_position)(sp.rotate([180, 0, 0])(
+        [
+            sp.translate(
+                [x, 0, box_section.default_size[0] / 2.]
+            )(rear_axle_bearing.volume()) for x in [-outer, outer]
+        ]
+    ))
+
     # Clearence holes drilled into lower floor plate
     # Tap threads into lower frame box section
     floor_panel = sp.translate(
@@ -113,6 +122,7 @@ def assembly():
         mid_bars,
         rear_bar,
         floor_panel,
+        bearings,
     )
 
 
