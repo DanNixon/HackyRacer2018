@@ -13,7 +13,9 @@ def assembly():
     outer_bars = sp.rotate([-90, 0, 0])(
         [
             spu.left(d)(
-                box_section.volume(outer_length, center=False, color=spu.Red)
+                box_section.volume(
+                    length=outer_length, center=False, color=spu.Red
+                )
             ) for d in [-outer, outer]
         ]
     )
@@ -21,7 +23,9 @@ def assembly():
     inner_bars = sp.rotate([-90, 0, 0])(
         [
             spu.left(d)(
-                box_section.volume(inner_length, center=False, color=spu.Green)
+                box_section.volume(
+                    length=inner_length, center=False, color=spu.Green
+                )
             ) for d in [-inner, inner]
         ]
     )
@@ -31,7 +35,7 @@ def assembly():
             sp.translate([d, box_section.default_size[0] / 2., 0])(
                 sp.rotate([-90, 0, 0])(
                     box_section.volume(
-                        front_bumper_depth - box_section.default_size[0],
+                        length=front_bumper_depth - box_section.default_size[0],
                         center=False,
                         color=spu.Blue
                     )
@@ -41,7 +45,7 @@ def assembly():
         spu.forward(front_bumper_depth)(
             sp.rotate([0, 90, 0])(
                 box_section.volume(
-                    inner * 2. + box_section.default_size[0],
+                    length=inner * 2. + box_section.default_size[0],
                     center=True,
                     color='orange'
                 )
@@ -56,7 +60,7 @@ def assembly():
     mid_bars = spu.forward(outer_length + box_section.default_size[0] / 2.)(
         sp.rotate([0, 90, 0])(
             box_section.volume(
-                inner * 2. - box_section.default_size[0],
+                length=inner * 2. - box_section.default_size[0],
                 center=True,
                 color=spu.Cyan
             ),
@@ -64,7 +68,7 @@ def assembly():
                 sp.rotate([0, a, 0])(
                     spu.up(inner + box_section.default_size[0] / 2.)(
                         box_section.volume(
-                            outer - inner, center=False, color=spu.Cyan
+                            length=outer - inner, center=False, color=spu.Cyan
                         )
                     )
                 ) for a in [0, 180]
@@ -75,7 +79,7 @@ def assembly():
     rear_bar = spu.back(box_section.default_size[0] / 2.)(
         sp.rotate([0, 90, 0])(
             box_section.volume(
-                outer * 2. + box_section.default_size[0],
+                length=outer * 2. + box_section.default_size[0],
                 center=True,
                 color=spu.Magenta
             )

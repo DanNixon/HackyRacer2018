@@ -14,7 +14,7 @@ g_parts_dict = {}
 
 def part():
     def wrap(f):
-        def wrapped_f(*wargs, **wkwargs):
+        def wrapped_f(**wkwargs):
             key = hashabledict(
                 {
                     'name': '{}.{}'.format(f.__module__, f.__name__),
@@ -26,7 +26,7 @@ def part():
                 g_parts_dict[key] = 0
             g_parts_dict[key] += 1
 
-            return f(*wargs, **wkwargs)
+            return f(**wkwargs)
 
         return wrapped_f
 

@@ -20,7 +20,8 @@ def assembly():
         [
             spu.back(d)(
                 box_section.volume(
-                    outer * 2. + box_section.default_size[0], center=True
+                    length=outer * 2. + box_section.default_size[0],
+                    center=True
                 )
             ) for d in split_centers(seat_depth)
         ]
@@ -30,7 +31,8 @@ def assembly():
         [
             spu.left(d)(
                 box_section.volume(
-                    seat_depth - box_section.default_size[0], center=True
+                    length=seat_depth - box_section.default_size[0],
+                    center=True
                 )
             ) for d in [
                 -outer, outer, -seat_mount_centres[0] /

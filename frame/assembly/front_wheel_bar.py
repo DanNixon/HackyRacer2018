@@ -14,7 +14,8 @@ inner_depth = 40
 
 
 def assembly():
-    bar = sp.rotate([0, 90, 0])(box_section.volume(bar_length, center=True))
+    bar = sp.rotate([0, 90,
+                     0])(box_section.volume(length=bar_length, center=True))
 
     # TODO: design this in 2D and extrude
     _mount = spu.right((bar_length + bar_thickness) / 2.)(
