@@ -2,6 +2,7 @@ import solid as sp
 import solid.utils as spu
 
 from frame.assembly import axle_diameter
+from frame.utils import entrypoint
 import frame.parts.wheel as wheel
 
 magic_1 = 30
@@ -28,4 +29,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())

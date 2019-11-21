@@ -3,6 +3,7 @@ import solid.utils as spu
 
 from frame.utils import place_at_centres
 from frame.assembly import axle_diameter, wheel_centre_distance, brake_disc_mount, drive_sprocket_mount
+from frame.utils import entrypoint
 import frame.parts.wheel as wheel
 
 sprocket_pos = 145
@@ -39,4 +40,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())

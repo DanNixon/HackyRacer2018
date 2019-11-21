@@ -3,6 +3,7 @@ import solid.utils as spu
 
 from frame.assembly import wheel_centre_distance
 from frame.materials import box_section
+from frame.utils import entrypoint
 
 bar_thickness = 5
 
@@ -47,4 +48,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())

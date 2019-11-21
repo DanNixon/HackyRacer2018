@@ -2,6 +2,7 @@ import solid as sp
 import solid.utils as spu
 
 from frame.assembly import axle_diameter
+from frame.utils import entrypoint
 import frame.parts.drive_sprocket as drive_sprocket
 
 disc_lip_width = 5
@@ -38,5 +39,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    # print(sp.scad_render(drive_sprocket_mount()))
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())

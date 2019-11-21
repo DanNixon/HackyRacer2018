@@ -5,7 +5,7 @@ from frame.utils import split_centers, place_at_centres
 from frame.primitives.drilled_hole import volume as drilled_hole
 from frame.materials import box_section, plate
 from frame.assembly import outer
-from frame.utils import bom, entrypoint
+from frame.utils import entrypoint
 
 plate_thickness = 1
 

@@ -3,6 +3,7 @@ import solid.utils as spu
 
 from frame.assembly import outer, outer_length, inner, inner_length, front_wheel_bar
 from frame.materials import box_section, plate
+from frame.utils import entrypoint
 
 plate_thickness = 3
 front_bumper_depth = 150
@@ -91,10 +92,10 @@ def assembly():
         ]
     )(
         plate.volume(
-            size=[
+            size=(
                 inner * 2. + box_section.default_size[0],
                 inner_length + 2. * box_section.default_size[0]
-            ],
+            ),
             thickness=plate_thickness,
             center=False
         )
@@ -112,4 +113,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())

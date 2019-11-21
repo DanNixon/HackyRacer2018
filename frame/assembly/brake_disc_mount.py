@@ -2,6 +2,7 @@ import solid as sp
 import solid.utils as spu
 
 from frame.assembly import axle_diameter
+from frame.utils import entrypoint
 import frame.parts.brake_disc as brake_disc
 
 disc_lip_width = 3
@@ -38,5 +39,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    # print(sp.scad_render(brake_disc_mount()))
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())

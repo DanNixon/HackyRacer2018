@@ -8,6 +8,7 @@ import frame.assembly.front_wheel as front_wheel
 import frame.parts.motor as motor
 from frame.materials import box_section
 from frame.assembly import inner_length, wheel_centre_distance
+from frame.utils import entrypoint
 
 
 def assembly():
@@ -35,4 +36,4 @@ def assembly():
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(assembly()))
+    entrypoint.main(assembly())
