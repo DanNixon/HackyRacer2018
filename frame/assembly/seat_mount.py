@@ -5,6 +5,7 @@ from frame.utils import split_centers, place_at_centres
 from frame.primitives.drilled_hole import volume as drilled_hole
 from frame.materials import box_section, plate
 from frame.assembly import outer
+from frame.utils import bom
 
 plate_thickness = 1
 
@@ -42,10 +43,10 @@ def assembly():
     # Tap threads into seat mount box section
     top_plate = spu.up((box_section.default_size[1] + plate_thickness) / 2.)(
         plate.volume(
-            size=[
+            size=(
                 outer * 2. + box_section.default_size[0],
                 280 + box_section.default_size[0]
-            ],
+            ),
             thickness=plate_thickness
         )
     )
@@ -65,3 +66,4 @@ def assembly():
 
 if __name__ == '__main__':
     print(sp.scad_render(assembly()))
+    print(bom.bill_of_materials())

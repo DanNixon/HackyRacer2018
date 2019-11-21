@@ -1,6 +1,7 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.utils import bom
 
 def projection(size, radius=3., center=True):
     return sp.minkowski()(
@@ -9,6 +10,7 @@ def projection(size, radius=3., center=True):
     )
 
 
+@bom.part()
 def volume(size, thickness, radius=3., center=True):
     return sp.linear_extrude(thickness)(projection(size, radius, center))
 

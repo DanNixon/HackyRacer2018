@@ -1,6 +1,7 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.utils import bom
 
 def projection(diameter, wall_thickness=2.):
     outer = sp.circle(d=diameter)
@@ -8,6 +9,7 @@ def projection(diameter, wall_thickness=2.):
     return outer - inner
 
 
+@bom.part()
 def volume(diameter, length, wall_thickness=2., center=False):
     material = sp.linear_extrude(length)(projection(diameter, wall_thickness))
     return spu.down(length / 2)(material) if center else material

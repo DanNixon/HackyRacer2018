@@ -1,6 +1,8 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.utils import bom
+
 default_size = [25., 25.]
 
 
@@ -13,6 +15,7 @@ def projection(size=None, wall_thickness=2., center=False):
     return outer - inner
 
 
+@bom.part()
 def volume(
     length, size=None, wall_thickness=2., center=False, color=spu.Yellow
 ):
