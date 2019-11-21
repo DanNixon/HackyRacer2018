@@ -1,7 +1,7 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.utils import place_at_centres
+from frame.utils import bom, place_at_centres
 
 shaft_diameter = 18
 shaft_height = 30
@@ -15,6 +15,7 @@ mounting_hole_diameter = 14
 mounting_hole_centres = 100
 
 
+@bom.part('Rear Axle Bearing')
 def volume():
     base = spu.up(base_height / 2.)(
         sp.cube([width, base_length, base_height], center=True)

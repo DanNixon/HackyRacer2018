@@ -1,12 +1,13 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.utils import place_at_centres
+from frame.utils import bom, place_at_centres
 
 body_dimensions = [45, 85, 23]
 mounting_hole_centres = [39, 79]
 
 
+@bom.part('VESC')
 def volume():
     holes = spu.down(-1)(
         place_at_centres(

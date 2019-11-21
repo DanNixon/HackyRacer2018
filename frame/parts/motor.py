@@ -1,7 +1,7 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.utils import place_at_centres, place_n_at_x_around
+from frame.utils import bom, place_at_centres, place_n_at_x_around
 
 body_diameter = 108
 body_length = 140
@@ -21,6 +21,7 @@ vent_holes_centres = 65
 vent_holes_diameter = 10
 
 
+@bom.part('Motor')
 def volume():
     mounting_holes = spu.down(1)(
         place_at_centres(

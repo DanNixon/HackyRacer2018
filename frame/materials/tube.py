@@ -9,7 +9,7 @@ def projection(diameter, wall_thickness=2.):
     return outer - inner
 
 
-@bom.part()
+@bom.part('Tube')
 def volume(diameter, length, wall_thickness=2., center=False):
     material = sp.linear_extrude(length)(projection(diameter, wall_thickness))
     return spu.down(length / 2)(material) if center else material

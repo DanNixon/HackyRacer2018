@@ -1,6 +1,6 @@
 import solid as sp
 
-from frame.utils import place_n_at_x_around
+from frame.utils import bom, place_n_at_x_around
 
 # XX tooth
 outer_diameter = 140
@@ -16,6 +16,7 @@ def projection():
     return outer - inner - mounting_holes
 
 
+@bom.part('Drive Sprocket')
 def volume():
     return sp.linear_extrude(3)(projection())
 

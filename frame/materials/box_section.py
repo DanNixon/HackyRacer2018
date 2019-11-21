@@ -15,7 +15,7 @@ def projection(size=None, wall_thickness=2., center=False):
     return outer - inner
 
 
-@bom.part()
+@bom.part('Box Section')
 def volume(
     length, size=None, wall_thickness=2., center=False, color=spu.Yellow
 ):

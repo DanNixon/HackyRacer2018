@@ -26,8 +26,11 @@ def assembly():
         sp.color(spu.Blue)(brake_disc_mount.assembly())
     )
 
-    _wheel = spu.right(wheel_centre_distance / 2.)(wheel.volume())
-    wheels = [sp.rotate([0, a, 0])(_wheel) for a in [0, 180]]
+    wheels = [
+        sp.rotate([0, a,
+                   0])(spu.right(wheel_centre_distance / 2.)(wheel.volume()))
+        for a in [0, 180]
+    ]
 
     return sp.union()(
         sp.rotate([0, 90, 0])(sp.union()(

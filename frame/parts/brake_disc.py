@@ -1,6 +1,6 @@
 import solid as sp
 
-from frame.utils import place_n_at_x_around
+from frame.utils import bom, place_n_at_x_around
 
 
 def projection():
@@ -10,6 +10,7 @@ def projection():
     return outer - inner - mounting_holes
 
 
+@bom.part('Brake Disc')
 def volume():
     return sp.linear_extrude(2)(projection())
 

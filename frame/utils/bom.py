@@ -12,12 +12,12 @@ class hashabledict(dict):
 g_parts_dict = {}
 
 
-def part():
+def part(name=None):
     def wrap(f):
         def wrapped_f(**wkwargs):
             key = hashabledict(
                 {
-                    'name': '{}.{}'.format(f.__module__, f.__name__),
+                    'name': name if name else '{}.{}'.format(f.__module__, f.__name__),
                 }
             )
             key.update(**wkwargs)

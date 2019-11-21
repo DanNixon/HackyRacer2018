@@ -10,7 +10,7 @@ def projection(size, radius=3., center=True):
     )
 
 
-@bom.part()
+@bom.part('Plate')
 def volume(size, thickness, radius=3., center=True):
     return sp.linear_extrude(thickness)(projection(size, radius, center))
 
