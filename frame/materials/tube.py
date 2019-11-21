@@ -3,6 +3,7 @@ import solid.utils as spu
 
 from frame.utils import bom
 
+
 def projection(diameter, wall_thickness=2.):
     outer = sp.circle(d=diameter)
     inner = sp.circle(d=diameter - 2. * wall_thickness)

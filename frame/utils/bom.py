@@ -17,7 +17,9 @@ def part(name=None):
         def wrapped_f(**wkwargs):
             key = hashabledict(
                 {
-                    'name': name if name else '{}.{}'.format(f.__module__, f.__name__),
+                    'name':
+                        name
+                        if name else '{}.{}'.format(f.__module__, f.__name__),
                 }
             )
             key.update(**wkwargs)

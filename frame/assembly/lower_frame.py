@@ -87,13 +87,15 @@ def assembly():
         )
     )
 
-    bearings = spu.forward(rear_axle_position)(sp.rotate([180, 0, 0])(
-        [
-            sp.translate(
-                [x, 0, box_section.default_size[0] / 2.]
-            )(rear_axle_bearing.volume()) for x in [-outer, outer]
-        ]
-    ))
+    bearings = spu.forward(rear_axle_position)(
+        sp.rotate([180, 0, 0])(
+            [
+                sp.translate([x, 0, box_section.default_size[0] / 2.])(
+                    rear_axle_bearing.volume()
+                ) for x in [-outer, outer]
+            ]
+        )
+    )
 
     # Clearence holes drilled into lower floor plate
     # Tap threads into lower frame box section
