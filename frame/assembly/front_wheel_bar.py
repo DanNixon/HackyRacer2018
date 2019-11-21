@@ -43,8 +43,8 @@ def assembly():
     _mounts = [sp.rotate([0, 0, a])(_mount) for a in [0, 180]]
 
     return sp.union()(
-        sp.color(spu.Red)(bar),
-        sp.color(spu.Green)(_mounts),
+        sp.color('red')(bar),
+        sp.color('green')(_mounts),
     )
 
 

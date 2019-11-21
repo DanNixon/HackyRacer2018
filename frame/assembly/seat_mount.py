@@ -54,9 +54,9 @@ def assembly():
     )
 
     frame = sp.union()(
-        sp.color(spu.Red)(x_bars),
-        sp.color(spu.Green)(y_bars),
-        sp.color(spu.Blue)(top_plate),
+        sp.color('red')(x_bars),
+        sp.color('green')(y_bars),
+        sp.color('blue')(top_plate),
     )
 
     holes = place_at_centres(

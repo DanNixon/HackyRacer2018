@@ -13,17 +13,17 @@ axle_length = wheel_centre_distance + 120
 
 
 def assembly():
-    axle = sp.color(spu.Red)(
+    axle = sp.color('red')(
         sp.cylinder(d=axle_diameter, h=axle_length, center=True)
     )
 
     drive_sprocket = spu.down(sprocket_pos)(
-        sp.color(spu.Green)(
+        sp.color('green')(
             sp.rotate([180, 0, 0])(drive_sprocket_mount.assembly())
         )
     )
     brake_disc = spu.up(brake_disc_pos)(
-        sp.color(spu.Blue)(brake_disc_mount.assembly())
+        sp.color('blue')(brake_disc_mount.assembly())
     )
 
     wheels = [

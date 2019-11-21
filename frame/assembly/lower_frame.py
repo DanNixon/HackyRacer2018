@@ -14,7 +14,7 @@ def assembly():
         [
             spu.left(d)(
                 box_section.volume(
-                    length=outer_length, center=False, color=spu.Red
+                    length=outer_length, center=False, color='red'
                 )
             ) for d in [-outer, outer]
         ]
@@ -24,7 +24,7 @@ def assembly():
         [
             spu.left(d)(
                 box_section.volume(
-                    length=inner_length, center=False, color=spu.Green
+                    length=inner_length, center=False, color='green'
                 )
             ) for d in [-inner, inner]
         ]
@@ -37,7 +37,7 @@ def assembly():
                     box_section.volume(
                         length=front_bumper_depth - box_section.default_size[0],
                         center=False,
-                        color=spu.Blue
+                        color='blue'
                     )
                 )
             ) for d in [-inner, inner]
@@ -62,13 +62,13 @@ def assembly():
             box_section.volume(
                 length=inner * 2. - box_section.default_size[0],
                 center=True,
-                color=spu.Cyan
+                color='cyan'
             ),
             [
                 sp.rotate([0, a, 0])(
                     spu.up(inner + box_section.default_size[0] / 2.)(
                         box_section.volume(
-                            length=outer - inner, center=False, color=spu.Cyan
+                            length=outer - inner, center=False, color='cyan'
                         )
                     )
                 ) for a in [0, 180]
@@ -81,7 +81,7 @@ def assembly():
             box_section.volume(
                 length=outer * 2. + box_section.default_size[0],
                 center=True,
-                color=spu.Magenta
+                color='magenta'
             )
         )
     )

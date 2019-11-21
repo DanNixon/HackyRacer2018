@@ -13,8 +13,8 @@ magic_4 = 40
 
 def assembly():
     return sp.union()(
-        sp.color(spu.Red)(spu.right(100)(wheel.volume())),
-        sp.color(spu.Green)(
+        sp.color('red')(spu.right(100)(wheel.volume())),
+        sp.color('green')(
             sp.hull()(
                 sp.cylinder(h=magic_1, r=magic_2, center=True),
                 spu.right(magic_4)(
@@ -22,7 +22,7 @@ def assembly():
                 )
             )
         ),
-        sp.color(spu.Blue)(
+        sp.color('blue')(
             sp.rotate([0, 90, 0])(sp.cylinder(d=axle_diameter, h=160))
         ),
     )

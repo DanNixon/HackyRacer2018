@@ -13,10 +13,10 @@ from frame.utils import entrypoint
 
 def assembly():
     return sp.union()(
-        sp.color(spu.Red)(lower_frame.assembly()),
-        sp.color(spu.Green)(sp.translate([0, 180, 160])(seat_mount.assembly())),
-        sp.color(spu.Blue)(sp.translate([0, 180, 25])(rear_axle.assembly())),
-        sp.color(spu.Cyan)(
+        sp.color('red')(lower_frame.assembly()),
+        sp.color('green')(sp.translate([0, 180, 160])(seat_mount.assembly())),
+        sp.color('blue')(sp.translate([0, 180, 25])(rear_axle.assembly())),
+        sp.color('cyan')(
             sp.translate(
                 [0, inner_length + box_section.default_size[0] / 2., 0]
             )(
@@ -29,7 +29,7 @@ def assembly():
                 ]
             )
         ),
-        sp.color(spu.Magenta)(
+        sp.color('magenta')(
             sp.translate([130, 300, 75])(sp.rotate([0, 90, 0])(motor.volume()))
         ),
     )

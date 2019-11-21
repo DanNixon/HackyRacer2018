@@ -33,8 +33,8 @@ def drive_sprocket_mount():
 
 def assembly():
     return sp.union()(
-        sp.color(spu.Red)(drive_sprocket_mount()),
-        sp.color(spu.Green)(sp.rotate([180, 0, 0])(drive_sprocket.volume())),
+        sp.color('red')(drive_sprocket_mount()),
+        sp.color('green')(sp.rotate([180, 0, 0])(drive_sprocket.volume())),
     )
 
 

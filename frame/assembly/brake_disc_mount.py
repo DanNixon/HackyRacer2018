@@ -33,8 +33,8 @@ def brake_disc_mount():
 
 def assembly():
     return sp.union()(
-        sp.color(spu.Red)(brake_disc_mount()),
-        sp.color(spu.Green)(sp.rotate([180, 0, 0])(brake_disc.volume())),
+        sp.color('red')(brake_disc_mount()),
+        sp.color('green')(sp.rotate([180, 0, 0])(brake_disc.volume())),
     )
 
 
