@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Battery",
+    "quantity": 2,
+    "unit_cost": 50.47,
+    "included_in_budget": true,
+    "origin": {
+      "name": "HobbyKing",
+      "url": "https://hobbyking.com/en_us/turnigy-5000mah-6s-20c-lipo-pack-w-xt-90.html"
+    },
+    "description": "5Ah 6S"
+  },
+  {
+    "name": "Ammo Case",
+    "quantity": 1,
+    "unit_cost": 13.00,
+    "included_in_budget": false,
+    "origin": {
+      "name": "DAS Outdoors",
+      "url": "https://dasoutdoors.co.uk/products/30-cal-ammo-box"
+    },
+    "description": ""
+  },
+  {
+    "name": "VESC",
+    "quantity": 1,
+    "unit_cost": 0.00,
+    "included_in_budget": true,
+    "origin": {
+      "name": "",
+      "url": ""
+    },
+    "description": ""
+  },
+  {
+    "name": "Motor",
+    "quantity": 1,
+    "unit_cost": 0.00,
+    "included_in_budget": true,
+    "origin": {
+      "name": "",
+      "url": ""
+    },
+    "description": ""
+  },
+  {
+    "name": "",
+    "quantity": 1,
+    "unit_cost": 0.00,
+    "included_in_budget": false,
+    "origin": {
+      "name": "",
+      "url": ""
+    },
+    "description": ""
+  }
+]
