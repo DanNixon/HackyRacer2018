@@ -64,9 +64,12 @@ def mountable_face():
         8, vent_holes_centres / 2., sp.circle(d=vent_holes_diameter)
     )
 
-    return outer - shaft_cutout - mounting_holes - vent_holes
+    return sp.union()(
+        shaft_cutout,
+        mounting_holes,
+        vent_holes,
+    )
 
 
 if __name__ == '__main__':
     print(sp.scad_render(volume()))
-    # print(sp.scad_render(mountable_face()))

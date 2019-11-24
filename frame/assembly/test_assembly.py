@@ -43,6 +43,13 @@ def test_lower_frame():
     # assert len(thing._repr_png_()) > 1000
 
 
+def test_motor_mount():
+    import frame.assembly.motor_mount as motor_mount
+    thing = motor_mount.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
 def test_rear_axle():
     import frame.assembly.rear_axle as rear_axle
     thing = rear_axle.assembly()

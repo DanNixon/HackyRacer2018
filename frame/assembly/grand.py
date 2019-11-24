@@ -5,10 +5,10 @@ import frame.assembly.lower_frame as lower_frame
 import frame.assembly.seat_mount as seat_mount
 import frame.assembly.rear_axle as rear_axle
 import frame.assembly.front_wheel as front_wheel
-from frame.parts import motor
+import frame.assembly.motor_mount as motor_mount
 from frame.parts import rear_axle_bearing
 from frame.materials import box_section
-from frame.assembly import inner_length, wheel_centre_distance, rear_axle_position
+from frame.assembly import inner, inner_length, wheel_centre_distance, rear_axle_position
 from frame.utils import entrypoint
 
 
@@ -38,7 +38,8 @@ def assembly():
             )
         ),
         sp.color('magenta')(
-            sp.translate([130, 300, 75])(sp.rotate([0, 90, 0])(motor.volume()))
+            sp.translate([inner + box_section.default_size[0] / 2., 300,
+                          0])(sp.rotate([90, 0, -90])(motor_mount.assembly()))
         ),
     )
 
