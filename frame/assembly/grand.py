@@ -4,6 +4,7 @@ import solid.utils as spu
 import frame.assembly.lower_frame as lower_frame
 import frame.assembly.seat_mount as seat_mount
 import frame.assembly.rear_axle as rear_axle
+import frame.assembly.rear_bumper as rear_bumper
 import frame.assembly.front_wheel as front_wheel
 import frame.assembly.motor_mount as motor_mount
 from frame.parts import rear_axle_bearing
@@ -40,6 +41,11 @@ def assembly():
         sp.color('magenta')(
             sp.translate([inner + box_section.default_size[0] / 2., 300,
                           0])(sp.rotate([90, 0, -90])(motor_mount.assembly()))
+        ),
+        sp.color('pink')(
+            spu.back(box_section.default_size[1])(
+                sp.rotate([90, 0, 0])(rear_bumper.assembly())
+            )
         ),
     )
 

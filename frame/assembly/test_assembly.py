@@ -57,6 +57,13 @@ def test_rear_axle():
     # assert len(thing._repr_png_()) > 1000
 
 
+def test_rear_bumper():
+    import frame.assembly.rear_bumper as rear_bumper
+    thing = rear_bumper.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
 def test_seat_mount():
     import frame.assembly.seat_mount as seat_mount
     thing = seat_mount.assembly()
