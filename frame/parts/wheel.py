@@ -3,7 +3,7 @@ import solid as sp
 from frame.utils import bom
 
 outer_diameter = 260
-thickness = 90
+thickness = 80
 
 @bom.part('Wheel')
 def volume():
@@ -14,14 +14,15 @@ def volume():
     wheel_cutouts = [
         sp.rotate([0, a, 0])(
             sp.translate([0, 0, -thickness / 2 - 0.1])(
-                sp.cylinder(d=120, h=40),
+                sp.cylinder(d=120, h=15),
+                sp.cylinder(d=90, h=40),
             )
         ) for a in [0, 180]
     ]
 
     bolts = [
         sp.rotate([0, 0, a * 360 / 4])(
-            sp.translate([0, 45, 0])(sp.cylinder(d=8, h=big, center=True))
+            sp.translate([0, 35, 0])(sp.cylinder(d=8, h=big, center=True))
         ) for a in range(4)
     ]
 
