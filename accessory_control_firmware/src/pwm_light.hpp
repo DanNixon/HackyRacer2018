@@ -2,10 +2,10 @@
 
 class pwm_light {
 public:
-  enum class level { off, medium, full };
+  enum class level { off, low, high };
 
 public:
-  pwm_light(int const pin);
+  pwm_light(int const pin, int const low_level, int const high_level);
 
   void init();
 
@@ -13,4 +13,7 @@ public:
 
 private:
   int const m_pin;
+
+  int const m_low_level;
+  int const m_high_level;
 };

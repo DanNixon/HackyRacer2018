@@ -7,10 +7,10 @@
 #include "relay.hpp"
 #include "three_pos_switch.hpp"
 
-pwm_light front_white(8);
-pwm_light front_high_intensity(9);
-pwm_light rear_white(10);
-pwm_light rear_red(11);
+pwm_light front_white(8, 63, 255);
+pwm_light front_high_intensity(9, 63, 255);
+pwm_light rear_white(10, 63, 255);
+pwm_light rear_red(11, 63, 255);
 
 relay horn(7);
 
@@ -59,7 +59,7 @@ void loop() {
     case position::C:
       Serial.println("Gear: reverse");
       motor_enable();
-      rear_white.set(level::medium);
+      rear_white.set(level::low);
       motor_set_reverse();
       break;
     default:
@@ -77,15 +77,15 @@ void loop() {
       break;
     case position::B:
       Serial.println("Lights: headlights");
-      front_white.set(level::medium);
-      rear_red.set(level::medium);
+      front_white.set(level::low);
+      rear_red.set(level::low);
       front_high_intensity.set(level::off);
       break;
     case position::C:
       Serial.println("Light: full beam");
-      front_white.set(level::medium);
-      rear_red.set(level::medium);
-      front_high_intensity.set(level::full);
+      front_white.set(level::low);
+      rear_red.set(level::low);
+      front_high_intensity.set(level::high);
       break;
     default:
       break;
@@ -96,11 +96,11 @@ void loop() {
     switch (brake_sw.state()) {
     case action::Pressed:
       Serial.println("Brake: on");
-      rear_red.set(level::full);
+      rear_red.set(level::high);
       break;
     case action::Released:
       Serial.println("Brake: off");
-      rear_red.set(lights_sw.pos() == position::A ? level::off : level::medium);
+      rear_red.set(lights_sw.pos() == position::A ? level::off : level::low);
       break;
     default:
       break;
