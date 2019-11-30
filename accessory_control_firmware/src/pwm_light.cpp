@@ -2,6 +2,12 @@
 
 #include <Arduino.h>
 
+pwm_light::pwm_light(int const pin, int const on_level)
+    : m_pin(pin)
+    , m_low_level(0)
+    , m_high_level(on_level) {
+}
+
 pwm_light::pwm_light(int const pin, int const low_level, int const high_level)
     : m_pin(pin)
     , m_low_level(low_level)
@@ -10,6 +16,16 @@ pwm_light::pwm_light(int const pin, int const low_level, int const high_level)
 
 void pwm_light::init() {
   pinMode(m_pin, OUTPUT);
+  set(level::off);
+}
+
+void pwm_light::on() 
+{
+  set(level::high);
+}
+
+void pwm_light::off() 
+{
   set(level::off);
 }
 

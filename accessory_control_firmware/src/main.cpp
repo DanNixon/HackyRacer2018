@@ -7,10 +7,10 @@
 #include "relay.hpp"
 #include "three_pos_switch.hpp"
 
-pwm_light front_white(8, 63, 255);
-pwm_light front_high_intensity(9, 63, 255);
-pwm_light rear_white(10, 63, 255);
-pwm_light rear_red(11, 63, 255);
+pwm_light front_white(11, 10);
+pwm_light front_high_intensity(9, 100, 255);
+pwm_light rear_white(6, 25);
+pwm_light rear_red(10, 20, 255);
 
 relay horn(7);
 
