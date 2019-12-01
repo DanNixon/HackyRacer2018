@@ -11,7 +11,7 @@ disc_lip_diameter = 25
 disc_face_width = 12
 disc_face_diameter = 55
 
-axle_clamp_width = 40
+axle_clamp_width = 28
 axle_clamp_diameter = 33
 
 
@@ -23,7 +23,9 @@ def drive_sprocket_mount():
     face_plate = sp.cylinder(d=disc_face_diameter, h=disc_face_width)
 
     # Drill and tap holes for axle key screws as appropriate
-    axle_clamp = sp.cylinder(d=axle_clamp_diameter, h=axle_clamp_width)
+    axle_clamp = sp.cylinder(
+        d=axle_clamp_diameter, h=disc_face_width + axle_clamp_width
+    )
 
     axle = sp.cylinder(d=axle_diameter, h=100, center=True)
 
