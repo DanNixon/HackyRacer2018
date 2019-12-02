@@ -25,6 +25,12 @@ def test_drive_sprocket_volume():
     print(sp.scad_render(thing))
 
 
+def test_lighting_control_board_volume():
+    import frame.parts.lighting_control_board as lighting_control_board
+    thing = lighting_control_board.volume()
+    print(sp.scad_render(thing))
+
+
 def test_motor_volume():
     import frame.parts.motor as motor
     thing = motor.volume()
