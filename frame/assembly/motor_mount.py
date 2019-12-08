@@ -44,5 +44,5 @@ def assembly():
 
 
 if __name__ == '__main__':
-    entrypoint.main(assembly())
-    # entrypoint.main(motor_mount_projection())
+    # entrypoint.main(assembly())
+    entrypoint.main(motor_mount_projection())
