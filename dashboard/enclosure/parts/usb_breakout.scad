@@ -6,6 +6,17 @@ usb_port_overhang = 1;
 mounting_hole_diameter = 3.1;
 mounting_hole_centres = 9;
 
+module UsbBreakoutHoles()
+{
+  for(y = [-mounting_hole_centres / 2, mounting_hole_centres / 2])
+  {
+    translate([pcb_dimensions[0] / 2, y, 0])
+    {
+      circle(d=mounting_hole_diameter, $fn=32);
+    }
+  }
+}
+
 module UsbBreakout()
 {
   difference()
@@ -19,13 +30,9 @@ module UsbBreakout()
       }
     }
 
-    /* Mounting holes */
-    for(y = [-mounting_hole_centres / 2, mounting_hole_centres / 2])
+    linear_extrude(20, center=true)
     {
-      translate([pcb_dimensions[0] / 2, y, 0])
-      {
-        cylinder(d=mounting_hole_diameter, h=20, center=true, $fn=32);
-      }
+      UsbBreakoutHoles();
     }
   }
 

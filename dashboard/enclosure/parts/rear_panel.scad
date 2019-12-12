@@ -1,3 +1,5 @@
+use <usb_breakout.scad>
+
 include <../common.scad>
 
 module MountingTab(hole_diameter, hole_centres, outer_radius, lower_offset)
@@ -32,7 +34,15 @@ module MountingTab(hole_diameter, hole_centres, outer_radius, lower_offset)
 
 module RearPanel()
 {
-  PanelProjection();
+  difference()
+  {
+    PanelProjection();
+
+    translate(usb_breakout_position)
+    {
+      UsbBreakoutHoles();
+    }
+  }
 
   translate([0, -outer_size[1] / 2])
   {
