@@ -2,7 +2,7 @@ include <../common.scad>
 
 module Enclosure()
 {
-  linear_extrude(centre_section_depth, center=true)
+  linear_extrude(centre_section_depth)
   {
     difference()
     {

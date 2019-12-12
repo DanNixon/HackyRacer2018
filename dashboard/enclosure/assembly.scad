@@ -19,7 +19,7 @@ module Assembly(explode)
 {
   panel_distance = explode + (centre_section_depth + sheet_thickness) / 2;
 
-  translate([0, 0, panel_distance])
+  translate([0, 0, (centre_section_depth / 2) + panel_distance])
   {
     Extrude("red")
     {
@@ -29,7 +29,7 @@ module Assembly(explode)
 
   Enclosure();
 
-  translate([0, 0, -panel_distance])
+  translate([0, 0, (centre_section_depth / 2) - panel_distance])
   {
     Extrude("blue")
     {
