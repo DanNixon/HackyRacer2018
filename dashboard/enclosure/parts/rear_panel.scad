@@ -1,3 +1,4 @@
+use <cable_entry.scad>
 use <usb_breakout.scad>
 
 include <../common.scad>
@@ -41,6 +42,11 @@ module RearPanel()
     translate(usb_breakout_position)
     {
       UsbBreakoutHoles();
+    }
+
+    translate(cable_entry_position)
+    {
+      CableEntryCableTies();
     }
   }
 

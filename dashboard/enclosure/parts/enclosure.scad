@@ -1,3 +1,4 @@
+use <cable_entry.scad>
 use <teensy.scad>
 use <usb_breakout.scad>
 
@@ -45,6 +46,11 @@ module Enclosure()
       {
         UsbBreakoutCutout();
       }
+    }
+
+    translate(cable_entry_position)
+    {
+      CableEntryHole();
     }
   }
 }
