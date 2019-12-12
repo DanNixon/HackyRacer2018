@@ -1,6 +1,8 @@
 use <parts/enclosure.scad>
 use <parts/front_panel.scad>
 use <parts/rear_panel.scad>
+use <parts/teensy.scad>
+use <parts/usb_breakout.scad>
 
 include <common.scad>
 
@@ -23,11 +25,24 @@ module Assembly(explode)
   {
     Extrude("red")
     {
-      FrontPanel();
+      /* FrontPanel(); */
     }
   }
 
   Enclosure();
+
+  translate(teensy_position)
+  {
+    rotate([0, 0, 180])
+    {
+      Teensy35();
+    }
+  }
+
+  translate(usb_breakout_position)
+  {
+    UsbBreakout();
+  }
 
   translate([0, 0, (centre_section_depth / 2) - panel_distance])
   {
