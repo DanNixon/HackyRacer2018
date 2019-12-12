@@ -24,4 +24,13 @@ module Teensy35()
   }
 }
 
+module Teensy35SdCardCutout()
+{
+  size = [50, 20, 5];
+  translate([-size[0] / 2, -size[1] / 2, 0])
+  {
+    cube(size);
+  }
+}
+
 Teensy35();

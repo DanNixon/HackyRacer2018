@@ -8,8 +8,8 @@ sheet_thickness = 3;
 
 magic_1 = outer_size - [2*corner_radius, 2*corner_radius];
 
-teensy_position = [50, -10, 1];
-usb_breakout_position = [-50, -10, 0];
+teensy_position = [(outer_size[0] / 2) - 5, -14, 1];
+usb_breakout_position = [-outer_size[0] / 2, -15, 0];
 
 module PlaceAtCentres(c)
 {

@@ -1,30 +1,49 @@
+use <teensy.scad>
+use <usb_breakout.scad>
+
 include <../common.scad>
 
 module Enclosure()
 {
-  linear_extrude(centre_section_depth)
+  difference()
   {
-    difference()
+    linear_extrude(centre_section_depth)
     {
-      union()
+      difference()
       {
-        difference()
+        union()
         {
-          PanelProjectionOuter();
-          square(inner_size, center=true);
+          difference()
+          {
+            PanelProjectionOuter();
+            square(inner_size, center=true);
+          }
+
+          /* Assembly screw hole support */
+          PlaceAtCentres(magic_1)
+          {
+            circle(d=10);
+          }
         }
 
-        /* Assembly screw hole support */
+        /* Assembly screw holes */
         PlaceAtCentres(magic_1)
         {
-          circle(d=10);
+          circle(d=3);
         }
       }
+    }
 
-      /* Assembly screw holes */
-      PlaceAtCentres(magic_1)
+    translate(teensy_position)
+    {
+      Teensy35SdCardCutout();
+    }
+
+    translate(usb_breakout_position)
+    {
+      rotate([0, 0, 180])
       {
-        circle(d=3);
+        UsbBreakoutCutout();
       }
     }
   }

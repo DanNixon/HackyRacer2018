@@ -46,4 +46,13 @@ module UsbBreakout()
   }
 }
 
+module UsbBreakoutCutout()
+{
+  size = [50, pcb_dimensions[1] + 1, 5.5];
+  translate([-size[0] / 2, -size[1] / 2, -1])
+  {
+    cube(size);
+  }
+}
+
 UsbBreakout();
