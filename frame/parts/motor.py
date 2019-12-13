@@ -6,7 +6,7 @@ from frame.utils import bom, place_at_centres, place_n_at_x_around
 body_diameter = 108
 body_length = 140
 
-mounting_hole_centres = 90
+mounting_hole_centres = 95
 mounting_hole_diameter = 5
 
 shaft_diameter = 12
@@ -18,7 +18,7 @@ sprocket_pos = 16
 shaft_surround_diam = 22
 
 vent_holes_centres = 65
-vent_holes_diameter = 10
+vent_holes_diameter = 12
 
 
 @bom.part('Motor')
