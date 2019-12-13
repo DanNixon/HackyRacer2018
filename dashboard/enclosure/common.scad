@@ -1,6 +1,6 @@
 inner_size = [110, 60];
 outer_size = inner_size + [10, 10];
-centre_section_depth = 30;
+centre_section_depth = 35;
 
 corner_radius = 5;
 
@@ -8,7 +8,7 @@ sheet_thickness = 3;
 
 magic_1 = outer_size - [2*corner_radius, 2*corner_radius];
 
-teensy_position = [(outer_size[0] / 2) - 5, -14, 1];
+teensy_position = [(outer_size[0] / 2) - 5, -14, 2];
 usb_breakout_position = [-outer_size[0] / 2, -15, 0];
 
 cable_entry_position = [-50, 0, 0];

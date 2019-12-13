@@ -25,7 +25,7 @@ module Assembly(explode)
   {
     Extrude("red")
     {
-      /* FrontPanel(); */
+      FrontPanel();
     }
   }
 
