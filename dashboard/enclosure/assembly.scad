@@ -21,14 +21,6 @@ module Assembly(explode)
 {
   panel_distance = explode + (centre_section_depth + sheet_thickness) / 2;
 
-  translate([0, 0, (centre_section_depth / 2) + panel_distance])
-  {
-    Extrude("red")
-    {
-      FrontPanel();
-    }
-  }
-
   Enclosure();
 
   translate(teensy_position)
@@ -49,6 +41,14 @@ module Assembly(explode)
     Extrude("blue")
     {
       RearPanel();
+    }
+  }
+
+  translate([0, 0, (centre_section_depth / 2) + panel_distance])
+  {
+    Extrude([1, 0, 0, 0.25])
+    {
+      FrontPanel();
     }
   }
 }

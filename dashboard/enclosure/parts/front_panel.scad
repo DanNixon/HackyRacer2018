@@ -13,7 +13,11 @@ module FrontPanel()
   difference()
   {
     PanelProjection();
-    DisplayMountingHoles();
+
+    translate(display_offset)
+    {
+      DisplayMountingHoles();
+    }
   }
 }
 
