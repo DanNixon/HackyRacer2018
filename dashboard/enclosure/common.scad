@@ -8,10 +8,10 @@ corner_radius = 5;
 
 sheet_thickness = 3;
 
-magic_1 = outer_size - [2*corner_radius, 2*corner_radius];
+magic_1 = outer_size - [2 * corner_radius, 2 * corner_radius];
 
-teensy_position = [(outer_size[0] / 2) - 5, -14, 2];
-usb_breakout_position = [-outer_size[0] / 2, -15, 0];
+teensy_position = [(outer_size[0] / 2) - 5, -15, 2];
+usb_breakout_position = [-outer_size[0] / 2, -16, 0];
 
 cable_entry_position = [(-outer_size[0] / 2) + 8, 0, 0];
 

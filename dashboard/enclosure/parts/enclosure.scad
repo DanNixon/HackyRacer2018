@@ -23,7 +23,7 @@ module Enclosure()
           /* Assembly screw hole support */
           PlaceAtCentres(magic_1)
           {
-            circle(d=10);
+            circle(d=9);
           }
         }
 
