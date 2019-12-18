@@ -3,6 +3,7 @@ use <parts/front_panel.scad>
 use <parts/rear_panel.scad>
 use <parts/teensy.scad>
 use <parts/usb_breakout.scad>
+use <parts/display.scad>
 
 include <common.scad>
 
@@ -20,6 +21,17 @@ module Extrude(c)
 module Assembly(explode)
 {
   panel_distance = explode + (centre_section_depth + sheet_thickness) / 2;
+
+  translate([0, 0, centre_section_depth - sheet_thickness])
+  {
+    Extrude("cyan")
+    {
+      translate(display_offset)
+      {
+        Display();
+      }
+    }
+  }
 
   Enclosure();
 

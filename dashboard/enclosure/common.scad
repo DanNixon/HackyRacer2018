@@ -1,8 +1,8 @@
-inner_size = [100, 64];
-outer_size = inner_size + [6, 6];
+inner_size = [90, 65];
+outer_size = inner_size + [7, 7];
 centre_section_depth = 35;
 
-display_offset = [-3, 0];
+display_offset = [-2, 0];
 
 corner_radius = 5;
 

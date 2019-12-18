@@ -1,12 +1,6 @@
-include <../common.scad>
+use <display.scad>
 
-module DisplayMountingHoles()
-{
-  PlaceAtCentres([76, 44.5])
-  {
-    circle(d=3.2, $fn=32);
-  }
-}
+include <../common.scad>
 
 module FrontPanel()
 {
