@@ -8,6 +8,13 @@ def test_brake_disc_mount():
     # assert len(thing._repr_png_()) > 1000
 
 
+def test_brake_pedal():
+    import frame.assembly.brake_pedal as brake_pedal
+    thing = brake_pedal.assembly()
+    print(sp.scad_render(thing))
+    # assert len(thing._repr_png_()) > 1000
+
+
 def test_drive_sprocket_mount():
     import frame.assembly.drive_sprocket_mount as drive_sprocket_mount
     thing = drive_sprocket_mount.assembly()

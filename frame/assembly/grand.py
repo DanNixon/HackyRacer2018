@@ -7,13 +7,16 @@ import frame.assembly.rear_axle as rear_axle
 import frame.assembly.rear_bumper as rear_bumper
 import frame.assembly.front_wheel as front_wheel
 import frame.assembly.motor_mount as motor_mount
+import frame.assembly.brake_pedal as brake_pedal
 from frame.parts import rear_axle_bearing
 from frame.materials import box_section
-from frame.assembly import inner, inner_length, wheel_centre_distance, rear_axle_position
+from frame.assembly import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length
 from frame.utils import entrypoint
 
 
 def assembly():
+    magic_1 = outer_length + 150.
+
     return sp.union()(
         sp.color('red')(lower_frame.assembly()),
         sp.color('green')(sp.translate([0, 180, 160])(seat_mount.assembly())),
@@ -46,6 +49,11 @@ def assembly():
             spu.back(box_section.default_size[1])(
                 sp.rotate([90, 0, 0])(rear_bumper.assembly())
             )
+        ),
+        sp.color('lime')(
+            sp.translate(
+                [-inner + (box_section.default_size[0] / 2.), magic_1, 0]
+            )(brake_pedal.assembly())
         ),
     )
 
