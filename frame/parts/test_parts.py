@@ -13,6 +13,12 @@ def test_brake_disc_volume():
     print(sp.scad_render(thing))
 
 
+def test_brake_disc_mount_volume():
+    import frame.parts.brake_disc_mount as brake_disc_mount
+    thing = brake_disc_mount.volume()
+    print(sp.scad_render(thing))
+
+
 def test_drive_sprocket_projection():
     import frame.parts.drive_sprocket as drive_sprocket
     thing = drive_sprocket.projection()
@@ -22,6 +28,12 @@ def test_drive_sprocket_projection():
 def test_drive_sprocket_volume():
     import frame.parts.drive_sprocket as drive_sprocket
     thing = drive_sprocket.volume()
+    print(sp.scad_render(thing))
+
+
+def test_drive_sprocket_mount_volume():
+    import frame.parts.drive_sprocket_mount as drive_sprocket_mount
+    thing = drive_sprocket_mount.volume()
     print(sp.scad_render(thing))
 
 
