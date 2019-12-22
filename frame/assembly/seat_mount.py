@@ -9,8 +9,6 @@ from frame.materials import box_section, plate
 from frame.assembly import outer
 from frame.utils import entrypoint
 
-plate_thickness = 1
-
 seat_depth = 280
 
 seat_mount_centres = [300, 200]
@@ -43,22 +41,9 @@ def assembly():
         ]
     )
 
-    # Clearence holes drilled into plate
-    # Tap threads into seat mount box section
-    top_plate = spu.up((box_section.default_size[1] + plate_thickness) / 2.)(
-        plate.volume(
-            size=(
-                outer * 2. + box_section.default_size[0],
-                280 + box_section.default_size[0]
-            ),
-            thickness=plate_thickness
-        )
-    )
-
     frame = sp.union()(
         sp.color('red')(x_bars),
         sp.color('green')(y_bars),
-        sp.color('blue')(top_plate),
     )
 
     holes = place_at_centres(

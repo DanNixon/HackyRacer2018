@@ -8,7 +8,6 @@ from frame.materials import box_section, plate
 from frame.parts import rear_axle_bearing
 from frame.utils import entrypoint
 
-plate_thickness = 3
 front_bumper_depth = 150
 
 
@@ -99,25 +98,6 @@ def assembly():
         )
     )
 
-    # Clearence holes drilled into lower floor plate
-    # Tap threads into lower frame box section
-    floor_panel = sp.translate(
-        [
-            -inner - box_section.default_size[0] / 2.,
-            -box_section.default_size[0],
-            -(box_section.default_size[1] / 2.) - plate_thickness
-        ]
-    )(
-        plate.volume(
-            size=(
-                inner * 2. + box_section.default_size[0],
-                inner_length + 2. * box_section.default_size[0]
-            ),
-            thickness=plate_thickness,
-            center=False
-        )
-    )
-
     return sp.union()(
         outer_bars,
         inner_bars,
@@ -125,7 +105,6 @@ def assembly():
         front_bar,
         mid_bars,
         rear_bar,
-        floor_panel,
         bearings,
     )
 
