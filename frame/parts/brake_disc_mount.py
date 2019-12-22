@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import solid as sp
 import solid.utils as spu
 
