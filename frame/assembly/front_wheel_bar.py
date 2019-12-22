@@ -5,48 +5,47 @@ import solid.utils as spu
 
 from frame.assembly import wheel_centre_distance
 from frame.materials import box_section
-from frame.utils import entrypoint
-
-bar_thickness = 5
+from frame.utils import entrypoint, place_at_centres
 
 bar_length = wheel_centre_distance - (100 * 2) - 70
 
-inner_height = 35
-inner_depth = 40
+mount_overhang = 50
+mount_overlap = 50
 
 
 def assembly():
-    bar = sp.rotate([0, 90,
-                     0])(box_section.volume(length=bar_length, center=True))
+    main_bar = sp.rotate([0, 90, 0])(
+        box_section.volume(length=bar_length, center=True)
+    )
 
-    # TODO: design this in 2D and extrude
-    _mount = spu.right((bar_length + bar_thickness) / 2.)(
-        sp.union()(
-            sp.cube(
-                [
-                    bar_thickness, box_section.default_size[0], inner_height +
-                    (2. * bar_thickness)
-                ],
-                center=True
-            ),
-            [
-                sp.translate([0, -box_section.default_size[0] / 2., d])(
-                    sp.cube(
-                        [
-                            inner_depth + bar_thickness,
-                            box_section.default_size[0], bar_thickness
-                        ]
-                    )
-                )
-                for d in [-inner_height / 2 - bar_thickness, inner_height / 2.]
-            ],
+    d = box_section.default_size[0]
+
+    padding_bars = sp.color('green')(
+        sp.translate([-bar_length / 2., 0, -d])(
+            sp.rotate([0, 90, 0])(
+                box_section.volume(length=mount_overlap, center=False)
+            )
         )
     )
-    _mounts = [sp.rotate([0, 0, a])(_mount) for a in [0, 180]]
+
+    mount_bars = sp.color('blue')(
+        [
+            sp.translate([(-bar_length / 2.) - mount_overhang, 0, z])(
+                sp.rotate([0, 90, 0])(
+                    box_section.volume(
+                        length=mount_overhang + mount_overlap, center=False
+                    )
+                )
+            ) for z in [d, -d * 2.]
+        ]
+    )
 
     return sp.union()(
-        sp.color('red')(bar),
-        sp.color('green')(_mounts),
+        sp.color('red')(main_bar),
+        [sp.rotate([0, 0, a])(
+            padding_bars,
+            mount_bars,
+        ) for a in [0, 180]],
     )
 
 
