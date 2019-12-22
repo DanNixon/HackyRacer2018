@@ -4,7 +4,8 @@ import solid as sp
 import solid.utils as spu
 
 from frame.utils import entrypoint, place_at_centres
-import frame.parts.motor as motor
+
+from . import motor
 
 plate_thickness = 6
 

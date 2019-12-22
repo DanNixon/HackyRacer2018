@@ -6,7 +6,6 @@ import solid.utils as spu
 from frame.materials import box_section
 from frame.utils import entrypoint
 from frame.primitives import drilled_hole
-import frame.parts.brake_disc as brake_disc
 
 pedal_width = 80.
 

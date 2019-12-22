@@ -4,9 +4,12 @@ import solid as sp
 import solid.utils as spu
 
 from frame.utils import place_at_centres
-from frame.assembly import axle_diameter, wheel_centre_distance, brake_disc_mount, drive_sprocket_mount
+from frame.assembly import axle_diameter, wheel_centre_distance
 from frame.utils import entrypoint
 import frame.parts.wheel as wheel
+
+from . import brake_disc
+from . import drive_sprocket
 
 sprocket_pos = 145
 brake_disc_pos = 145
@@ -19,12 +22,14 @@ def assembly():
         sp.cylinder(d=axle_diameter, h=axle_length, center=True)
     )
 
-    drive_sprocket = spu.up(sprocket_pos)(
-        sp.color('green')(drive_sprocket_mount.assembly())
+    sprocket_assy = spu.up(sprocket_pos)(
+        sp.color('green')(drive_sprocket.assembly())
     )
 
-    brake_disc = spu.down(brake_disc_pos)(
-        sp.color('blue')(sp.rotate([180, 0, 0])(brake_disc_mount.assembly()))
+    brake_disc_assy = spu.down(brake_disc_pos)(
+        sp.color('blue')(
+            sp.rotate([180, 0, 0])(brake_disc.assembly())
+        )
     )
 
     wheels = [
@@ -34,11 +39,12 @@ def assembly():
     ]
 
     return sp.union()(
-        sp.rotate([0, 90, 0])(sp.union()(
-            axle,
-            drive_sprocket,
-            brake_disc,
-        )),
+        sp.rotate([0, 90,
+                   0])(sp.union()(
+                       axle,
+                       sprocket_assy,
+                       brake_disc_assy,
+                   )),
         wheels,
     )
 

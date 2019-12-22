@@ -5,7 +5,8 @@ import solid.utils as spu
 
 from frame.assembly import axle_diameter
 from frame.utils import entrypoint
-import frame.parts.drive_sprocket as drive_sprocket
+
+from . import sprocket
 
 disc_lip_width = 4
 disc_lip_diameter = 25
@@ -32,7 +33,7 @@ def volume():
     axle = sp.cylinder(d=axle_diameter, h=100, center=True)
 
     # Drill and tap holes for brake disc mounting as appropriate
-    mounting_holes = drive_sprocket.place_mounting_holes(
+    mounting_holes = sprocket.place_mounting_holes(
         sp.cylinder(d=6, h=100, center=True)
     )
 
