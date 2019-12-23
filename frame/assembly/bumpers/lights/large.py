@@ -12,8 +12,8 @@ thickness = 15
 def holes():
     # TODO: check dimensions
     return sp.union()(
-        sp.down(40)(place_at_centres([10, 0], drilled_hole.projection(2))),
-        sp.down(30)(drilled_hole.projection(10)),
+        spu.back(50)(place_at_centres([20, 0], drilled_hole.projection(5))),
+        spu.back(40)(drilled_hole.projection(10)),
     )
 
 

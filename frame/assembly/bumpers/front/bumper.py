@@ -1,10 +1,13 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.assembly.dimensions import outer
 from frame.materials import plate
 from frame.utils import entrypoint, place_at_centres
 from frame.primitives import drilled_hole
-from frame.assembly.dimensions import outer
+
+from .dimensions import small_light_centres, small_light_y_offset, large_light_centres, large_light_y_offset
+from .. import lights
 
 width = 350
 height = 150
@@ -27,7 +30,15 @@ def projection():
         [mounting_hole_centres, 0], drilled_hole.projection(8)
     )
 
-    return panel - mounting_holes
+    small_lights = spu.forward(small_light_y_offset)(
+        place_at_centres([small_light_centres, 0], lights.small.holes())
+    )
+
+    large_lights = spu.forward(large_light_y_offset)(
+        place_at_centres([large_light_centres, 0], lights.large.holes())
+    )
+
+    return panel - mounting_holes - small_lights - large_lights
 
 
 def volume():

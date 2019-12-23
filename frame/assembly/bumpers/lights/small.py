@@ -10,7 +10,7 @@ thickness = 6
 
 def holes():
     # TODO: check dimensions
-    return place_at_centres([20, 0], drilled_hole.projection(2))
+    return place_at_centres([20, 0], drilled_hole.projection(3))
 
 
 def projection():
