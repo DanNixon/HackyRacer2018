@@ -5,7 +5,6 @@ import solid.utils as spu
 
 import frame.assembly.lower_frame as lower_frame
 import frame.assembly.seat_mount as seat_mount
-import frame.assembly.rear_bumper as rear_bumper
 import frame.assembly.front_wheel as front_wheel
 import frame.assembly.brake_pedal as brake_pedal
 from frame.parts import rear_axle_bearing
@@ -13,7 +12,7 @@ from frame.materials import box_section
 from frame.assembly import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length
 from frame.utils import entrypoint
 
-from . import motor, rear_axle
+from . import bumpers, motor, rear_axle
 
 
 def assembly():
@@ -49,7 +48,7 @@ def assembly():
         ),
         sp.color('pink')(
             spu.back(box_section.default_size[1])(
-                sp.rotate([90, 0, 0])(rear_bumper.assembly())
+                sp.rotate([90, 0, 0])(bumpers.rear.assembly())
             )
         ),
         sp.color('lime')(
