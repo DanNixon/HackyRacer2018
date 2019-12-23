@@ -56,3 +56,33 @@ module PanelProjection()
     AssemblyHolesProjection(3.1);
   }
 }
+
+module MountingTab(hole_diameter, hole_centres, outer_radius, lower_offset)
+{
+  dx = hole_centres / 2;
+  magic_1 = 5;
+
+  difference()
+  {
+    hull()
+    {
+      square([hole_centres + 2 * outer_radius, magic_1], center=true);
+
+      for(x = [-dx, dx])
+      {
+        translate([x, magic_1-lower_offset])
+        {
+          circle(r=outer_radius, $fn=32);
+        }
+      }
+    }
+
+    for(x = [-dx, dx])
+    {
+      translate([x, magic_1-lower_offset])
+      {
+        circle(d=hole_diameter, $fn=32);
+      }
+    }
+  }
+}
