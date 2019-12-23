@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import solid as sp
 
 from frame.utils import bom
