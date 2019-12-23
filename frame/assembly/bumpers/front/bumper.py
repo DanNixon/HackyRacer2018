@@ -13,7 +13,7 @@ thickness = 8
 
 magic_1 = 20
 
-mounting_hole_centres = 300
+mounting_hole_centres = 200
 
 
 def projection():

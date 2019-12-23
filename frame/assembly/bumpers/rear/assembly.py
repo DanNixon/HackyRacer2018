@@ -3,8 +3,8 @@ import solid.utils as spu
 
 from frame.utils import entrypoint, place_at_centres
 
-from . import bumper
 from .dimensions import light_centres, light_y_offset
+from . import bumper
 from .. import lights
 
 
