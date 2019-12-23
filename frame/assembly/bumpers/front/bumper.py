@@ -6,14 +6,14 @@ from frame.utils import entrypoint, place_at_centres
 from frame.primitives import drilled_hole
 from frame.assembly.dimensions import outer
 
-width = 2. * outer
+width = 350
 height = 150
 
 thickness = 8
 
 magic_1 = 20
 
-mounting_hole_centres = 200
+mounting_hole_centres = 180
 
 
 def projection():

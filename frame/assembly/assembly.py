@@ -9,7 +9,7 @@ from frame.parts import rear_axle_bearing
 from frame.materials import box_section
 from frame.utils import entrypoint
 
-from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length
+from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, front_bumper_depth
 from . import bumpers, motor, rear_axle
 
 
@@ -45,9 +45,12 @@ def assembly():
                           0])(sp.rotate([90, 0, -90])(motor.assembly()))
         ),
         sp.color('pink')(
+            spu.forward(inner_length + front_bumper_depth + box_section.default_size[0])(
+                sp.rotate([90, 0, 180])(bumpers.front.assembly())
+            ),
             spu.back(box_section.default_size[1])(
                 sp.rotate([90, 0, 0])(bumpers.rear.assembly())
-            )
+            ),
         ),
         sp.color('lime')(
             sp.translate(
