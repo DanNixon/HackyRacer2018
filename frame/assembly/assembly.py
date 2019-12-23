@@ -9,9 +9,9 @@ import frame.assembly.front_wheel as front_wheel
 import frame.assembly.brake_pedal as brake_pedal
 from frame.parts import rear_axle_bearing
 from frame.materials import box_section
-from frame.assembly import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length
 from frame.utils import entrypoint
 
+from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length
 from . import bumpers, motor, rear_axle
 
 

@@ -3,9 +3,10 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import axle_diameter
 from frame.utils import entrypoint
 import frame.parts.wheel as wheel
+
+from .dimensions import axle_diameter
 
 magic_1 = 30
 magic_2 = 25

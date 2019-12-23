@@ -4,9 +4,9 @@ import solid as sp
 import solid.utils as spu
 
 from frame.utils import place_at_centres
-from frame.assembly import axle_diameter, wheel_centre_distance
 from frame.utils import entrypoint
 import frame.parts.wheel as wheel
+from frame.assembly.dimensions import axle_diameter, wheel_centre_distance
 
 from . import brake_disc
 from . import drive_sprocket

@@ -1,10 +1,10 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import outer
 from frame.materials import plate
 from frame.utils import entrypoint, place_at_centres
 from frame.primitives import drilled_hole
+from frame.assembly.dimensions import outer
 
 width = 2. * outer
 height = 150

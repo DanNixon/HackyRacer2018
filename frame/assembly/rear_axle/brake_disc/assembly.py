@@ -3,7 +3,7 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import axle_diameter
+from frame.assembly.dimensions import axle_diameter
 from frame.utils import entrypoint
 
 from . import disc

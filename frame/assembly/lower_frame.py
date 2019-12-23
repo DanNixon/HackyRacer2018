@@ -3,10 +3,12 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import outer, outer_length, inner, inner_length, front_wheel_bar, rear_axle_position
 from frame.materials import box_section, plate
 from frame.parts import rear_axle_bearing
 from frame.utils import entrypoint
+
+from .dimensions import outer, outer_length, inner, inner_length, rear_axle_position
+from . import front_wheel_bar
 
 front_bumper_depth = 150
 
