@@ -4,29 +4,9 @@ import solid.utils as spu
 from frame.utils import entrypoint
 import frame.parts.wheel as wheel
 
-from .dimensions import axle_diameter
-
-magic_1 = 30
-magic_2 = 25
-magic_3 = 20
-magic_4 = 40
-
 
 def assembly():
-    return sp.union()(
-        sp.color('red')(spu.right(100)(wheel.volume())),
-        sp.color('green')(
-            sp.hull()(
-                sp.cylinder(h=magic_1, r=magic_2, center=True),
-                spu.right(magic_4)(
-                    sp.cylinder(h=magic_1, r=magic_3, center=True)
-                )
-            )
-        ),
-        sp.color('blue')(
-            sp.rotate([0, 90, 0])(sp.cylinder(d=axle_diameter, h=160))
-        ),
-    )
+    return sp.union()(sp.color('red')(spu.right(100)(wheel.volume())), )
 
 
 if __name__ == '__main__':
