@@ -45,16 +45,16 @@ def assembly():
                           0])(sp.rotate([90, 0, -90])(motor.assembly()))
         ),
         sp.color('pink')(
-            spu.forward(inner_length + front_bumper_depth + box_section.default_size[0])(
-                sp.rotate([90, 0, 180])(bumpers.front.assembly())
-            ),
+            spu.forward(
+                inner_length + front_bumper_depth + box_section.default_size[0]
+            )(sp.rotate([90, 0, 180])(bumpers.front.assembly())),
             spu.back(box_section.default_size[1])(
                 sp.rotate([90, 0, 0])(bumpers.rear.assembly())
             ),
         ),
         sp.color('lime')(
             sp.translate(
-                [-inner + (box_section.default_size[0] / 2.), magic_1, 0]
+                [-inner + (box_section.default_size[0] / 2.) + 1., magic_1, 0]
             )(brake_pedal.assembly())
         ),
     )

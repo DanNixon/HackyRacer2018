@@ -2,7 +2,7 @@ import solid as sp
 
 
 def projection(diameter):
-    return sp.circle(d=diameter)
+    return sp.circle(d=diameter, segments=32)
 
 
 def volume(diameter):

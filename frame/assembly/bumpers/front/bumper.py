@@ -30,15 +30,15 @@ def projection():
         [mounting_hole_centres, 0], drilled_hole.projection(8)
     )
 
-    small_lights = spu.forward(small_light_y_offset)(
+    small_light_holes = spu.forward(small_light_y_offset)(
         place_at_centres([small_light_centres, 0], lights.small.holes())
     )
 
-    large_lights = spu.forward(large_light_y_offset)(
+    large_light_holes = spu.forward(large_light_y_offset)(
         place_at_centres([large_light_centres, 0], lights.large.holes())
     )
 
-    return panel - mounting_holes - small_lights - large_lights
+    return panel - mounting_holes - small_light_holes - large_light_holes
 
 
 def volume():
