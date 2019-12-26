@@ -4,8 +4,7 @@ import solid.utils as spu
 from frame.assembly.dimensions import axle_diameter
 from frame.utils import entrypoint
 
-from . import mount
-from . import sprocket
+from . import mount, sprocket
 
 
 def assembly():

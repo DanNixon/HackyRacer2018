@@ -38,4 +38,4 @@ def volume():
 
 
 if __name__ == '__main__':
-    entrypoint.main(assembly())
+    entrypoint.main(volume())

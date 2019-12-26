@@ -1,16 +1,15 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly.dimensions import axle_diameter
 from frame.utils import entrypoint
 
-from . import disc, mount
+from . import mount, wheel
 
 
 def assembly():
     return sp.union()(
-        sp.color('red')(mount.volume()),
-        sp.color('green')(spu.down(disc.thickness)(disc.volume())),
+        sp.color('red')(wheel.volume()),
+        sp.color('green')(spu.down(10)(sp.rotate((0, 180, 0))(mount.volume()))),
     )
 
 
