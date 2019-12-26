@@ -7,29 +7,29 @@ from frame.utils import entrypoint
 
 from . import sprocket
 
-disc_lip_width = 4
-disc_lip_diameter = 25
+lip_width = 4
+lip_diameter = 25
 
-disc_face_width = 12
-disc_face_diameter = 55
+face_width = 12
+face_diameter = 55
 
-axle_clamp_width = 28
-axle_clamp_diameter = 33
+clamp_width = 28
+clamp_diameter = 33
 
 
 def volume():
-    lip = spu.down(disc_lip_width)(
-        sp.cylinder(d=disc_lip_diameter, h=disc_lip_width)
-    )
+    lip = spu.down(lip_width)(sp.cylinder(d=lip_diameter, h=lip_width))
 
-    face_plate = sp.cylinder(d=disc_face_diameter, h=disc_face_width)
+    face_plate = sp.cylinder(d=face_diameter, h=face_width)
 
     # Drill and tap holes for axle key screws as appropriate
-    axle_clamp = sp.cylinder(
-        d=axle_clamp_diameter, h=disc_face_width + axle_clamp_width
-    )
+    axle_clamp = sp.cylinder(d=clamp_diameter, h=face_width + clamp_width)
 
-    axle = sp.cylinder(d=axle_diameter, h=100, center=True)
+    axle = spu.down(lip_width + 1)(
+        sp.cylinder(
+            d=axle_diameter, h=lip_width + face_width + clamp_width + 2
+        )
+    )
 
     # Drill and tap holes for brake disc mounting as appropriate
     mounting_holes = sprocket.place_mounting_holes(drilled_hole.volume(6))

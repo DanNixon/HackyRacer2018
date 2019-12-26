@@ -2,6 +2,12 @@ import solid as sp
 
 from frame.utils import bom, entrypoint, place_n_at_x_around
 
+# This isn't an accurate representation of the steering wheel.
+# The main plate section is not actually flat, but for design purposes that
+# isn't overly important.
+
+plate_thickness = 6.
+
 xu = 150.
 yu = 80.
 
@@ -44,7 +50,7 @@ def volume():
         )
 
     return sp.union()(
-        sp.linear_extrude(6, center=True)(projection()),
+        sp.linear_extrude(plate_thickness, center=True)(projection()),
         handle_bar(((-xd, yd), (-xu, yu), (-xu, yu + 20.)), 20),
         handle_bar(((xd, yd), (xu, yu), (xu, yu + 20.)), 20),
     )
