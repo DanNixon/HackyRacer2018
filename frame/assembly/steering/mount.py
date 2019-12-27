@@ -13,16 +13,16 @@ face_diameter = 60
 clamp_width = 36
 clamp_diameter = 32
 
+length = face_width + clamp_width
+
 
 def volume():
     face_plate = sp.cylinder(d=face_diameter, h=face_width)
 
     # Drill and tap holes for axle key screws as appropriate
-    axle_clamp = sp.cylinder(d=clamp_diameter, h=face_width + clamp_width)
+    axle_clamp = sp.cylinder(d=clamp_diameter, h=length)
 
-    axle = spu.down(1)(
-        sp.cylinder(d=axle_diameter, h=face_width + clamp_width + 2)
-    )
+    axle = spu.down(1)(sp.cylinder(d=axle_diameter, h=length + 2))
 
     # Drill and tap holes for brake disc mounting as appropriate
     mounting_holes = wheel.place_mounting_holes(drilled_hole.volume(5))
