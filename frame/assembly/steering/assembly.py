@@ -3,7 +3,7 @@ import solid.utils as spu
 
 from frame.utils import entrypoint
 
-from . import instrument_panel, mount, wheel
+from . import instrument_panel, throttle, mount, wheel
 
 
 def assembly():
@@ -17,8 +17,10 @@ def assembly():
                         spu.right(50)(instrument_panel.right.volume(), ),
                     ),
                 ),
+                sp.translate((150, 100)
+                            )(sp.color('blue')(throttle.assembly(), ), ),
             ),
-            sp.color('blue')(sp.rotate((0, 180, 0))(mount.volume())),
+            sp.color('cyan')(sp.rotate((0, 180, 0))(mount.volume())),
         ),
     )
 
