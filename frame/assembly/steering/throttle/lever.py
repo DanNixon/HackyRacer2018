@@ -2,7 +2,8 @@ import solid as sp
 
 from frame.utils import entrypoint
 
-from .dimensions import lever_thickness, pot_shaft_diameter
+pot_shaft_diameter = 6.
+thickness = 6.
 
 
 def hull_part(pa, pb, da, db):
@@ -38,7 +39,7 @@ def projection():
 
 
 def volume():
-    return sp.linear_extrude(lever_thickness, center=True)(projection())
+    return sp.linear_extrude(thickness, center=True)(projection())
 
 
 if __name__ == '__main__':
