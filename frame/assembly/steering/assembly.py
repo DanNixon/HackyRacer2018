@@ -1,27 +1,33 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.assembly.dimensions import axle_diameter
+from frame.materials import round_bar
 from frame.utils import entrypoint
 
 from . import instrument_panel, throttle, mount, wheel
+from .dimensions import column_length
 
 
 def assembly():
+    column = round_bar.volume(diameter=axle_diameter, length=column_length)
+
     return sp.union()(
-        spu.up(mount.length)(
+        spu.up(column_length)(
             spu.up(wheel.plate_thickness / 2.)(
                 sp.color('red')(wheel.volume()),
                 spu.up(wheel.plate_thickness / 2.)(
                     sp.color('green')(
-                        spu.left(50)(instrument_panel.left.volume(), ),
-                        spu.right(50)(instrument_panel.right.volume(), ),
+                        instrument_panel.left.volume(),
+                        instrument_panel.right.volume(),
                     ),
                 ),
                 sp.translate((150, 100)
                             )(sp.color('blue')(throttle.assembly(), ), ),
             ),
-            sp.color('cyan')(sp.rotate((0, 180, 0))(mount.volume())),
+            sp.rotate((0, 180, 0))(sp.color('cyan')(mount.volume())),
         ),
+        sp.color('magenta')(column),
     )
 
 

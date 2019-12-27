@@ -1,9 +1,10 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.utils import entrypoint, place_at_centres
-import frame.parts.wheel as wheel
 from frame.assembly.dimensions import axle_diameter, wheel_centre_distance
+from frame.materials import round_bar
+import frame.parts.wheel as wheel
+from frame.utils import entrypoint, place_at_centres
 
 from . import brake_disc, drive_sprocket
 
@@ -15,7 +16,9 @@ axle_length = wheel_centre_distance + 120
 
 def assembly():
     axle = sp.color('red')(
-        sp.cylinder(d=axle_diameter, h=axle_length, center=True)
+        round_bar.volume(
+            diameter=axle_diameter, length=axle_length, center=True
+        )
     )
 
     sprocket_assy = spu.up(sprocket_pos)(

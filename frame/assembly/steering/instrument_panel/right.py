@@ -7,13 +7,18 @@ from .dimensions import panel_thickness, switch_diameter, cherry_mx_cutout
 
 
 def projection():
-    p = panel.projection(((0, -50), (0, 50), (40, -55), (50, 60)))
+    x1 = 60.
+    x2 = 80.
+
+    xm = x1 + ((x2 - x1) / 2.)
+
+    p = panel.projection(((x1, -60), (x1, 60), (x2, -60), (x2, 60)))
 
     gear_select_switch = sp.translate(
-        (40, 40)
+        (xm, 30)
     )(sp.circle(d=switch_diameter, segments=32), )
 
-    display_button = sp.translate((30, 10)
+    display_button = sp.translate((xm, -20)
                                  )(sp.square(cherry_mx_cutout, center=True), )
 
     return p - gear_select_switch - display_button
