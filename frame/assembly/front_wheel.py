@@ -2,7 +2,8 @@ import solid as sp
 import solid.utils as spu
 
 from frame.utils import entrypoint
-import frame.parts.wheel as wheel
+
+from . import wheel
 
 
 def assembly():

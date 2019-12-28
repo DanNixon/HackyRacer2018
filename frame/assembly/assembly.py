@@ -5,12 +5,11 @@ import frame.assembly.lower_frame as lower_frame
 import frame.assembly.seat_mount as seat_mount
 import frame.assembly.front_wheel as front_wheel
 import frame.assembly.brake_pedal as brake_pedal
-from frame.parts import rear_axle_bearing
 from frame.materials import box_section
 from frame.utils import entrypoint
 
 from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, front_bumper_depth, max_outer_dimensions
-from . import bumpers, electronics_tray, motor, rear_axle, steering
+from . import bumpers, electronics_tray, motor, rear_axle, rear_axle_bearing, steering
 
 
 def assembly():
