@@ -10,7 +10,7 @@ from frame.materials import box_section
 from frame.utils import entrypoint
 
 from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, front_bumper_depth, max_outer_dimensions
-from . import bumpers, motor, rear_axle, steering
+from . import bumpers, electronics_tray, motor, rear_axle, steering
 
 
 def assembly():
@@ -61,6 +61,11 @@ def assembly():
         sp.color('orange')(
             sp.translate((0, 950, 0))(
                 sp.rotate((45, 0, 0))(steering.assembly())
+            )
+        ),
+        sp.color('brown')(
+            sp.translate((0, 75, box_section.default_size[0] / 2.))(
+                electronics_tray.assembly()
             )
         ),
     )
