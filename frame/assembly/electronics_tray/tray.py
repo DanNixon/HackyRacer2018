@@ -3,7 +3,7 @@ import solid as sp
 from frame.assembly.dimensions import inner
 from frame.utils import bom, entrypoint, place_at_centres
 
-from . import lighting_control_board, placements, vesc
+from . import can_bus_board, lighting_control_board, placements, relay_board, vesc
 from .dimensions import tray_dimensions, tray_thickness
 
 mounting_hole_centres = (inner * 2., tray_dimensions[1] - 20.)
@@ -19,7 +19,11 @@ def projection():
 
     return panel - frame_mounting_holes - placements.vesc()(
         vesc.holes()
-    ) - placements.lighting_control_board()(lighting_control_board.holes())
+    ) - placements.lighting_control_board()(
+        lighting_control_board.holes()
+    ) - placements.can_bus_board()(
+        can_bus_board.holes()
+    ) - placements.relay_board()(relay_board.holes())
 
 
 @bom.part('Electronics Tray')
