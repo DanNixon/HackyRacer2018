@@ -7,7 +7,7 @@ from . import can_bus_board, lighting_control_board, placements, relay_board, ve
 from .dimensions import tray_dimensions, tray_thickness
 
 mounting_hole_centres = (inner * 2., tray_dimensions[1] - 20.)
-mounting_hole_diameter = 4.
+mounting_hole_diameter = 3.5
 
 
 def projection():
