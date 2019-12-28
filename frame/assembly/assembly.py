@@ -9,7 +9,7 @@ from frame.parts import rear_axle_bearing
 from frame.materials import box_section
 from frame.utils import entrypoint
 
-from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, front_bumper_depth
+from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, front_bumper_depth, max_outer_dimensions
 from . import bumpers, motor, rear_axle, steering
 
 
@@ -66,5 +66,17 @@ def assembly():
     )
 
 
+def size_check():
+    return sp.union()(
+        assembly(),
+        sp.translate((0., 600., 100.))(
+            sp.color((1., 1., 1., 0.4))(
+                sp.cube(max_outer_dimensions, center=True)
+            )
+        ),
+    )
+
+
 if __name__ == '__main__':
-    entrypoint.main(assembly())
+    # entrypoint.main(assembly())
+    entrypoint.main(size_check())

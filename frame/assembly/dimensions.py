@@ -1,3 +1,6 @@
+# Maximum dimensions based on how I will have to transport the assembled racer
+max_outer_dimensions = [800., 1500., 600.]
+
 axle_diameter = 16
 
 outer = 210
