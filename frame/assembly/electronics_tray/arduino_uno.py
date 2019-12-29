@@ -21,7 +21,7 @@ def projection():
     return sp.square(body_dimensions[:2], center=True) - holes()
 
 
-@bom.part('CAN Bus Board')
+@bom.part('Arduino UNO')
 def volume():
     return sp.linear_extrude(body_dimensions[2])(projection())
 
