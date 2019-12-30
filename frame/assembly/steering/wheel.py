@@ -8,10 +8,12 @@ from frame.utils import bom, entrypoint, place_n_at_x_around
 
 plate_thickness = 6.
 
-xu = 150.
-yu = 80.
+mounting_hole_diameter = 6.
 
-xd = 130.
+xu = 150.
+yu = 60.
+
+xd = 125.
 yd = -60.
 
 
@@ -20,21 +22,22 @@ def place_mounting_holes(obj):
 
 
 def projection():
-    cu = 50.
-    cd = -50.
+    cu = 30.
+    cd = -30.
 
-    def arm(points, d):
+    def arm(a, b):
         return sp.hull()(
-            [sp.translate(p)(sp.circle(d=d, segments=32)) for p in points]
+            sp.translate(a)(sp.circle(d=20., segments=32)),
+            sp.translate(b)(sp.circle(d=25., segments=32)),
         )
 
     return sp.union()(
-        sp.square((100, 100), center=True),
-        arm(((-xu, yu), (0, cu)), 20),
-        arm(((xu, yu), (0, cu)), 20),
-        arm(((-xd, yd), (0, cd)), 20),
-        arm(((xd, yd), (0, cd)), 20),
-    ) - place_mounting_holes(sp.circle(d=4.5, segments=32))
+        sp.square((75., 75.), center=True),
+        arm((-xu, yu), (0, cu)),
+        arm((xu, yu), (0, cu)),
+        arm((-xd, yd), (0, cd)),
+        arm((xd, yd), (0, cd)),
+    ) - place_mounting_holes(sp.circle(d=mounting_hole_diameter))
 
 
 @bom.part('Steering Wheel')
