@@ -2,17 +2,19 @@ import solid as sp
 
 from frame.utils import place_at_centres
 
-from .dimensions import size, corner_radius
+from .dimensions import size, corner_radius, mounting_hole_corner_offset
 
 
 def place_mounting_holes(obj):
-    return place_at_centres([d - 5. for d in size], obj)
+    return place_at_centres(
+        [d - (mounting_hole_corner_offset * 2.) for d in size], obj
+    )
 
 
 def outer_projection():
     p = sp.hull()(
         place_at_centres(
-            [d - corner_radius for d in size],
+            [d - (2. * corner_radius) for d in size],
             sp.circle(r=corner_radius, segments=32)
         )
     )
