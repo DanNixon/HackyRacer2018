@@ -4,7 +4,7 @@ import solid.utils as spu
 from frame.utils import bom
 
 # TODO
-default_size = (10., 2.)
+default_size = (12., 5.)
 
 
 def projection(size=None, center=False):
