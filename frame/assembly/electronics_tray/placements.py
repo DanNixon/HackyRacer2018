@@ -10,11 +10,11 @@ def bec_module(obj):
 
 
 def can_bus_board(obj):
-    return sp.translate((80, 30))(obj)
+    return sp.translate((-80, 30))(obj)
 
 
 def lighting_control_board(obj):
-    return sp.translate((80, -30))(obj)
+    return sp.translate((-80, -30))(obj)
 
 
 def relay_board(obj):
@@ -22,4 +22,4 @@ def relay_board(obj):
 
 
 def vesc(obj):
-    return sp.translate((-80, 0))(obj)
+    return sp.translate((80, 0))(obj)

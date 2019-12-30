@@ -8,10 +8,10 @@ from frame.utils import entrypoint, place_at_centres
 
 from . import brake_disc, drive_sprocket
 
-sprocket_pos = 145
-brake_disc_pos = 145
+sprocket_pos = 147.
+brake_disc_pos = 160.
 
-axle_length = wheel_centre_distance + 120
+axle_length = wheel_centre_distance + 120.
 
 
 def assembly():
@@ -21,12 +21,12 @@ def assembly():
         )
     )
 
-    sprocket_assy = spu.up(sprocket_pos)(
+    sprocket_assy = spu.down(sprocket_pos)(
         sp.color('green')(drive_sprocket.assembly())
     )
 
-    brake_disc_assy = spu.down(brake_disc_pos)(
-        sp.color('blue')(sp.rotate([180, 0, 0])(brake_disc.assembly()))
+    brake_disc_assy = spu.up(brake_disc_pos)(
+        sp.color('blue')(sp.rotate((180, 0, 0))(brake_disc.assembly()))
     )
 
     wheels = [

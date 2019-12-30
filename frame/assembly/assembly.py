@@ -40,8 +40,8 @@ def assembly():
             )
         ),
         sp.color('magenta')(
-            sp.translate((inner + box_section.default_size[0] / 2., 300, 0))(
-                sp.rotate((90, 0, -90))(motor.assembly())
+            sp.translate((-inner - box_section.default_size[0] / 2., 300, 0))(
+                sp.rotate((90, 0, 90))(motor.assembly())
             )
         ),
         sp.color('pink')(
