@@ -13,7 +13,7 @@ split_ring_space = 3.
 split_ring_screw_hole_diameter = 4.
 
 pot_mount_diameter = 7.5
-pot_mount_thickness = 4.
+pot_mount_thickness = 5.
 
 split_ring_additional_padding = 2.
 
@@ -29,9 +29,7 @@ def volume():
     ),
 
     inner = sp.rotate((90, 0, 0))(
-        sp.cylinder(
-            d=hand_grip_diameter, h=ring_length + 1., center=True, segments=32
-        )
+        sp.cylinder(d=hand_grip_diameter, h=100., center=True, segments=32)
     )
 
     split_ring_padding = spu.down(magic_1 / 2.)(

@@ -1,6 +1,9 @@
 import solid as sp
 
+from frame.primitives import drilled_hole
 from frame.utils import bom, entrypoint, place_n_at_x_around
+
+from . import instrument_panel
 
 # This isn't an accurate representation of the steering wheel.
 # The main plate section is not actually flat, but for design purposes that
@@ -34,13 +37,20 @@ def projection():
             sp.translate(b)(sp.circle(d=25., segments=32)),
         )
 
+    # Drill these holes in the existing steering wheel
+    box_mounting_holes = instrument_panel.place_mounting_holes(
+        drilled_hole.projection(diameter=4.)
+    )
+
     return sp.union()(
         sp.square((75., 75.), center=True),
         arm((-xu, yu), (0, cu)),
         arm((xu, yu), (0, cu)),
         arm((-xd, yd), (0, cd)),
         arm((xd, yd), (0, cd)),
-    ) - place_mounting_holes(sp.circle(d=mounting_hole_diameter))
+    ) - place_mounting_holes(
+        sp.circle(d=mounting_hole_diameter)
+    ) - box_mounting_holes
 
 
 @bom.part('Steering Wheel')

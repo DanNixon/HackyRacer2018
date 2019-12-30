@@ -14,7 +14,7 @@ def hull_part(pa, pb, da, db):
 
 
 def projection():
-    pq = (-5., 20.)
+    pq = (-15., 25.)
     pa = (0., 0.)
     pb = (30., 3.)
     pc = (38., 6.)
