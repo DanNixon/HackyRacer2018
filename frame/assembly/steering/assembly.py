@@ -20,7 +20,7 @@ def assembly():
                     sp.color('green')(instrument_panel.assembly())
                 ),
                 sp.translate((150, 80))(
-                    sp.rotate((0., 50., 0.))(
+                    sp.rotate((0., 60., 0.))(
                         sp.color('blue')(throttle.assembly())
                     )
                 ),

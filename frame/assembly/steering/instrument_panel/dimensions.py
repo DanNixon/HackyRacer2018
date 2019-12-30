@@ -1,4 +1,4 @@
-size = (70., 70.)
+size = (65., 65.)
 corner_radius = 5.
 mounting_hole_diameter = 3.1
 

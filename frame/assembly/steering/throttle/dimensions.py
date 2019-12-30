@@ -1,3 +1,1 @@
-pot_offset = 30.
-
-pot_angle = -5.
+pot_offset = (0., -20., -30.)

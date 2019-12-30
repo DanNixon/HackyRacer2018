@@ -17,6 +17,7 @@ xd = 125.
 yd = -60.
 
 top_hand_grip_extra = 30.
+hand_grip_diameter = 22.
 
 
 def place_mounting_holes(obj):
@@ -45,7 +46,6 @@ def projection():
 @bom.part('Steering Wheel')
 def volume():
     def handle_bar(points):
-        hand_grip_diameter = 20.
         return sp.union()(
             [
                 sp.hull()(

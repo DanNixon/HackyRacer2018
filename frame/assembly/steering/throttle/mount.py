@@ -1,13 +1,13 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.assembly.steering.wheel import hand_grip_diameter
 from frame.utils import entrypoint
 
 from .dimensions import pot_offset
 
 ring_length = 18.
 ring_outer_diameter = 30.
-ring_inner_diameter = 20.
 
 split_ring_space = 3.
 split_ring_screw_hole_diameter = 4.
@@ -19,9 +19,6 @@ split_ring_additional_padding = 2.
 
 magic_2 = (ring_outer_diameter / 2.)
 magic_1 = magic_2 + split_ring_additional_padding
-magic_4 = 10.
-magic_3 = pot_offset + magic_4
-magic_5 = 4. - magic_2
 
 
 def volume():
@@ -33,7 +30,7 @@ def volume():
 
     inner = sp.rotate((90, 0, 0))(
         sp.cylinder(
-            d=ring_inner_diameter, h=ring_length + 1., center=True, segments=32
+            d=hand_grip_diameter, h=ring_length + 1., center=True, segments=32
         )
     )
 
@@ -56,36 +53,32 @@ def volume():
         )
     )
 
-    pot_mount = sp.difference()(
-        sp.translate((magic_5, 0, -magic_2 - ((magic_3 - magic_2) / 2.)))(
-            sp.cube(
-                (pot_mount_thickness, ring_length + 10., magic_3 - magic_2),
-                center=True
-            )
-        ),
-        sp.translate((0, -2., -pot_offset))(
-            spu.rotate((0, 90, 0))(
+    magic_4 = ring_length + split_ring_additional_padding
+    pot_mount = spu.right(magic_2 - (pot_mount_thickness / 2.))(
+        sp.hull()(
+            sp.translate((0, 0, -magic_4 / 2.))
+            (sp.cube((pot_mount_thickness, ring_length, magic_4), center=True)),
+            sp.translate(pot_offset)
+            (sp.cube((pot_mount_thickness, 15, 15), center=True)),
+            sp.translate((0, 0, pot_offset[2]))
+            (sp.cube((pot_mount_thickness, ring_length, 15), center=True)),
+        ) - sp.translate(pot_offset)(
+            sp.rotate((0, 90, 0))(
                 sp.cylinder(
                     d=pot_mount_diameter,
-                    h=ring_outer_diameter + 1.,
+                    h=pot_mount_thickness + 1.,
                     center=True,
                     segments=32
                 )
             )
-        ),
+        )
     )
-
-    _blanking_offset = (ring_length / 2.) + 50.
-    blanking = [
-        sp.translate((0, y, 0))(sp.cube((100., 100., 100.), center=True))
-        for y in (-_blanking_offset, _blanking_offset)
-    ]
 
     return sp.union()(
         outer,
         split_ring_padding,
-        sp.rotate((0, 0, -5))(pot_mount),
-    ) - inner - split_ring_cutout - split_ring_screw_hole - blanking
+        pot_mount,
+    ) - inner - split_ring_cutout - split_ring_screw_hole
 
 
 if __name__ == '__main__':
