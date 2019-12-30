@@ -25,4 +25,4 @@ def volume(length, size=None, wall_thickness=2., center=False, color='yellow'):
 
 
 if __name__ == '__main__':
-    print(sp.scad_render(volume(100, size=[10, 20])))
+    print(sp.scad_render(volume(length=100, size=(10, 20))))
