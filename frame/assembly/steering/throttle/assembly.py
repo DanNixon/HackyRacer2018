@@ -6,8 +6,8 @@ from frame.utils import entrypoint
 from . import lever, mount
 from .dimensions import pot_offset
 
-# angle = 60.
-angle = 0.
+angle = 60.
+# angle = 0.
 
 
 def assembly():

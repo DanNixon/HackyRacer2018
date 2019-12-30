@@ -59,7 +59,7 @@ def assembly():
         ),
         sp.color('orange')(
             sp.translate((0, 950, 0))(
-                sp.rotate((45, 0, 0))(steering.assembly())
+                sp.rotate((40, 0, 0))(steering.assembly())
             )
         ),
         sp.color('brown')(
