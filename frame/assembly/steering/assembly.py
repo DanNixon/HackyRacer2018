@@ -17,13 +17,13 @@ def assembly():
             spu.up(wheel.plate_thickness / 2.)(
                 sp.color('red')(wheel.volume()),
                 spu.up(wheel.plate_thickness / 2.)(
-                    sp.color('green')(
-                        instrument_panel.left.volume(),
-                        instrument_panel.right.volume(),
-                    ),
+                    sp.color('green')(instrument_panel.assembly())
                 ),
-                sp.translate((150, 100)
-                            )(sp.color('blue')(throttle.assembly(), ), ),
+                sp.translate((150, 80))(
+                    sp.rotate((0., 50., 0.))(
+                        sp.color('blue')(throttle.assembly())
+                    )
+                ),
             ),
             sp.rotate((0, 180, 0))(sp.color('cyan')(mount.volume())),
         ),

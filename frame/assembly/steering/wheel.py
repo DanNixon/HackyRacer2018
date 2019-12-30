@@ -16,6 +16,8 @@ yu = 60.
 xd = 125.
 yd = -60.
 
+top_hand_grip_extra = 30.
+
 
 def place_mounting_holes(obj):
     return place_n_at_x_around(3, 20, obj)
@@ -42,20 +44,25 @@ def projection():
 
 @bom.part('Steering Wheel')
 def volume():
-    def handle_bar(points, d):
+    def handle_bar(points):
+        hand_grip_diameter = 20.
         return sp.union()(
             [
                 sp.hull()(
-                    sp.translate(points[i])(sp.sphere(d=d, segments=32)),
-                    sp.translate(points[i + 1])(sp.sphere(d=d, segments=32)),
+                    sp.translate(points[i])(
+                        sp.sphere(d=hand_grip_diameter, segments=32)
+                    ),
+                    sp.translate(points[i + 1])(
+                        sp.sphere(d=hand_grip_diameter, segments=32)
+                    ),
                 ) for i in range(len(points) - 1)
             ]
         )
 
     return sp.union()(
         sp.linear_extrude(plate_thickness, center=True)(projection()),
-        handle_bar(((-xd, yd), (-xu, yu), (-xu, yu + 20.)), 20),
-        handle_bar(((xd, yd), (xu, yu), (xu, yu + 20.)), 20),
+        handle_bar(((-xd, yd), (-xu, yu), (-xu, yu + top_hand_grip_extra))),
+        handle_bar(((xd, yd), (xu, yu), (xu, yu + top_hand_grip_extra))),
     )
 
 

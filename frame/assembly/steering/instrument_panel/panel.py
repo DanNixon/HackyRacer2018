@@ -1,21 +1,40 @@
 import solid as sp
 
-from .dimensions import panel_corner_radius, mounting_hole_diameter
+from frame.utils import entrypoint
+
+from .common import outer_projection
+from .dimensions import panel_thickness, switch_diameter, cherry_mx_cutout
 
 
-def projection(points):
-    panel = sp.hull()(
-        [
-            sp.translate(p)(sp.circle(r=panel_corner_radius, segments=32))
-            for p in points
-        ]
+def projection():
+    p = outer_projection()
+
+    horn_button = sp.translate((-20, 15))(
+        sp.square(cherry_mx_cutout, center=True)
     )
 
-    mounting_holes = sp.union()(
-        [
-            sp.translate(p)(sp.circle(d=mounting_hole_diameter, segments=16))
-            for p in points
-        ]
+    headlight_button = sp.translate((-20, -15))(
+        sp.square(cherry_mx_cutout, center=True)
     )
 
-    return panel - mounting_holes
+    light_switch = sp.translate((0, -15))(
+        sp.circle(d=switch_diameter, segments=32)
+    )
+
+    gear_select_switch = sp.translate((20, 15))(
+        sp.circle(d=switch_diameter, segments=32)
+    )
+
+    display_button = sp.translate((20, -15))(
+        sp.square(cherry_mx_cutout, center=True)
+    )
+
+    return p - horn_button - headlight_button - light_switch - gear_select_switch - display_button
+
+
+def volume():
+    return sp.linear_extrude(panel_thickness)(projection())
+
+
+if __name__ == '__main__':
+    entrypoint.main(projection())

@@ -1,1 +1,1 @@
-from . import left, right
+from .assembly import assembly
