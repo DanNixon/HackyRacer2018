@@ -5,12 +5,10 @@ from frame.assembly.dimensions import axle_diameter
 from frame.primitives import drilled_hole
 from frame.utils import entrypoint
 
-from . import wheel
+face_width = 12
+face_diameter = 50
 
-face_width = 15
-face_diameter = 60
-
-clamp_width = 36
+clamp_width = 30
 clamp_diameter = 32
 
 length = face_width + clamp_width
@@ -24,10 +22,7 @@ def volume():
 
     axle = spu.down(1)(sp.cylinder(d=axle_diameter, h=length + 2))
 
-    # Drill and tap holes for steering wheel mounting as appropriate
-    mounting_holes = wheel.place_mounting_holes(drilled_hole.volume(5))
-
-    return sp.union()(face_plate, axle_clamp) - axle - mounting_holes
+    return sp.union()(face_plate, axle_clamp) - axle
 
 
 if __name__ == '__main__':

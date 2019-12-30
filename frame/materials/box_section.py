@@ -3,7 +3,7 @@ import solid.utils as spu
 
 from frame.utils import bom
 
-default_size = [25., 25.]
+default_size = (25., 25.)
 
 
 def projection(size=None, wall_thickness=2., center=False):
@@ -16,9 +16,7 @@ def projection(size=None, wall_thickness=2., center=False):
 
 
 @bom.part('Box Section')
-def volume(
-    length, size=None, wall_thickness=2., center=False, color=spu.Yellow
-):
+def volume(length, size=None, wall_thickness=2., center=False, color='yellow'):
     size = default_size if size is None else size
 
     material = sp.linear_extrude(length)(projection(size, wall_thickness))
