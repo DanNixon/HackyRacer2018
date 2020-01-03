@@ -1,10 +1,9 @@
 import solid as sp
 import solid.utils as spu
 
+from frame.assembly.dimensions import wheel_centre_distance
 from frame.materials import box_section
 from frame.utils import entrypoint, place_at_centres
-
-from .dimensions import wheel_centre_distance
 
 bar_length = wheel_centre_distance - (100 * 2) - 70
 

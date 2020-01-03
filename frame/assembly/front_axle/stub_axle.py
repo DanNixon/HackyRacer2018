@@ -1,7 +1,9 @@
 import solid as sp
 import solid.utils as spu
 
+# TODO: measure this
 camber = 10.
+
 tie_rod_hole_diameter = 8.
 
 
