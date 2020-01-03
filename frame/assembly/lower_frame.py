@@ -5,7 +5,7 @@ from frame.materials import box_section, plate
 from frame.utils import entrypoint
 
 from .dimensions import outer, outer_length, inner, inner_length, rear_axle_position, front_bumper_depth
-from . import front_wheel_bar, rear_axle_bearing
+from . import front_axle, rear_axle_bearing
 
 
 def assembly():
@@ -53,7 +53,7 @@ def assembly():
     )
 
     front_bar = spu.forward(inner_length + box_section.default_size[0] / 2.)(
-        sp.color('purple')(front_wheel_bar.assembly())
+        sp.color('purple')(front_axle.assembly())
     )
 
     mid_bars = spu.forward(outer_length + box_section.default_size[0] / 2.)(
@@ -89,7 +89,7 @@ def assembly():
         sp.rotate([180, 0, 0])(
             [
                 sp.translate([x, 0, box_section.default_size[0] / 2.])(
-                    rear_axle_bearing.volume()
+                    sp.color('brown')(rear_axle_bearing.volume())
                 ) for x in [-outer, outer]
             ]
         )

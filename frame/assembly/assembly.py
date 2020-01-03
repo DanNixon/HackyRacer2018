@@ -3,7 +3,6 @@ import solid.utils as spu
 
 import frame.assembly.lower_frame as lower_frame
 import frame.assembly.seat_mount as seat_mount
-import frame.assembly.front_wheel as front_wheel
 import frame.assembly.brake_pedal as brake_pedal
 from frame.materials import box_section
 from frame.utils import entrypoint
@@ -25,19 +24,6 @@ def assembly():
                     rear_axle_bearing.shaft_height
                 )
             )(rear_axle.assembly())
-        ),
-        sp.color('cyan')(
-            sp.translate(
-                (0, inner_length + box_section.default_size[0] / 2., 0)
-            )(
-                [
-                    sp.rotate((0, 0, a))(
-                        spu.right(wheel_centre_distance / 2. - 100)(
-                            front_wheel.assembly()
-                        )
-                    ) for a in (0, 180)
-                ]
-            )
         ),
         sp.color('magenta')(
             sp.translate((-inner - box_section.default_size[0] / 2., 300, 0))(

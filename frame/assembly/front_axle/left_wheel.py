@@ -4,14 +4,13 @@ import solid.utils as spu
 from frame.assembly import wheel
 from frame.utils import entrypoint
 
-from . import bar, left_wheel, right_wheel
+from . import left_stub_axle
 
 
 def assembly():
     return sp.union()(
-        sp.color('red')(bar.assembly()),
-        sp.color('green')(spu.left(250)(left_wheel.assembly())),
-        sp.color('blue')(spu.right(250)(right_wheel.assembly())),
+        sp.color('red')(spu.left(100)(wheel.volume())),
+        sp.color('green')(left_stub_axle.volume()),
     )
 
 

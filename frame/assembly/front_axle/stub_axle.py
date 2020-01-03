@@ -60,8 +60,8 @@ def bearing_housing():
 def volume(angle_multiplier):
     return sp.difference()(
         sp.union()(
-            sp.rotate((0., angle_multiplier * 90., 0.))(axle()),
-            sp.rotate((0., angle_multiplier * -camber, 0.))(bearing_housing()),
+            sp.rotate((0., angle_multiplier * 90., 180.))(axle()),
+            sp.rotate((0., angle_multiplier * camber, 0.))(bearing_housing()),
         ),
-        sp.rotate((0., angle_multiplier * -camber, 0.))(kingpin_hole()),
+        sp.rotate((0., angle_multiplier * camber, 0.))(kingpin_hole()),
     )
