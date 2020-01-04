@@ -10,8 +10,8 @@ from . import bar, left_wheel, right_wheel
 def assembly():
     return sp.union()(
         sp.color('red')(bar.assembly()),
-        sp.color('green')(spu.left(250)(left_wheel.assembly())),
-        sp.color('blue')(spu.right(250)(right_wheel.assembly())),
+        sp.color('green')(spu.left(220)(left_wheel.assembly())),
+        sp.color('blue')(spu.right(220)(right_wheel.assembly())),
     )
 
 

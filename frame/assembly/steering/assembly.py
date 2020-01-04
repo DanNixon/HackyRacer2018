@@ -28,7 +28,7 @@ def assembly():
             sp.rotate((0, 180, 0))(sp.color('cyan')(mount.volume())),
         ),
         sp.color('magenta')(column),
-        sp.rotate((0, 0, 180))(
+        sp.rotate((0, 0, 0))(
             sp.color('orange')(lower_mount.volume()),
             sp.color('pink')(
                 spu.down(lower_mount_arm.thickness)(lower_mount_arm.volume())

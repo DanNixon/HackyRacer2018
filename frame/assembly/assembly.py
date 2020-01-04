@@ -7,12 +7,12 @@ import frame.assembly.brake_pedal as brake_pedal
 from frame.materials import box_section
 from frame.utils import entrypoint
 
-from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, front_bumper_depth, max_outer_dimensions
+from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, max_outer_dimensions
 from . import bumpers, electronics_tray, motor, rear_axle, rear_axle_bearing, steering
 
 
 def assembly():
-    magic_1 = outer_length + 150.
+    magic_1 = inner_length - 100.
 
     return sp.union()(
         sp.color('red')(lower_frame.assembly()),
@@ -31,9 +31,9 @@ def assembly():
             )
         ),
         sp.color('pink')(
-            spu.forward(
-                inner_length + front_bumper_depth + box_section.default_size[0]
-            )(sp.rotate((90, 0, 180))(bumpers.front.assembly())),
+            spu.forward(inner_length + box_section.default_size[0])(
+                sp.rotate((90, 0, 180))(bumpers.front.assembly())
+            ),
             spu.back(box_section.default_size[1])(
                 sp.rotate((90, 0, 0))(bumpers.rear.assembly())
             ),
@@ -44,8 +44,8 @@ def assembly():
             )(brake_pedal.assembly())
         ),
         sp.color('orange')(
-            sp.translate((0, 950, 0))(
-                sp.rotate((40, 0, 0))(steering.assembly())
+            sp.translate((0, 1000, 0))(
+                sp.rotate((45, 0, 0))(steering.assembly())
             )
         ),
         sp.color('brown')(
