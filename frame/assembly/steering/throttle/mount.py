@@ -24,12 +24,12 @@ magic_1 = magic_2 + split_ring_additional_padding
 def volume():
     outer = sp.rotate((90, 0, 0))(
         sp.cylinder(
-            d=ring_outer_diameter, h=ring_length, center=True, segments=32
+            d=ring_outer_diameter, h=ring_length, center=True, segments=64
         )
     ),
 
     inner = sp.rotate((90, 0, 0))(
-        sp.cylinder(d=hand_grip_diameter, h=100., center=True, segments=32)
+        sp.cylinder(d=hand_grip_diameter, h=100., center=True, segments=64)
     )
 
     split_ring_padding = spu.down(magic_1 / 2.)(

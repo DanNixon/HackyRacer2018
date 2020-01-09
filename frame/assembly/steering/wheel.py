@@ -19,8 +19,8 @@ yu = 60.
 xd = 125.
 yd = -60.
 
-top_hand_grip_extra = 30.
-hand_grip_diameter = 22.
+top_hand_grip_extra = 28.
+hand_grip_diameter = 23.
 
 
 def place_mounting_holes(obj):
