@@ -57,7 +57,7 @@ module PanelProjection()
   }
 }
 
-module MountingTab(hole_diameter, hole_centres, outer_radius, lower_offset)
+module MountingTab(hole_diameter, hole_centres, outer_radius, hole_offset)
 {
   dx = hole_centres / 2;
   magic_1 = 5;
@@ -70,7 +70,7 @@ module MountingTab(hole_diameter, hole_centres, outer_radius, lower_offset)
 
       for(x = [-dx, dx])
       {
-        translate([x, magic_1-lower_offset])
+        translate([x, hole_offset])
         {
           circle(r=outer_radius, $fn=32);
         }
@@ -79,7 +79,7 @@ module MountingTab(hole_diameter, hole_centres, outer_radius, lower_offset)
 
     for(x = [-dx, dx])
     {
-      translate([x, magic_1-lower_offset])
+      translate([x, hole_offset])
       {
         circle(d=hole_diameter, $fn=32);
       }

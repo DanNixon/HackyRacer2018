@@ -14,9 +14,9 @@ module FrontPanel()
     }
   }
 
-  translate([0, -outer_size[1] / 2])
+  translate([0, outer_size[1] / 2])
   {
-    MountingTab(hole_diameter=4.1, hole_centres=50, outer_radius=10, lower_offset=15);
+    MountingTab(hole_diameter=4.1, hole_centres=50, outer_radius=10, hole_offset=15);
   }
 }
 
