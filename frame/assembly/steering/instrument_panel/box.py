@@ -22,7 +22,7 @@ def projection():
 
 def volume():
     cable_exit = sp.translate((-size[0] / 2., (size[1] / 2.) - 12., 0))(
-        sp.cube((10., 5., 5.), center=True)
+        sp.cube((10., 6., 8.), center=True)
     )
 
     return sp.linear_extrude(box_depth)(projection()) - cable_exit
