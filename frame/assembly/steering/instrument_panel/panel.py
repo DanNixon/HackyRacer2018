@@ -9,11 +9,11 @@ from .dimensions import panel_thickness, switch_diameter, cherry_mx_cutout
 def projection():
     p = outer_projection()
 
-    horn_button = sp.translate((-20, 15))(
+    horn_button = sp.translate((-18, 15))(
         sp.square(cherry_mx_cutout, center=True)
     )
 
-    headlight_button = sp.translate((-20, -15))(
+    headlight_button = sp.translate((-18, -15))(
         sp.square(cherry_mx_cutout, center=True)
     )
 
@@ -21,11 +21,11 @@ def projection():
         sp.circle(d=switch_diameter, segments=32)
     )
 
-    gear_select_switch = sp.translate((20, 15))(
+    gear_select_switch = sp.translate((18, 15))(
         sp.circle(d=switch_diameter, segments=32)
     )
 
-    display_button = sp.translate((20, -15))(
+    display_button = sp.translate((18, -15))(
         sp.square(cherry_mx_cutout, center=True)
     )
 
