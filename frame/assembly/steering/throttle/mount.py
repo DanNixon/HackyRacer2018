@@ -7,13 +7,14 @@ from frame.utils import entrypoint
 from .dimensions import pot_offset
 
 ring_length = 18.
-ring_outer_diameter = 30.
+ring_inner_diameter = hand_grip_diameter + 2.
+ring_outer_diameter = ring_inner_diameter + 8.
 
 split_ring_space = 3.
 split_ring_screw_hole_diameter = 4.
 
 pot_mount_diameter = 7.5
-pot_mount_thickness = 5.
+pot_mount_thickness = 4.
 
 split_ring_additional_padding = 2.
 
@@ -29,7 +30,7 @@ def volume():
     ),
 
     inner = sp.rotate((90, 0, 0))(
-        sp.cylinder(d=hand_grip_diameter, h=100., center=True, segments=64)
+        sp.cylinder(d=ring_inner_diameter, h=100., center=True, segments=64)
     )
 
     split_ring_padding = spu.down(magic_1 / 2.)(
@@ -51,15 +52,16 @@ def volume():
         )
     )
 
+    magic_3 = 14.5
     magic_4 = ring_length + split_ring_additional_padding
     pot_mount = spu.right(magic_2 - (pot_mount_thickness / 2.))(
         sp.hull()(
             sp.translate((0, 0, -magic_4 / 2.))
             (sp.cube((pot_mount_thickness, ring_length, magic_4), center=True)),
             sp.translate(pot_offset)
-            (sp.cube((pot_mount_thickness, 15, 15), center=True)),
+            (sp.cube((pot_mount_thickness, magic_3, magic_3), center=True)),
             sp.translate((0, 0, pot_offset[2]))
-            (sp.cube((pot_mount_thickness, ring_length, 15), center=True)),
+            (sp.cube((pot_mount_thickness, ring_length, magic_3), center=True)),
         ) - sp.translate(pot_offset)(
             sp.rotate((0, 90, 0))(
                 sp.cylinder(

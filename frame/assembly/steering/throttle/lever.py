@@ -2,7 +2,7 @@ import solid as sp
 
 from frame.utils import entrypoint
 
-pot_shaft_diameter = 6.
+pot_shaft_diameter = 6.2
 thickness = 6.
 
 
