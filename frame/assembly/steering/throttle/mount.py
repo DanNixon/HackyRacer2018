@@ -7,10 +7,10 @@ from frame.utils import entrypoint
 from .dimensions import pot_offset
 
 ring_length = 18.
-ring_inner_diameter = hand_grip_diameter + 2.
+ring_inner_diameter = hand_grip_diameter + 1.
 ring_outer_diameter = ring_inner_diameter + 8.
 
-split_ring_space = 3.
+split_ring_space = 5.
 split_ring_screw_hole_diameter = 4.
 
 pot_mount_diameter = 7.5
