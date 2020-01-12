@@ -11,7 +11,7 @@ def place_mounting_holes(obj):
     )
 
 
-def outer_projection(mount_hole_diameter):
+def outer_projection(mount_hole_diameter, segments=32):
     p = sp.hull()(
         place_at_centres(
             [d - (2. * corner_radius) for d in size],
@@ -19,4 +19,6 @@ def outer_projection(mount_hole_diameter):
         )
     )
 
-    return p - place_mounting_holes(sp.circle(d=mount_hole_diameter, segments=32))
+    return p - place_mounting_holes(
+        sp.circle(d=mount_hole_diameter, segments=segments)
+    )
