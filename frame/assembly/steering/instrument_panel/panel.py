@@ -7,7 +7,7 @@ from .dimensions import panel_thickness, switch_diameter, cherry_mx_cutout
 
 
 def projection():
-    p = outer_projection()
+    p = outer_projection(3.1)
 
     horn_button = sp.translate((-18, 15))(
         sp.square(cherry_mx_cutout, center=True)

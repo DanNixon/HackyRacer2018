@@ -17,7 +17,7 @@ def inner_projection():
 
 
 def projection():
-    return outer_projection() - inner_projection()
+    return outer_projection(2.95) - inner_projection()
 
 
 def volume():
