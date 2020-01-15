@@ -1,12 +1,15 @@
 import solid as sp
+import solid.utils as spu
 
 from frame.utils import entrypoint
 
 from .common import outer_projection, place_mounting_holes
 from .dimensions import size, corner_radius, box_depth
 
-wall_thickness = 2.
+wall_thickness = 3.
 mount_support_radius = 4.
+
+magic_1 = (size[1] - 15.) / 2.
 
 
 def inner_projection():
@@ -17,12 +20,18 @@ def inner_projection():
 
 
 def projection():
-    return outer_projection(2.95, segments=5) - inner_projection()
+    return sp.union()(
+        outer_projection(3., segments=5) - inner_projection(),
+        spu.forward(magic_1)(sp.square((10., 15.), center=True)),
+    )
 
 
 def volume():
-    cable_exit = sp.translate((-size[0] / 2., (size[1] / 2.) - 12., 0))(
-        sp.cube((10., 6., 8.), center=True)
+    width = 6.
+    height = 6.
+
+    cable_exit = sp.translate((0., magic_1, 0.))(
+        sp.cube((width, 20., height * 2), center=True)
     )
 
     return sp.linear_extrude(box_depth)(projection()) - cable_exit
