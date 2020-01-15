@@ -12,6 +12,8 @@ magic_1 = outer_size - [2 * corner_radius, 2 * corner_radius];
 
 teensy_position = [(outer_size[0] / 2) - 5, -15, 2];
 usb_breakout_position = [-outer_size[0] / 2, -16, 0];
+gps_board_position = [15, 15, 0];
+can_board_position = [-25, 15, 0];
 
 cable_entry_position = [(-outer_size[0] / 2) + 8, 0, 0];
 

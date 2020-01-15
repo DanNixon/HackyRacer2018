@@ -4,6 +4,8 @@ use <parts/rear_panel.scad>
 use <parts/teensy.scad>
 use <parts/usb_breakout.scad>
 use <parts/display.scad>
+use <parts/gps_board.scad>
+use <parts/can_board.scad>
 
 include <common.scad>
 
@@ -46,6 +48,16 @@ module Assembly(explode)
   translate(usb_breakout_position)
   {
     UsbBreakout();
+  }
+
+  translate(gps_board_position)
+  {
+    GpsBoard();
+  }
+
+  translate(can_board_position)
+  {
+    CanBoard();
   }
 
   translate([0, 0, (centre_section_depth / 2) - panel_distance])
