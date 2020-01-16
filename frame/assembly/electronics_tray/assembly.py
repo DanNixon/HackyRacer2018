@@ -3,7 +3,7 @@ import solid.utils as spu
 
 from frame.utils import entrypoint
 
-from . import arduino_uno, bec_module, can_bus_board, lighting_control_board, placements, relay_board, tray, vesc
+from . import bec_module, lighting_control_board, placements, relay_board, tray, vesc
 from .dimensions import tray_thickness
 
 # TODO: Additional things? VESC fan shroud? PDU board?
@@ -22,13 +22,9 @@ def assembly():
                     )
                 ),
                 sp.color('cyan')(
-                    placements.can_bus_board(can_bus_board.volume())
-                ),
-                sp.color('magenta')(
                     placements.relay_board(relay_board.volume())
                 ),
-                sp.color('orange')(placements.arduino(arduino_uno.volume())),
-                sp.color('lime')(placements.bec_module(bec_module.volume())),
+                sp.color('magenta')(placements.bec_module(bec_module.volume())),
             ),
         ),
     )
