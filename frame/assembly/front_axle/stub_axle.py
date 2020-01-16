@@ -4,6 +4,7 @@ import solid.utils as spu
 # TODO: measure this
 camber = 10.
 
+axle_diameter = 17.
 tie_rod_hole_diameter = 8.
 
 
@@ -43,7 +44,7 @@ def tie_rod_plate():
 def axle():
     return sp.union()(
         sp.cylinder(h=165., d=12.),
-        sp.cylinder(h=145., d=17.),
+        sp.cylinder(h=145., d=axle_diameter),
         sp.cylinder(h=55., d=22.),
         sp.rotate((0., -90., 0.))(tie_rod_plate()),
     )
