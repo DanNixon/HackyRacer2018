@@ -2,11 +2,10 @@ import solid as sp
 import solid.utils as spu
 
 from frame.assembly.dimensions import axle_diameter, wheel_centre_distance
-from frame.assembly import wheel
 from frame.materials import round_bar
 from frame.utils import entrypoint, place_at_centres
 
-from . import brake_disc, drive_sprocket
+from . import brake_disc, drive_sprocket, wheel
 
 sprocket_pos = 147.
 brake_disc_pos = 160.
