@@ -1,7 +1,6 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import wheel
 from frame.utils import entrypoint
 
 from . import bar, left_wheel, right_wheel

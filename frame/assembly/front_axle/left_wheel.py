@@ -1,10 +1,9 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly import wheel
 from frame.utils import entrypoint
 
-from . import left_stub_axle
+from . import left_stub_axle, wheel
 
 
 def assembly():
