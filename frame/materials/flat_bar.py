@@ -3,20 +3,13 @@ import solid.utils as spu
 
 from frame.utils import bom
 
-# TODO
-default_size = (12., 5.)
 
-
-def projection(size=None, center=False):
-    size = default_size if size is None else size
-
+def projection(size, center=False):
     return sp.square(size, center=True)
 
 
 @bom.part('Flat Bar')
-def volume(length, size=None, center=False):
-    size = default_size if size is None else size
-
+def volume(length, size, center=False):
     material = sp.linear_extrude(length)(projection(size))
     return spu.down(length / 2.)(material) if center else material
 

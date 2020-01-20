@@ -5,6 +5,7 @@ from frame.utils import entrypoint, place_at_centres
 
 from . import motor
 
+plate_width = 120.
 plate_thickness = 10.
 
 mount_holes_offset = 70.
@@ -17,10 +18,11 @@ lower_extent = mount_holes_offset + 15.
 def projection():
     d = motor.body_diameter + 10.
     outer = sp.hull()(
-        sp.square((d, d), center=True),
-        spu.back(lower_extent - 5.)(sp.square((d, 10.), center=True)),
+        sp.square((plate_width, d), center=True),
+        spu.back(lower_extent - 5.)(sp.square((plate_width, 10.), center=True)),
     )
 
+    # TODO: slots
     mounting_holes = spu.back(mount_holes_offset)(
         place_at_centres(
             (mount_holes_distance, 0.), sp.circle(d=mount_holes_diameter)
