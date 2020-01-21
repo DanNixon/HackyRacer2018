@@ -18,21 +18,27 @@ function make_scad {
 }
 
 function make_3d_printed {
-  echo "$1 > $2.stl"
+  echo -n "$1 > "
   scad_file="$(make_scad "$1" "3d_printed/$2")"
-  openscad "$scad_file" -o "$(dirname "$scad_file")/$2.stl"
+  out_file="$(dirname "$scad_file")/$2.stl"
+  echo "$out_file"
+  openscad "$scad_file" -o "$out_file"
 }
 
 function make_laser_cut {
-  echo "$1 > $2.dxf"
+  echo -n "$1 > "
   scad_file="$(make_scad "$1" "laser_cut/$2")"
-  openscad "$scad_file" -o "$(dirname "$scad_file")/$2.dxf"
+  out_file="$(dirname "$scad_file")/$2.dxf"
+  echo "$out_file"
+  openscad "$scad_file" -o "$out_file"
 }
 
 function make_machined {
-  echo "$1 > $2.stl"
+  echo -n "$1 > "
   scad_file="$(make_scad "$1" "machined/$2")"
-  openscad "$scad_file" -o "$(dirname "$scad_file")/$2.stl"
+  out_file="$(dirname "$scad_file")/$2.stl"
+  echo "$out_file"
+  openscad "$scad_file" -o "$out_file"
 }
 
 make_machined \
