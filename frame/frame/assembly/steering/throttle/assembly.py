@@ -3,7 +3,7 @@ import solid.utils as spu
 
 from frame.utils import entrypoint
 
-from . import lever, mount
+from . import mount, trigger
 from .dimensions import pot_offset
 
 angle = 60.
@@ -15,7 +15,7 @@ def assembly():
         sp.color('red')(
             spu.translate(pot_offset)(
                 sp.rotate((0, 90, 0))(
-                    sp.rotate((0, 0, -110. + angle))(lever.volume())
+                    sp.rotate((0, 0, -110. + angle))(trigger.volume())
                 )
             )
         ),

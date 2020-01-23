@@ -23,9 +23,14 @@ def place_mounting_holes(obj):
     )
 
 
+def projection():
+    # TODO
+    pass
+
+
 def volume():
-    from . import lower_mount
-    magic_1 = (lower_mount.face_diameter / 2.) - 5.
+    from . import arm_mount
+    magic_1 = (arm_mount.face_diameter / 2.) - 5.
 
     bar = sp.translate((0., magic_1, thickness / 2.))(
         sp.rotate((90, 0, 0))(
@@ -48,4 +53,4 @@ def volume():
 
 
 if __name__ == '__main__':
-    entrypoint.main(volume())
+    entrypoint.main(projection())

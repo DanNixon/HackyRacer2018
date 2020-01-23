@@ -5,7 +5,7 @@ from frame.assembly.dimensions import axle_diameter
 from frame.primitives import drilled_hole
 from frame.utils import entrypoint
 
-from . import lower_mount_arm
+from . import arm
 
 face_width = 12.
 face_diameter = 50.
@@ -24,8 +24,8 @@ def volume():
 
     axle = spu.down(1)(sp.cylinder(d=axle_diameter, h=length + 2))
 
-    mounting_holes = lower_mount_arm.place_mounting_holes(
-        drilled_hole.volume(lower_mount_arm.mounting_hole_diameter)
+    mounting_holes = arm.place_mounting_holes(
+        drilled_hole.volume(arm.mounting_hole_diameter)
     )
 
     return sp.union()(face_plate, axle_clamp) - axle - mounting_holes
