@@ -5,7 +5,7 @@ from frame.assembly.dimensions import axle_diameter
 from frame.materials import round_bar
 from frame.utils import entrypoint
 
-from . import instrument_panel, throttle, arm, arm_mount, wheel, wheel_mount
+from . import column_mount, instrument_panel, throttle, arm, arm_mount, wheel, wheel_mount
 from .dimensions import column_length
 
 
@@ -28,11 +28,11 @@ def assembly():
             sp.rotate((0, 180, 0))(sp.color('cyan')(wheel_mount.volume())),
         ),
         sp.color('magenta')(column),
+        spu.up(440.)(sp.color('purple')(column_mount.upper.assembly())),
+        spu.up(60.)(sp.color('grey')(column_mount.lower.assembly())),
         sp.rotate((0, 0, 0))(
             sp.color('orange')(arm_mount.volume()),
-            sp.color('pink')(
-                spu.down(arm.thickness)(arm.volume())
-            ),
+            sp.color('pink')(spu.down(arm.thickness)(arm.volume())),
         ),
     )
 

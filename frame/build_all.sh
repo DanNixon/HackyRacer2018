@@ -81,13 +81,13 @@ make_machined \
   "frame.assembly.rear_axle.drive_sprocket.mount" \
   "drive_sprocket_mount"
 
-make_3d_printed \
-  "frame.assembly.steering.throttle.mount" \
-  "throttle_mount"
+make_machined_2d \
+  "frame.assembly.steering.column_mount.lower.mount" \
+  "lower_steering_column_mount"
 
-make_3d_printed \
-  "frame.assembly.steering.throttle.trigger" \
-  "throttle_trigger"
+make_machined_2d \
+  "frame.assembly.steering.column_mount.upper.mount" \
+  "upper_steering_column_mount"
 
 make_3d_printed \
   "frame.assembly.steering.instrument_panel.box" \
@@ -96,6 +96,14 @@ make_3d_printed \
 make_laser_cut \
   "frame.assembly.steering.instrument_panel.panel" \
   "instrument_panel"
+
+make_3d_printed \
+  "frame.assembly.steering.throttle.mount" \
+  "throttle_mount"
+
+make_3d_printed \
+  "frame.assembly.steering.throttle.trigger" \
+  "throttle_trigger"
 
 make_machined_2d \
   "frame.assembly.steering.arm" \

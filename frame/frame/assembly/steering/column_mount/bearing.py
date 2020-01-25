@@ -14,6 +14,12 @@ def place_mounting_holes(obj):
     return place_at_centres((mounting_hole_centres, 0), obj)
 
 
+def mounting_holes():
+    return place_mounting_holes(
+        sp.circle(d=mounting_hole_diameter, segments=32)
+    )
+
+
 def projection():
     """
     This is an approximation of the body.
@@ -26,14 +32,12 @@ def projection():
             place_mounting_holes(sp.circle(d=15., segments=32)),
         ),
     )
-    return body - sp.circle(d=bore, segments=32) - place_mounting_holes(
-        sp.circle(d=mounting_hole_diameter, segments=32)
-    )
+    return body - sp.circle(d=bore, segments=32) - mounting_holes()
 
 
 @bom.part('Steering Column Bearing')
 def volume():
-    return sp.linear_extrude(height, center=True)(projection())
+    return sp.linear_extrude(height)(projection())
 
 
 if __name__ == '__main__':

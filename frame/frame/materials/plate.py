@@ -7,7 +7,7 @@ from frame.utils import bom
 def projection(size, radius=3., center=True):
     return sp.minkowski()(
         sp.square([a - 2. * radius for a in size], center=center),
-        sp.circle(r=radius),
+        sp.circle(r=radius, segments=16),
     )
 
 
