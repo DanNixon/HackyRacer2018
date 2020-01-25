@@ -3,12 +3,10 @@ import solid.utils as spu
 
 from frame.utils import bom, place_at_centres
 
-# TODO
-body_dimensions = (50., 40., 2.)
+body_dimensions = (72., 52., 2.)
 
-# TODO
-mounting_hole_centres = (40., 30.)
-mounting_hole_diameter = 2.2
+mounting_hole_centres = (65., 45.)
+mounting_hole_diameter = 3.1
 
 
 def holes():
