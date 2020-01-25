@@ -7,17 +7,17 @@
 #include "relay.hpp"
 #include "three_pos_switch.hpp"
 
-pwm_light front_white(11, 10);
-pwm_light front_high_intensity(9, 100, 255);
-pwm_light rear_white(6, 25);
-pwm_light rear_red(10, 20, 255);
+pwm_light front_white(23, 10);
+pwm_light front_high_intensity(22, 100, 255);
+pwm_light rear_white(21, 25);
+pwm_light rear_red(20, 20, 255);
 
-relay horn(7);
+relay horn(14);
 
-three_pos_switch direction_sw(A1, A0);
-three_pos_switch lights_sw(A2, A3);
-button brake_sw(A5);
-button horn_sw(0); // TODO
+three_pos_switch direction_sw(8, 7);
+three_pos_switch lights_sw(10, 9);
+button brake_sw(11);
+button horn_sw(12);
 
 void setup() {
   Serial.begin(9600);
