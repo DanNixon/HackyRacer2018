@@ -4,15 +4,17 @@
 
 constexpr auto led_pin = 13;
 
-void led_init() {
+namespace led {
+void init() {
   pinMode(led_pin, OUTPUT);
-  led_off();
+  off();
 }
 
-void led_on() {
+void on() {
   digitalWrite(led_pin, HIGH);
 }
 
-void led_off() {
+void off() {
   digitalWrite(led_pin, LOW);
 }
+} // namespace led

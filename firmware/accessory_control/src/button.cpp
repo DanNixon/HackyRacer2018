@@ -6,7 +6,7 @@ constexpr auto debounce_time_ms = 25;
 
 button::button(int const pin)
     : m_pin(pin)
-    , m_state(action::Unknown)
+    , m_state(action::unknown)
     , m_last_state_change(0) {
 }
 
@@ -21,7 +21,7 @@ bool button::update() {
   }
 
   auto const new_state =
-      digitalRead(m_pin) == LOW ? action::Pressed : action::Released;
+      digitalRead(m_pin) == LOW ? action::pressed : action::released;
   auto const changed = new_state != m_state;
 
   m_state = new_state;

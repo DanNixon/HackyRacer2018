@@ -1,11 +1,11 @@
 #pragma once
 
-class three_pos_switch {
+class three_position_switch {
 public:
   enum class position { Unknown, A, B, C };
 
 public:
-  three_pos_switch(int const pin_1, int const pin_2);
+  three_position_switch(int const pin_1, int const pin_2);
 
   void init();
   bool update();

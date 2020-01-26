@@ -19,13 +19,11 @@ void pwm_light::init() {
   set(level::off);
 }
 
-void pwm_light::on() 
-{
-  set(level::high);
+void pwm_light::on() {
+  set(level::on);
 }
 
-void pwm_light::off() 
-{
+void pwm_light::off() {
   set(level::off);
 }
 
@@ -39,6 +37,7 @@ void pwm_light::set(level const l) {
     v = m_low_level;
     break;
   case level::high:
+  case level::on:
     v = m_high_level;
     break;
   default:

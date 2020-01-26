@@ -1,6 +1,8 @@
 #pragma once
 
-void led_init();
+namespace led {
+void init();
 
-void led_on();
-void led_off();
+void on();
+void off();
+} // namespace led

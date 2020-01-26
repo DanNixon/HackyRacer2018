@@ -1,9 +1,11 @@
 #pragma once
 
-void motor_init();
+namespace motor {
+void init();
 
-void motor_enable();
-void motor_disable();
+void enable();
+void disable();
 
-void motor_set_drive();
-void motor_set_reverse();
+void set_drive();
+void set_reverse();
+} // namespace motor

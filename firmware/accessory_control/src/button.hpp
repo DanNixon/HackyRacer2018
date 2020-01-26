@@ -2,7 +2,7 @@
 
 class button {
 public:
-  enum class action { Unknown, Pressed, Released };
+  enum class action { unknown, pressed, released };
 
 public:
   button(int const pin);

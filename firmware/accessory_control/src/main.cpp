@@ -2,123 +2,124 @@
 
 #include "button.hpp"
 #include "led.hpp"
+#include "lights.hpp"
 #include "motor.hpp"
-#include "pwm_light.hpp"
+#include "pins.hpp"
 #include "relay.hpp"
-#include "three_pos_switch.hpp"
+#include "three_position_switch.hpp"
 
-pwm_light front_white(23, 10);
-pwm_light front_high_intensity(22, 100, 255);
-pwm_light rear_white(21, 25);
-pwm_light rear_red(20, 20, 255);
+relay horn(pins::horn_relay);
 
-relay horn(14);
+three_position_switch gear_switch(pins::gear_switch_a, pins::gear_switch_b);
+three_position_switch lights_switch(pins::lights_switch_a,
+                                    pins::lights_switch_b);
 
-three_pos_switch direction_sw(8, 7);
-three_pos_switch lights_sw(10, 9);
-button brake_sw(11);
-button horn_sw(12);
+button brake_pedal_button(pins::break_pedal_switch);
+button display_button(pins::display_button);
+button horn_button(pins::horn_button);
 
 void setup() {
   Serial.begin(9600);
 
-  led_init();
-  motor_init();
-
-  front_white.init();
-  front_high_intensity.init();
-  rear_white.init();
-  rear_red.init();
+  led::init();
+  motor::init();
+  lights::init();
 
   horn.init();
 
-  direction_sw.init();
-  lights_sw.init();
-  brake_sw.init();
-  horn_sw.init();
+  gear_switch.init();
+  lights_switch.init();
+
+  brake_pedal_button.init();
+  display_button.init();
+  horn_button.init();
 }
 
 void loop() {
-  using position = three_pos_switch::position;
+  using position = three_position_switch::position;
   using action = button::action;
-  using level = pwm_light::level;
 
-  if (direction_sw.update()) {
-    switch (direction_sw.pos()) {
+  if (gear_switch.update()) {
+    switch (gear_switch.pos()) {
     case position::A:
       Serial.println("Gear: drive");
-      motor_enable();
-      rear_white.set(level::off);
-      motor_set_drive();
+      motor::set_drive();
+      motor::enable();
+      lights::set_role(lights::role::reverse, false);
       break;
     case position::B:
       Serial.println("Gear: neutral");
-      motor_disable();
-      rear_white.set(level::off);
+      motor::disable();
+      lights::set_role(lights::role::reverse, false);
       break;
     case position::C:
       Serial.println("Gear: reverse");
-      motor_enable();
-      rear_white.set(level::low);
-      motor_set_reverse();
+      motor::set_reverse();
+      motor::enable();
+      lights::set_role(lights::role::reverse, true);
       break;
     default:
       break;
     }
+    lights::output();
   }
 
-  if (lights_sw.update()) {
-    switch (lights_sw.pos()) {
+  if (lights_switch.update()) {
+    switch (lights_switch.pos()) {
     case position::A:
       Serial.println("Lights: off");
-      front_white.set(level::off);
-      rear_red.set(level::off);
-      front_high_intensity.set(level::off);
+      lights::set_role(lights::role::headlights, false);
+      lights::set_role(lights::role::headlights_full, false);
       break;
     case position::B:
       Serial.println("Lights: headlights");
-      front_white.set(level::low);
-      rear_red.set(level::low);
-      front_high_intensity.set(level::off);
+      lights::set_role(lights::role::headlights, true);
+      lights::set_role(lights::role::headlights_full, false);
       break;
     case position::C:
       Serial.println("Light: full beam");
-      front_white.set(level::low);
-      rear_red.set(level::low);
-      front_high_intensity.set(level::high);
+      lights::set_role(lights::role::headlights, true);
+      lights::set_role(lights::role::headlights_full, true);
       break;
     default:
       break;
     }
+    lights::output();
   }
 
-  if (brake_sw.update()) {
-    switch (brake_sw.state()) {
-    case action::Pressed:
+  if (brake_pedal_button.update()) {
+    switch (brake_pedal_button.state()) {
+    case action::pressed:
       Serial.println("Brake: on");
-      rear_red.set(level::high);
+      lights::set_role(lights::role::brake, true);
       break;
-    case action::Released:
+    case action::released:
       Serial.println("Brake: off");
-      rear_red.set(lights_sw.pos() == position::A ? level::off : level::low);
+      lights::set_role(lights::role::brake, false);
       break;
     default:
       break;
     }
+    lights::output();
   }
 
-  if (horn_sw.update()) {
-    switch (horn_sw.state()) {
-    case action::Pressed:
+  if (horn_button.update()) {
+    switch (horn_button.state()) {
+    case action::pressed:
       Serial.println("Horn: on");
       horn.on();
       break;
-    case action::Released:
+    case action::released:
       Serial.println("Horn: off");
       horn.off();
       break;
     default:
       break;
     }
+  }
+
+  if (display_button.update() && display_button.state() == action::pressed) {
+    Serial.println("Display cycle");
+    /* TODO */
   }
 }

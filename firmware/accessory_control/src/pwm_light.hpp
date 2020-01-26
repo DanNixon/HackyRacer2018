@@ -2,7 +2,7 @@
 
 class pwm_light {
 public:
-  enum class level { off, low, high };
+  enum class level { off, low, high, on };
 
 public:
   pwm_light(int const pin, int const on_level);
