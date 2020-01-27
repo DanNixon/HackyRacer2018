@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get install -y openscad
 
 install:
-  - pip install -r requirements.txt
+  - pip install -r cad/requirements.txt
 
 script:
-  - cd frame && pytest --verbose
+  - cd cad && pytest --verbose && ./build_all.sh
