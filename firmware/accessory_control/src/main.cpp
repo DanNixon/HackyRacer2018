@@ -93,7 +93,8 @@ void loop() {
       Serial.println("Brake: on");
       lights::set_role(lights::role::brake, true);
       break;
-    case action::released:
+    case action::released_short:
+    case action::released_long:
       Serial.println("Brake: off");
       lights::set_role(lights::role::brake, false);
       break;
@@ -109,7 +110,8 @@ void loop() {
       Serial.println("Horn: on");
       horn.on();
       break;
-    case action::released:
+    case action::released_short:
+    case action::released_long:
       Serial.println("Horn: off");
       horn.off();
       break;
@@ -118,8 +120,18 @@ void loop() {
     }
   }
 
-  if (display_button.update() && display_button.state() == action::pressed) {
-    Serial.println("Display cycle");
-    /* TODO */
+  if (display_button.update()) {
+    switch (display_button.state()) {
+    case action::released_short:
+      Serial.println("Display: cycle");
+      /* TODO */
+      break;
+    case action::released_long:
+      Serial.println("Display: select");
+      /* TODO */
+      break;
+    default:
+      break;
+    }
   }
 }

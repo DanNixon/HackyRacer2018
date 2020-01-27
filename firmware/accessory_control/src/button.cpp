@@ -4,8 +4,9 @@
 
 constexpr auto debounce_time_ms = 25;
 
-button::button(int const pin)
+button::button(int const pin, unsigned long const long_press_time_ms)
     : m_pin(pin)
+    , m_long_press_time_ms(long_press_time_ms)
     , m_state(action::unknown)
     , m_last_state_change(0) {
 }
@@ -16,16 +17,27 @@ void button::init() {
 
 bool button::update() {
   auto const now = millis();
-  if (now - m_last_state_change < debounce_time_ms) {
+  auto const delta_t = now - m_last_state_change;
+
+  if (delta_t < debounce_time_ms) {
     return false;
   }
 
-  auto const new_state =
-      digitalRead(m_pin) == LOW ? action::pressed : action::released;
-  auto const changed = new_state != m_state;
+  auto const button_is_down = digitalRead(m_pin) == LOW;
+  bool changed = false;
 
-  m_state = new_state;
-  m_last_state_change = now;
+  if (m_state != action::pressed && button_is_down) {
+    changed = true;
+    m_state = action::pressed;
+  } else if (m_state == action::pressed && !button_is_down) {
+    changed = true;
+    m_state = delta_t > m_long_press_time_ms ? action::released_long
+                                             : action::released_short;
+  }
+
+  if (changed) {
+    m_last_state_change = now;
+  }
 
   return changed;
 }
