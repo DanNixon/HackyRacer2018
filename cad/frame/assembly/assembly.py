@@ -7,7 +7,7 @@ import frame.assembly.brake_pedal as brake_pedal
 from frame.materials import box_section
 from frame.utils import entrypoint
 
-from .dimensions import inner, inner_length, wheel_centre_distance, rear_axle_position, outer_length, max_outer_dimensions
+from .dimensions import inner, inner_length, rear_axle_position, outer_length, max_outer_dimensions
 from . import bumpers, electronics_tray, motor, rear_axle, rear_axle_bearing, steering
 
 
@@ -26,8 +26,8 @@ def assembly():
             )(rear_axle.assembly())
         ),
         sp.color('magenta')(
-            sp.translate((-inner - box_section.default_size[0] / 2., 300, 0))(
-                sp.rotate((90, 0, 90))(motor.assembly())
+            sp.translate((inner + (box_section.default_size[0] / 2.), 300, 0))(
+                sp.rotate((90, 0, -90))(motor.assembly())
             )
         ),
         sp.color('pink')(

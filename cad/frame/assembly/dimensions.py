@@ -9,6 +9,4 @@ outer_length = 800.
 inner = 120.
 inner_length = 1200.
 
-wheel_centre_distance = 600.
-
 rear_axle_position = 180.

@@ -27,7 +27,7 @@ def projection():
     from . import arm_mount
     magic_1 = (arm_mount.face_diameter / 2.)
 
-    bar = sp.translate((0., magic_1, 0.))(
+    bar = sp.translate((0., -magic_1, 0.))(
         plate.projection(size=(width, length + magic_1))
     )
 
@@ -35,7 +35,7 @@ def projection():
         drilled_hole.projection(mounting_hole_diameter)
     )
 
-    tie_rod_holes = spu.forward(tie_rod_hole_offset)(
+    tie_rod_holes = spu.back(tie_rod_hole_offset)(
         place_at_centres(
             (tie_rod_hole_centres, 0.),
             drilled_hole.projection(tie_rod_hole_diameter)

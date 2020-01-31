@@ -10,16 +10,9 @@ inner_hole_diameter = 32.
 
 
 def mounting_holes():
-    bolt = place_n_at_x_around(
+    return place_n_at_x_around(
         4, 35.,
         sp.cylinder(d=bolt_hole_diameter, h=thickness + 1., center=True)
-    )
-
-    inner = sp.cylinder(d=inner_hole_diameter, h=thickness + 1., center=True),
-
-    return sp.union()(
-        bolt,
-        inner,
     )
 
 
@@ -37,11 +30,14 @@ def volume():
         ) for a in [0, 180]
     ]
 
+    inner_hole = sp.cylinder(d=inner_hole_diameter, h=thickness + 1., center=True),
+
     return sp.color("darkgray")(
         sp.rotate((0, 90, 0))(sp.difference()(
             outer,
             hub,
             mounting_holes(),
+            inner_hole,
         ))
     )
 

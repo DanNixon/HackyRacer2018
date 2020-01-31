@@ -1,7 +1,7 @@
 import solid as sp
 import solid.utils as spu
 
-from frame.assembly.dimensions import axle_diameter, wheel_centre_distance
+from frame.assembly.dimensions import axle_diameter
 from frame.materials import round_bar
 from frame.utils import entrypoint, place_at_centres
 
@@ -9,8 +9,9 @@ from . import brake_disc, drive_sprocket, wheel
 
 sprocket_pos = 147.
 brake_disc_pos = 160.
+wheel_centre_distance = 620.
 
-axle_length = wheel_centre_distance + 120.
+axle_length = wheel_centre_distance + 80.
 
 
 def assembly():
@@ -20,18 +21,20 @@ def assembly():
         )
     )
 
-    sprocket_assy = spu.down(sprocket_pos)(
-        sp.color('green')(drive_sprocket.assembly())
+    sprocket_assy = spu.up(sprocket_pos)(
+        sp.color('green')(sp.rotate((180, 0, 0))(drive_sprocket.assembly()))
     )
 
-    brake_disc_assy = spu.up(brake_disc_pos)(
-        sp.color('blue')(sp.rotate((180, 0, 0))(brake_disc.assembly()))
+    brake_disc_assy = spu.down(brake_disc_pos)(
+        sp.color('blue')(brake_disc.assembly())
     )
 
     wheels = [
-        sp.rotate([0, a,
-                   0])(spu.right(wheel_centre_distance / 2.)(wheel.volume()))
-        for a in [0, 180]
+        sp.rotate([0, a, 0])(
+            spu.left(wheel_centre_distance / 2.)(
+                sp.color('cyan')(wheel.assembly())
+            )
+        ) for a in [0, 180]
     ]
 
     return sp.union()(
