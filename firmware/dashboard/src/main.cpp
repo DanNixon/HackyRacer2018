@@ -8,9 +8,10 @@
 #include "pins.hpp"
 #include "value/value.hpp"
 
-FlexCAN can;
 TinyGPSPlus gps;
 ILI9341_t3 tft(pins::tft_cs, pins::tft_dc, pins::tft_reset);
+
+CAN_message_t msg;
 
 void setup() {
   Serial.begin(9600);
@@ -19,7 +20,7 @@ void setup() {
   Serial.println("Hello");
 
   /* CAN bus */
-  can.begin();
+  Can0.begin();
 
   /* SD card */
   const bool sd_card_ok(SD.begin(BUILTIN_SDCARD));
@@ -37,6 +38,18 @@ void setup() {
 
   /* TODO */
   tft.print("test");
+
+  msg.ext = 0;
+  msg.id = 0x100;
+  msg.len = 8;
+  msg.buf[0] = 10;
+  msg.buf[1] = 20;
+  msg.buf[2] = 0;
+  msg.buf[3] = 100;
+  msg.buf[4] = 128;
+  msg.buf[5] = 64;
+  msg.buf[6] = 32;
+  msg.buf[7] = 16;
 }
 
 unsigned int last = 0;
@@ -148,7 +161,14 @@ void loop() {
     Serial.println(gps.hdop.hdop());
   }
 
-  else if (millis() - last > 5000) {
+  else if (millis() - last > 1000) {
+    msg.buf[0]++;
+    msg.flags.extended = 0;
+    msg.flags.remote = 0;
+    msg.flags.overrun = 0;
+    Serial.print("CAN Tx: ");
+    Serial.println(Can0.write(msg));
+
     Serial.println();
     if (gps.location.isValid()) {
       static const double LONDON_LAT = 51.508131, LONDON_LON = -0.128002;
