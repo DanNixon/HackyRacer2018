@@ -32,7 +32,7 @@ void setup() {
   /* TFT display */
   tft.begin();
   tft.setTextWrap(false);
-  tft.setRotation(1);
+  tft.setRotation(3);
   tft.fillScreen(ILI9341_BLACK);
 
   /* TODO */
