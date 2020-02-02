@@ -18,5 +18,9 @@ void on() {
 void off() {
   digitalWrite(led_pin, LOW);
 }
+
+void toggle() {
+  digitalWrite(led_pin, !digitalRead(led_pin));
+}
 } // namespace led
 } // namespace device

@@ -21,6 +21,7 @@ device::button horn_button(pins::horn_button);
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("Hello");
 
   device::led::init();
   logic::motor::init();
