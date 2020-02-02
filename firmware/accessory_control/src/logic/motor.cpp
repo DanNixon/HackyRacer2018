@@ -1,10 +1,11 @@
 #include "motor.hpp"
 
-#include "relay.hpp"
+#include "device/relay.hpp"
 
-relay reverse_signal(5);
-relay pot_high_side(4);
+device::relay reverse_signal(5);
+device::relay pot_high_side(4);
 
+namespace logic {
 namespace motor {
 void init() {
   reverse_signal.init();
@@ -27,3 +28,4 @@ void set_reverse() {
   reverse_signal.on();
 }
 } // namespace motor
+} // namespace logic

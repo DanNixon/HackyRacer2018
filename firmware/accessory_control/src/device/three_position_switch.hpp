@@ -1,5 +1,6 @@
 #pragma once
 
+namespace device {
 class three_position_switch {
 public:
   enum class position { Unknown, A, B, C };
@@ -21,3 +22,4 @@ private:
 
   bool m_first_update_done;
 };
+} // namespace device

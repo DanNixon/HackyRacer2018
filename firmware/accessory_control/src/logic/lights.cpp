@@ -2,16 +2,17 @@
 
 #include <bitset>
 
+#include "device/pwm_light.hpp"
 #include "pins.hpp"
-#include "pwm_light.hpp"
 
 std::bitset<4> role_enable;
 
-pwm_light front_white(pins::front_white_lights, 10);
-pwm_light front_white_bright(pins::front_white_bright_lights, 100, 255);
-pwm_light rear_white(pins::rear_white_lights, 25);
-pwm_light rear_red(pins::rear_red_lights, 20, 255);
+device::pwm_light front_white(pins::front_white_lights, 10);
+device::pwm_light front_white_bright(pins::front_white_bright_lights, 100, 255);
+device::pwm_light rear_white(pins::rear_white_lights, 25);
+device::pwm_light rear_red(pins::rear_red_lights, 20, 255);
 
+namespace logic {
 namespace lights {
 void init() {
   front_white.init();
@@ -29,7 +30,7 @@ bool role_is_enabled(role const r) {
 }
 
 void output() {
-  using level = pwm_light::level;
+  using level = device::pwm_light::level;
 
   level front_white_level = level::off;
   level front_white_bright_level = level::off;
@@ -56,3 +57,4 @@ void output() {
   rear_red.set(rear_red_level);
 }
 } // namespace lights
+} // namespace logic

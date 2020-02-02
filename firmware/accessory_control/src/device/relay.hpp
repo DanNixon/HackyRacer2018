@@ -1,5 +1,6 @@
 #pragma once
 
+namespace device {
 class relay {
 public:
   relay(int const pin);
@@ -12,3 +13,4 @@ public:
 private:
   int const m_pin;
 };
+} // namespace device

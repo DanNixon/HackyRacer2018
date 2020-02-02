@@ -4,6 +4,7 @@
 
 constexpr auto led_pin = 13;
 
+namespace device {
 namespace led {
 void init() {
   pinMode(led_pin, OUTPUT);
@@ -18,3 +19,4 @@ void off() {
   digitalWrite(led_pin, LOW);
 }
 } // namespace led
+} // namespace device

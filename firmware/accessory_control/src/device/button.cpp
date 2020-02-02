@@ -4,6 +4,7 @@
 
 constexpr auto debounce_time_ms = 25;
 
+namespace device {
 button::button(int const pin, unsigned long const long_press_time_ms)
     : m_pin(pin)
     , m_long_press_time_ms(long_press_time_ms)
@@ -45,3 +46,4 @@ bool button::update() {
 button::action button::state() const {
   return m_state;
 }
+} // namespace device

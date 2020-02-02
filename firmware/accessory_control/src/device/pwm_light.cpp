@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 
+namespace device {
 pwm_light::pwm_light(int const pin, int const on_level)
     : m_pin(pin)
     , m_low_level(0)
@@ -45,3 +46,4 @@ void pwm_light::set(level const l) {
   }
   analogWrite(m_pin, v);
 }
+} // namespace device

@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 
+namespace device {
 three_position_switch::three_position_switch(int const pin_1, int const pin_2)
     : m_pin_1(pin_1)
     , m_pin_2(pin_2)
@@ -47,3 +48,4 @@ three_position_switch::position three_position_switch::pos() const {
   }
   return position::Unknown;
 }
+} // namespace device

@@ -1,5 +1,6 @@
 #pragma once
 
+namespace device {
 class button {
 public:
   enum class action { unknown, pressed, released_short, released_long };
@@ -19,3 +20,4 @@ private:
   action m_state;
   long int m_last_state_change;
 };
+} // namespace device

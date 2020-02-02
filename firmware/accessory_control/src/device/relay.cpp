@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 
+namespace device {
 relay::relay(int const pin)
     : m_pin(pin) {
 }
@@ -18,3 +19,4 @@ void relay::on() {
 void relay::off() {
   digitalWrite(m_pin, HIGH);
 }
+} // namespace device

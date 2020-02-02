@@ -1,29 +1,30 @@
 #include <Arduino.h>
 
-#include "button.hpp"
-#include "led.hpp"
-#include "lights.hpp"
-#include "motor.hpp"
+#include "device/button.hpp"
+#include "device/led.hpp"
+#include "device/relay.hpp"
+#include "device/three_position_switch.hpp"
+#include "logic/lights.hpp"
+#include "logic/motor.hpp"
 #include "pins.hpp"
-#include "relay.hpp"
-#include "three_position_switch.hpp"
 
-relay horn(pins::horn_relay);
+device::relay horn(pins::horn_relay);
 
-three_position_switch gear_switch(pins::gear_switch_a, pins::gear_switch_b);
-three_position_switch lights_switch(pins::lights_switch_a,
-                                    pins::lights_switch_b);
+device::three_position_switch gear_switch(pins::gear_switch_a,
+                                          pins::gear_switch_b);
+device::three_position_switch lights_switch(pins::lights_switch_a,
+                                            pins::lights_switch_b);
 
-button brake_pedal_button(pins::break_pedal_switch);
-button display_button(pins::display_button);
-button horn_button(pins::horn_button);
+device::button brake_pedal_button(pins::break_pedal_switch);
+device::button display_button(pins::display_button);
+device::button horn_button(pins::horn_button);
 
 void setup() {
   Serial.begin(9600);
 
-  led::init();
-  motor::init();
-  lights::init();
+  device::led::init();
+  logic::motor::init();
+  logic::lights::init();
 
   horn.init();
 
@@ -36,72 +37,73 @@ void setup() {
 }
 
 void loop() {
-  using position = three_position_switch::position;
-  using action = button::action;
+  using position = device::three_position_switch::position;
+  using action = device::button::action;
+  using light_role = logic::lights::role;
 
   if (gear_switch.update()) {
     switch (gear_switch.pos()) {
     case position::A:
       Serial.println("Gear: drive");
-      motor::set_drive();
-      motor::enable();
-      lights::set_role(lights::role::reverse, false);
+      logic::motor::set_drive();
+      logic::motor::enable();
+      logic::lights::set_role(light_role::reverse, false);
       break;
     case position::B:
       Serial.println("Gear: neutral");
-      motor::disable();
-      lights::set_role(lights::role::reverse, false);
+      logic::motor::disable();
+      logic::lights::set_role(light_role::reverse, false);
       break;
     case position::C:
       Serial.println("Gear: reverse");
-      motor::set_reverse();
-      motor::enable();
-      lights::set_role(lights::role::reverse, true);
+      logic::motor::set_reverse();
+      logic::motor::enable();
+      logic::lights::set_role(light_role::reverse, true);
       break;
     default:
       break;
     }
-    lights::output();
+    logic::lights::output();
   }
 
   if (lights_switch.update()) {
     switch (lights_switch.pos()) {
     case position::A:
       Serial.println("Lights: off");
-      lights::set_role(lights::role::headlights, false);
-      lights::set_role(lights::role::headlights_full, false);
+      logic::lights::set_role(light_role::headlights, false);
+      logic::lights::set_role(light_role::headlights_full, false);
       break;
     case position::B:
       Serial.println("Lights: headlights");
-      lights::set_role(lights::role::headlights, true);
-      lights::set_role(lights::role::headlights_full, false);
+      logic::lights::set_role(light_role::headlights, true);
+      logic::lights::set_role(light_role::headlights_full, false);
       break;
     case position::C:
       Serial.println("Light: full beam");
-      lights::set_role(lights::role::headlights, true);
-      lights::set_role(lights::role::headlights_full, true);
+      logic::lights::set_role(light_role::headlights, true);
+      logic::lights::set_role(light_role::headlights_full, true);
       break;
     default:
       break;
     }
-    lights::output();
+    logic::lights::output();
   }
 
   if (brake_pedal_button.update()) {
     switch (brake_pedal_button.state()) {
     case action::pressed:
       Serial.println("Brake: on");
-      lights::set_role(lights::role::brake, true);
+      logic::lights::set_role(light_role::brake, true);
       break;
     case action::released_short:
     case action::released_long:
       Serial.println("Brake: off");
-      lights::set_role(lights::role::brake, false);
+      logic::lights::set_role(light_role::brake, false);
       break;
     default:
       break;
     }
-    lights::output();
+    logic::lights::output();
   }
 
   if (horn_button.update()) {

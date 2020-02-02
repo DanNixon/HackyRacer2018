@@ -1,5 +1,6 @@
 #pragma once
 
+namespace logic {
 namespace lights {
 enum class role {
   brake,
@@ -15,3 +16,4 @@ bool role_is_enabled(role const r);
 
 void output();
 } // namespace lights
+} // namespace logic
