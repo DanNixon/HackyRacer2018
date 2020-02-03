@@ -41,8 +41,24 @@ def volume():
             spu.down(10.)(sp.linear_extrude(10.)(projection_fan())),
         )
     )
-    return sp.rotate((90, 0, 0))(spu.forward(fan.size[1] / 2.)(extrusion)
-                                ) - sp.linear_extrude(10.)(mounting_holes(6))
+    rotated_extrusion = sp.rotate((90, 0, 0))(
+        spu.forward(fan.size[1] / 2.)(extrusion)
+    )
+
+    tray_mounting_holes = sp.linear_extrude(10.)(mounting_holes(6))
+
+    def cable_cutout(position, diameter):
+        return sp.translate(position)(
+            sp.rotate((0, 90, 0))
+            (sp.cylinder(d=diameter, h=outer_wall_thickness + 1., center=True))
+        )
+
+    cable_cutouts = sp.union()(
+        cable_cutout((-33, 20, 15), 15.),
+        cable_cutout((-33, 60, 10), 12.),
+    )
+
+    return rotated_extrusion - tray_mounting_holes - cable_cutouts
 
 
 if __name__ == '__main__':

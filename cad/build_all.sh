@@ -65,6 +65,10 @@ make_laser_cut \
   "frame.assembly.electronics_tray.tray" \
   "electronics_tray"
 
+make_3d_printed \
+  "frame.assembly.electronics_tray.vesc_fan.shroud" \
+  "vesc_fan_shroud"
+
 make_machined \
   "frame.assembly.front_axle.wheel_bushing" \
   "front_wheel_bushing"
