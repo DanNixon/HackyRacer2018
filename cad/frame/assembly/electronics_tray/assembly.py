@@ -3,19 +3,18 @@ import solid.utils as spu
 
 from frame.utils import entrypoint
 
-from . import bec_module, lighting_control_board, logic_board, placements, relay_board, tray, vesc
+from . import bec_module, lighting_control_board, logic_board, placements, relay_board, tray, vesc, vesc_fan
 from .dimensions import tray_thickness
-
-# TODO: Additional things? VESC fan shroud?
 
 
 def assembly():
     return sp.union()(
         sp.color('red')(tray.volume()),
         spu.up(tray_thickness)(
-            sp.color('green')(placements.vesc(vesc.volume())),
+            sp.color('purple')(placements.vesc_fan(vesc_fan.assembly())),
             # Boards are raised by spacers
             spu.up(3.)(
+                sp.color('green')(placements.vesc(vesc.volume())),
                 sp.color('blue')(
                     placements.lighting_control_board(
                         lighting_control_board.volume()

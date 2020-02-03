@@ -9,7 +9,8 @@ from . import fan, shroud
 def assembly():
     return sp.union()(
         sp.color('red')(shroud.volume()),
-        sp.color('green')(fan.volume()),
+        sp.color('green')(
+            sp.rotate((90, 0, 0))(spu.forward(fan.size[1] / 2.)(fan.volume()))),
     )
 
 
