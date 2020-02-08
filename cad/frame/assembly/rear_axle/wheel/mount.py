@@ -6,13 +6,13 @@ from frame.utils import bom, entrypoint, place_n_at_x_around
 
 from . import wheel
 
-a_length = 10.
+a_length = 15.
 
 b_diameter = 84.
-b_length = 30.
+b_length = 20.
 
 c_diameter = 55.
-c_length = 40.
+c_length = 30.
 
 
 def volume():
