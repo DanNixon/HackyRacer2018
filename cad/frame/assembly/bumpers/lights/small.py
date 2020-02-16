@@ -22,4 +22,4 @@ def volume():
 
 
 if __name__ == '__main__':
-    entrypoint.main(projection())
+    entrypoint.main(volume())

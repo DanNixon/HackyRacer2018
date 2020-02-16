@@ -14,7 +14,7 @@ def assembly():
     )
 
     large_lights = spu.forward(large_light_y_offset)(
-        place_at_centres([large_light_centres, 0], lights.large.volume())
+        place_at_centres([large_light_centres, 0], lights.large.assembly())
     )
 
     return sp.union()(

@@ -9,18 +9,18 @@ from frame.primitives import drilled_hole
 from .dimensions import small_light_centres, small_light_y_offset, large_light_centres, large_light_y_offset
 from .. import lights
 
-width = 350
-height = 150
+width = 350.
+height = 150.
 
-thickness = 8
+thickness = 8.
 
-magic_1 = 20
+below_frame = 20.
 
-mounting_hole_centres = 180
+mounting_hole_centres = 180.
 
 
 def projection():
-    d = (height / 2.) - magic_1
+    d = (height / 2.) - below_frame
 
     panel = spu.forward(d)(
         plate.projection(size=(width, height), radius=10, center=True)

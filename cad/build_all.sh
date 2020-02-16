@@ -61,6 +61,10 @@ make_machined_2d \
   "frame.assembly.bumpers.rear.bumper" \
   "rear_bumper"
 
+make_3d_printed \
+  "frame.assembly.bumpers.lights.large.mount" \
+  "large_headlight_mount"
+
 make_laser_cut \
   "frame.assembly.electronics_tray.tray" \
   "electronics_tray"

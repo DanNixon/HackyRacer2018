@@ -1,5 +1,5 @@
-small_light_centres = 280
-small_light_y_offset = 20
+small_light_centres = 295.
+small_light_y_offset = 100.
 
-large_light_centres = 180
-large_light_y_offset = 75
+large_light_centres = 175.
+large_light_y_offset = 40.
