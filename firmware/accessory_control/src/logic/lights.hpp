@@ -6,6 +6,7 @@ enum class role {
   brake,
   reverse,
   headlights_full,
+  headlights_full_momentary,
   headlights,
 };
 

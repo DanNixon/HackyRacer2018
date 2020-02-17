@@ -16,8 +16,8 @@ device::three_position_switch lights_switch(pins::lights_switch_a,
                                             pins::lights_switch_b);
 
 device::button brake_pedal_button(pins::break_pedal_switch);
-device::button display_button(pins::display_button);
-device::button horn_button(pins::horn_button);
+device::button full_beam_button(pins::blue_button);
+device::button horn_button(pins::red_button);
 
 void setup() {
   Serial.begin(9600);
@@ -33,7 +33,7 @@ void setup() {
   lights_switch.init();
 
   brake_pedal_button.init();
-  display_button.init();
+  full_beam_button.init();
   horn_button.init();
 }
 
@@ -90,6 +90,23 @@ void loop() {
     logic::lights::output();
   }
 
+  if (full_beam_button.update()) {
+    switch (full_beam_button.state()) {
+    case action::pressed:
+      Serial.println("Light: full beam (button - on)");
+      logic::lights::set_role(light_role::headlights_full_momentary, true);
+      break;
+    case action::released_short:
+    case action::released_long:
+      Serial.println("Light: full beam (button - off)");
+      logic::lights::set_role(light_role::headlights_full_momentary, false);
+      break;
+    default:
+      break;
+    }
+    logic::lights::output();
+  }
+
   if (brake_pedal_button.update()) {
     switch (brake_pedal_button.state()) {
     case action::pressed:
@@ -117,21 +134,6 @@ void loop() {
     case action::released_long:
       Serial.println("Horn: off");
       horn.off();
-      break;
-    default:
-      break;
-    }
-  }
-
-  if (display_button.update()) {
-    switch (display_button.state()) {
-    case action::released_short:
-      Serial.println("Display: cycle");
-      /* TODO */
-      break;
-    case action::released_long:
-      Serial.println("Display: select");
-      /* TODO */
       break;
     default:
       break;

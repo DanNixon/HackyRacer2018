@@ -1,9 +1,10 @@
 #include "motor.hpp"
 
 #include "device/relay.hpp"
+#include "pins.hpp"
 
-device::relay reverse_signal(5);
-device::relay pot_high_side(4);
+device::relay reverse_signal(pins::reverse_relay);
+device::relay pot_high_side(pins::pot_high_side_relay);
 
 namespace logic {
 namespace motor {

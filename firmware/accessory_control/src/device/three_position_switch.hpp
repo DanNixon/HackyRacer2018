@@ -20,6 +20,6 @@ private:
   bool m_pin_1_state;
   bool m_pin_2_state;
 
-  bool m_first_update_done;
+  long int m_last_state_change;
 };
 } // namespace device

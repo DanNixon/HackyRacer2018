@@ -1,11 +1,9 @@
 #include "lights.hpp"
 
-#include <bitset>
-
 #include "device/pwm_light.hpp"
 #include "pins.hpp"
 
-std::bitset<4> role_enable;
+bool role_enable[5];
 
 device::pwm_light front_white(pins::front_white_lights, 10);
 device::pwm_light front_white_bright(pins::front_white_bright_lights, 100, 255);
@@ -22,7 +20,7 @@ void init() {
 }
 
 void set_role(role const r, bool const active) {
-  role_enable.set(static_cast<int>(r), active);
+  role_enable[static_cast<int>(r)] = active;
 }
 
 bool role_is_enabled(role const r) {
@@ -41,7 +39,8 @@ void output() {
     front_white_level = level::on;
     rear_red_level = level::low;
   }
-  if (role_is_enabled(role::headlights_full)) {
+  if (role_is_enabled(role::headlights_full) ||
+      role_is_enabled(role::headlights_full_momentary)) {
     front_white_bright_level = level::on;
   }
   if (role_is_enabled(role::reverse)) {
