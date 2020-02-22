@@ -2,11 +2,11 @@
 
 set -x
 
-pushd 'cad/'
+pushd './cad/'
 pytest --verbose
 ./build_all.sh
 popd
 
-pushd 'firmware/accessory_control/'
+pushd './accessory_control_firmware/'
 pio run
 popd
