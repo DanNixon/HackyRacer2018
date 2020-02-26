@@ -3,7 +3,8 @@
 #include "device/pwm_light.hpp"
 #include "pins.hpp"
 
-bool role_enable[5];
+constexpr auto role_count = 5;
+bool role_enable[role_count];
 
 device::pwm_light front_white(pins::front_white_lights, 10);
 device::pwm_light front_white_bright(pins::front_white_bright_lights, 100, 255);
@@ -17,10 +18,23 @@ void init() {
   front_white_bright.init();
   rear_white.init();
   rear_red.init();
+
+  clear_all_roles();
+  output();
 }
 
-void set_role(role const r, bool const active) {
-  role_enable[static_cast<int>(r)] = active;
+void set_role(role const r) {
+  role_enable[static_cast<int>(r)] = true;
+}
+
+void clear_role(role const r) {
+  role_enable[static_cast<int>(r)] = false;
+}
+
+void clear_all_roles() {
+  for (auto i = 0; i < role_count; i++) {
+    role_enable[i] = false;
+  }
 }
 
 bool role_is_enabled(role const r) {

@@ -19,6 +19,11 @@ device::button brake_pedal_button(pins::break_pedal_switch);
 device::button full_beam_button(pins::blue_button);
 device::button horn_button(pins::red_button);
 
+void power_on_sanity_check();
+
+using position = device::three_position_switch::position;
+using light_role = logic::lights::role;
+
 void setup() {
   Serial.begin(9600);
   Serial.println("Hello");
@@ -35,12 +40,12 @@ void setup() {
   brake_pedal_button.init();
   full_beam_button.init();
   horn_button.init();
+
+  power_on_sanity_check();
 }
 
 void loop() {
-  using position = device::three_position_switch::position;
   using action = device::button::action;
-  using light_role = logic::lights::role;
 
   if (gear_switch.update()) {
     switch (gear_switch.pos()) {
@@ -48,18 +53,18 @@ void loop() {
       Serial.println("Gear: drive");
       logic::motor::set_drive();
       logic::motor::enable();
-      logic::lights::set_role(light_role::reverse, false);
+      logic::lights::clear_role(light_role::reverse);
       break;
     case position::B:
       Serial.println("Gear: neutral");
       logic::motor::disable();
-      logic::lights::set_role(light_role::reverse, false);
+      logic::lights::clear_role(light_role::reverse);
       break;
     case position::C:
       Serial.println("Gear: reverse");
       logic::motor::set_reverse();
       logic::motor::enable();
-      logic::lights::set_role(light_role::reverse, true);
+      logic::lights::set_role(light_role::reverse);
       break;
     default:
       break;
@@ -71,18 +76,18 @@ void loop() {
     switch (lights_switch.pos()) {
     case position::A:
       Serial.println("Lights: off");
-      logic::lights::set_role(light_role::headlights, false);
-      logic::lights::set_role(light_role::headlights_full, false);
+      logic::lights::clear_role(light_role::headlights);
+      logic::lights::clear_role(light_role::headlights_full);
       break;
     case position::B:
       Serial.println("Lights: headlights");
-      logic::lights::set_role(light_role::headlights, true);
-      logic::lights::set_role(light_role::headlights_full, false);
+      logic::lights::set_role(light_role::headlights);
+      logic::lights::clear_role(light_role::headlights_full);
       break;
     case position::C:
       Serial.println("Light: full beam");
-      logic::lights::set_role(light_role::headlights, true);
-      logic::lights::set_role(light_role::headlights_full, true);
+      logic::lights::set_role(light_role::headlights);
+      logic::lights::set_role(light_role::headlights_full);
       break;
     default:
       break;
@@ -94,12 +99,12 @@ void loop() {
     switch (full_beam_button.state()) {
     case action::pressed:
       Serial.println("Light: full beam (button - on)");
-      logic::lights::set_role(light_role::headlights_full_momentary, true);
+      logic::lights::set_role(light_role::headlights_full_momentary);
       break;
     case action::released_short:
     case action::released_long:
       Serial.println("Light: full beam (button - off)");
-      logic::lights::set_role(light_role::headlights_full_momentary, false);
+      logic::lights::clear_role(light_role::headlights_full_momentary);
       break;
     default:
       break;
@@ -111,12 +116,12 @@ void loop() {
     switch (brake_pedal_button.state()) {
     case action::pressed:
       Serial.println("Brake: on");
-      logic::lights::set_role(light_role::brake, true);
+      logic::lights::set_role(light_role::brake);
       break;
     case action::released_short:
     case action::released_long:
       Serial.println("Brake: off");
-      logic::lights::set_role(light_role::brake, false);
+      logic::lights::clear_role(light_role::brake);
       break;
     default:
       break;
@@ -139,4 +144,20 @@ void loop() {
       break;
     }
   }
+}
+
+void power_on_sanity_check() {
+  logic::lights::set_role(light_role::headlights);
+  logic::lights::set_role(light_role::headlights_full);
+  logic::lights::set_role(light_role::brake);
+  logic::lights::output();
+
+  /* Wait for switch to be in neutral position */
+  while (gear_switch.pos() != position::B) {
+    delay(10);
+    gear_switch.update();
+  }
+
+  logic::lights::clear_all_roles();
+  logic::lights::output();
 }

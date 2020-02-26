@@ -3,16 +3,18 @@
 namespace logic {
 namespace lights {
 enum class role {
-  brake,
-  reverse,
+  headlights,
   headlights_full,
   headlights_full_momentary,
-  headlights,
+  reverse,
+  brake,
 };
 
 void init();
 
-void set_role(role const r, bool const active);
+void set_role(role const r);
+void clear_role(role const r);
+void clear_all_roles();
 bool role_is_enabled(role const r);
 
 void output();
