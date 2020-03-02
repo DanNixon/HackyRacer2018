@@ -81,7 +81,7 @@ def assembly():
     )
 
     front_axle_and_wheels = sp.color('gray')(
-        sp.translate((0, 1050, -box_section.default_size[0]))(
+        sp.translate((0, 1150, -box_section.default_size[0]))(
             front_axle.assembly()
         )
     )

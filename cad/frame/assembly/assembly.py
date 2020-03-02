@@ -44,8 +44,8 @@ def assembly():
             )(brake_pedal.assembly())
         ),
         sp.color('orange')(
-            sp.translate((0, 1000, 0))(
-                sp.rotate((45, 0, 0))(steering.assembly())
+            sp.translate((0, 1100., 0))(
+                sp.rotate((50., 0, 0))(steering.assembly())
             )
         ),
         sp.color('brown')(

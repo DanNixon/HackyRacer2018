@@ -9,7 +9,7 @@ from . import brake_disc, drive_sprocket, wheel
 
 sprocket_pos = 147.
 brake_disc_pos = 160.
-wheel_centre_distance = 620.
+wheel_centre_distance = 660.
 
 axle_length = wheel_centre_distance + 80.
 

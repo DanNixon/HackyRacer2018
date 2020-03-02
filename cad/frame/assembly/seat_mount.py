@@ -8,10 +8,8 @@ from frame.utils import entrypoint
 
 from .dimensions import outer
 
-seat_depth = 280
-
-seat_mount_centres = [300, 200]
-seat_mount_hole_diameter = 8
+seat_depth = 300.
+mount_bar_centres = 230.
 
 
 def assembly():
@@ -33,23 +31,31 @@ def assembly():
                     length=seat_depth - box_section.default_size[0],
                     center=True
                 )
-            ) for d in [
-                -outer, outer, -seat_mount_centres[0] /
-                2, seat_mount_centres[0] / 2
-            ]
+            ) for d in [-outer, outer]
         ]
+    )
+
+    _mount_bar_centres = (mount_bar_centres - box_section.default_size[0]) / 2.
+    mount_bars = spu.up(box_section.default_size[0])(
+        sp.rotate([90, 0, 0])(
+            [
+                spu.left(d)(
+                    box_section.volume(
+                        length=seat_depth + box_section.default_size[0],
+                        center=True
+                    )
+                ) for d in [-_mount_bar_centres, _mount_bar_centres]
+            ]
+        )
     )
 
     frame = sp.union()(
         sp.color('red')(x_bars),
         sp.color('green')(y_bars),
+        sp.color('blue')(mount_bars),
     )
 
-    holes = place_at_centres(
-        seat_mount_centres, drilled_hole(seat_mount_hole_diameter)
-    )
-
-    return frame - holes
+    return frame
 
 
 if __name__ == '__main__':
